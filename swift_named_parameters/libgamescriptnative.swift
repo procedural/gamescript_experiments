@@ -779,59 +779,59 @@ func _gsNumberFromVoidPointer(_ x: UnsafeRawPointer!) -> Number {
   return Number(bitPattern: UInt64(UInt(bitPattern: x)))
 }
 
-func stringGetChar(_ string: String, _ index: Number) -> String {
+func stringGetChar(string: String, index: Number) -> String {
   return String(string[string.index(string.startIndex, offsetBy: Int(index))])
 }
 
-func sqrt(_ x: Number) -> Number {
+func sqrt(x: Number) -> Number {
   return x.squareRoot()
 }
 
-func len(_ string: String) -> Number {
+func len(string: String) -> Number {
   return Number(string.utf8.count)
 }
 
-func len(_ array: NumberArray) -> Number {
+func len(array: NumberArray) -> Number {
   return Number(array.count)
 }
 
-func len(_ array: FloatArray) -> Number {
+func len(array: FloatArray) -> Number {
   return Number(array.count)
 }
 
-func len(_ array: IntegerArray) -> Number {
+func len(array: IntegerArray) -> Number {
   return Number(array.count)
 }
 
-func len(_ array: UnsignedIntegerArray) -> Number {
+func len(array: UnsignedIntegerArray) -> Number {
   return Number(array.count)
 }
 
-func len(_ array: StringArray) -> Number {
+func len(array: StringArray) -> Number {
   return Number(array.count)
 }
 
-func append(_ array: inout NumberArray, _ element: Number) {
+func append(array: inout NumberArray, element: Number) {
   array.append(element)
 }
 
-func append(_ array: inout FloatArray, _ element: Float) {
+func append(array: inout FloatArray, element: Float) {
   array.append(element)
 }
 
-func append(_ array: inout IntegerArray, _ element: Integer) {
+func append(array: inout IntegerArray, element: Integer) {
   array.append(element)
 }
 
-func append(_ array: inout UnsignedIntegerArray, _ element: UnsignedInteger) {
+func append(array: inout UnsignedIntegerArray, element: UnsignedInteger) {
   array.append(element)
 }
 
-func append(_ array: inout StringArray, _ element: String) {
+func append(array: inout StringArray, element: String) {
   array.append(element)
 }
 
-func printConsole(_ string: String) {
+func printConsole(string: String) {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -840,7 +840,7 @@ func printConsole(_ string: String) {
   _ = _gsCProcedurePrintConsole(nil, nil, 0, args)
 }
 
-func printDraw(_ string: String) {
+func printDraw(string: String) {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -849,7 +849,7 @@ func printDraw(_ string: String) {
   _ = _gsCProcedurePrintDraw(nil, nil, 0, args)
 }
 
-func windowSetTitle(_ title: String) {
+func windowSetTitle(title: String) {
   let _title = UnsafeRawPointer(_strdup(title)); defer { free(UnsafeMutableRawPointer(mutating: _title)) }
 
   let args = [
@@ -866,7 +866,7 @@ func windowGetHeight() -> Number /* height */ {
   return _gsNumberFromVoidPointer(_gsCProcedureWindowGetHeight(nil, nil, 0, nil))
 }
 
-func windowSetWidthHeight(_ width: Number, _ height: Number) {
+func windowSetWidthHeight(width: Number, height: Number) {
   let args = [
     _gsVoidPointerFromNumber(width),
     _gsVoidPointerFromNumber(height),
@@ -874,7 +874,7 @@ func windowSetWidthHeight(_ width: Number, _ height: Number) {
   _ = _gsCProcedureWindowSetWidthHeight(nil, nil, 0, args)
 }
 
-func windowSetFullscreen(_ fullscreen: Bool) {
+func windowSetFullscreen(fullscreen: Bool) {
   let args = [
     _gsVoidPointerFromBool(fullscreen),
   ]
@@ -909,7 +909,7 @@ func windowRequestAttention() {
   _ = _gsCProcedureWindowRequestAttention(nil, nil, 0, nil)
 }
 
-func drawPoint(_ label: String, _ x: Number, _ y: Number, _ z: Number, _ size: Number, _ r0to255: Number, _ g0to255: Number, _ b0to255: Number, _ a0to255: Number) {
+func drawPoint(label: String, x: Number, y: Number, z: Number, size: Number, r0to255: Number, g0to255: Number, b0to255: Number, a0to255: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -926,7 +926,7 @@ func drawPoint(_ label: String, _ x: Number, _ y: Number, _ z: Number, _ size: N
   _ = _gsCProcedureDrawPoint(nil, nil, 0, args)
 }
 
-func drawLine(_ label: String, _ x0: Number, _ y0: Number, _ z0: Number, _ x1: Number, _ y1: Number, _ z1: Number, _ width: Number, _ r0to255: Number, _ g0to255: Number, _ b0to255: Number, _ a0to255: Number) {
+func drawLine(label: String, x0: Number, y0: Number, z0: Number, x1: Number, y1: Number, z1: Number, width: Number, r0to255: Number, g0to255: Number, b0to255: Number, a0to255: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -946,7 +946,7 @@ func drawLine(_ label: String, _ x0: Number, _ y0: Number, _ z0: Number, _ x1: N
   _ = _gsCProcedureDrawLine(nil, nil, 0, args)
 }
 
-func drawTriangle(_ label: String, _ x0: Number, _ y0: Number, _ z0: Number, _ x1: Number, _ y1: Number, _ z1: Number, _ x2: Number, _ y2: Number, _ z2: Number, _ r0to255: Number, _ g0to255: Number, _ b0to255: Number, _ a0to255: Number) {
+func drawTriangle(label: String, x0: Number, y0: Number, z0: Number, x1: Number, y1: Number, z1: Number, x2: Number, y2: Number, z2: Number, r0to255: Number, g0to255: Number, b0to255: Number, a0to255: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -968,7 +968,7 @@ func drawTriangle(_ label: String, _ x0: Number, _ y0: Number, _ z0: Number, _ x
   _ = _gsCProcedureDrawTriangle(nil, nil, 0, args)
 }
 
-func drawTriangleWireframe(_ label: String, _ x0: Number, _ y0: Number, _ z0: Number, _ x1: Number, _ y1: Number, _ z1: Number, _ x2: Number, _ y2: Number, _ z2: Number, _ r0to255: Number, _ g0to255: Number, _ b0to255: Number, _ a0to255: Number) {
+func drawTriangleWireframe(label: String, x0: Number, y0: Number, z0: Number, x1: Number, y1: Number, z1: Number, x2: Number, y2: Number, z2: Number, r0to255: Number, g0to255: Number, b0to255: Number, a0to255: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -990,7 +990,7 @@ func drawTriangleWireframe(_ label: String, _ x0: Number, _ y0: Number, _ z0: Nu
   _ = _gsCProcedureDrawTriangleWireframe(nil, nil, 0, args)
 }
 
-func drawSphere(_ x: Number, _ y: Number, _ z: Number, _ size: Number, _ r0to255: Number, _ g0to255: Number, _ b0to255: Number, _ a0to255: Number) {
+func drawSphere(x: Number, y: Number, z: Number, size: Number, r0to255: Number, g0to255: Number, b0to255: Number, a0to255: Number) {
   let args = [
     _gsVoidPointerFromNumber(x),
     _gsVoidPointerFromNumber(y),
@@ -1004,7 +1004,7 @@ func drawSphere(_ x: Number, _ y: Number, _ z: Number, _ size: Number, _ r0to255
   _ = _gsCProcedureDrawSphere(nil, nil, 0, args)
 }
 
-func drawSphereWireframe(_ x: Number, _ y: Number, _ z: Number, _ size: Number, _ r0to255: Number, _ g0to255: Number, _ b0to255: Number, _ a0to255: Number) {
+func drawSphereWireframe(x: Number, y: Number, z: Number, size: Number, r0to255: Number, g0to255: Number, b0to255: Number, a0to255: Number) {
   let args = [
     _gsVoidPointerFromNumber(x),
     _gsVoidPointerFromNumber(y),
@@ -1018,7 +1018,7 @@ func drawSphereWireframe(_ x: Number, _ y: Number, _ z: Number, _ size: Number, 
   _ = _gsCProcedureDrawSphereWireframe(nil, nil, 0, args)
 }
 
-func drawDebugText(_ label: String, _ x: Number, _ y: Number, _ r0to255: Number, _ g0to255: Number, _ b0to255: Number, _ a0to255: Number) {
+func drawDebugText(label: String, x: Number, y: Number, r0to255: Number, g0to255: Number, b0to255: Number, a0to255: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1033,7 +1033,7 @@ func drawDebugText(_ label: String, _ x: Number, _ y: Number, _ r0to255: Number,
   _ = _gsCProcedureDrawDebugText(nil, nil, 0, args)
 }
 
-func drawDebugTextAtPoint(_ label: String, _ x: Number, _ y: Number, _ z: Number) {
+func drawDebugTextAtPoint(label: String, x: Number, y: Number, z: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1053,7 +1053,7 @@ func getCurrentFrame() -> Number /* frame */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetCurrentFrame(nil, nil, 0, nil))
 }
 
-func setCurrentFrame(_ frame: Number) {
+func setCurrentFrame(frame: Number) {
   let args = [
     _gsVoidPointerFromNumber(frame),
   ]
@@ -1099,21 +1099,21 @@ func defaultCameraDefaultControlIsEnabled() -> Bool /* isEnabled */ {
   return _gsBoolFromVoidPointer(_gsCProcedureDefaultCameraDefaultControlIsEnabled(nil, nil, 0, nil))
 }
 
-func defaultCameraSetMoveSpeed(_ speed: Number) {
+func defaultCameraSetMoveSpeed(speed: Number) {
   let args = [
     _gsVoidPointerFromNumber(speed),
   ]
   _ = _gsCProcedureDefaultCameraSetMoveSpeed(nil, nil, 0, args)
 }
 
-func defaultCameraSetRollSpeed(_ speed: Number) {
+func defaultCameraSetRollSpeed(speed: Number) {
   let args = [
     _gsVoidPointerFromNumber(speed),
   ]
   _ = _gsCProcedureDefaultCameraSetRollSpeed(nil, nil, 0, args)
 }
 
-func defaultCameraSetMouseSensitivity(_ sensitivity: Number) {
+func defaultCameraSetMouseSensitivity(sensitivity: Number) {
   let args = [
     _gsVoidPointerFromNumber(sensitivity),
   ]
@@ -1145,7 +1145,7 @@ func defaultCameraGetVersor() -> NumberArray /* quaternion [4] {x, y, z, w} */ {
   return out
 }
 
-func defaultCameraSetVector(_ x: Number, _ y: Number, _ z: Number) {
+func defaultCameraSetVector(x: Number, y: Number, z: Number) {
   let args = [
     _gsVoidPointerFromNumber(x),
     _gsVoidPointerFromNumber(y),
@@ -1154,7 +1154,7 @@ func defaultCameraSetVector(_ x: Number, _ y: Number, _ z: Number) {
   _ = _gsCProcedureDefaultCameraSetVector(nil, nil, 0, args)
 }
 
-func defaultCameraSetVersor(_ x: Number, _ y: Number, _ z: Number, _ w: Number) {
+func defaultCameraSetVersor(x: Number, y: Number, z: Number, w: Number) {
   let args = [
     _gsVoidPointerFromNumber(x),
     _gsVoidPointerFromNumber(y),
@@ -1164,7 +1164,7 @@ func defaultCameraSetVersor(_ x: Number, _ y: Number, _ z: Number, _ w: Number) 
   _ = _gsCProcedureDefaultCameraSetVersor(nil, nil, 0, args)
 }
 
-func defaultCameraRotate(_ rotationAxisX: Number, _ rotationAxisY: Number, _ rotationAxisZ: Number, _ rotationAngleDeg: Number) {
+func defaultCameraRotate(rotationAxisX: Number, rotationAxisY: Number, rotationAxisZ: Number, rotationAngleDeg: Number) {
   let args = [
     _gsVoidPointerFromNumber(rotationAxisX),
     _gsVoidPointerFromNumber(rotationAxisY),
@@ -1174,7 +1174,7 @@ func defaultCameraRotate(_ rotationAxisX: Number, _ rotationAxisY: Number, _ rot
   _ = _gsCProcedureDefaultCameraRotate(nil, nil, 0, args)
 }
 
-func defaultCameraLookAt(_ x: Number, _ y: Number, _ z: Number, _ upX: Number, _ upY: Number, _ upZ: Number) {
+func defaultCameraLookAt(x: Number, y: Number, z: Number, upX: Number, upY: Number, upZ: Number) {
   let args = [
     _gsVoidPointerFromNumber(x),
     _gsVoidPointerFromNumber(y),
@@ -1186,49 +1186,49 @@ func defaultCameraLookAt(_ x: Number, _ y: Number, _ z: Number, _ upX: Number, _
   _ = _gsCProcedureDefaultCameraLookAt(nil, nil, 0, args)
 }
 
-func defaultCameraSetFOV(_ fov: Number) {
+func defaultCameraSetFOV(fov: Number) {
   let args = [
     _gsVoidPointerFromNumber(fov),
   ]
   _ = _gsCProcedureDefaultCameraSetFOV(nil, nil, 0, args)
 }
 
-func defaultCameraSetNearClip(_ near: Number) {
+func defaultCameraSetNearClip(near: Number) {
   let args = [
     _gsVoidPointerFromNumber(near),
   ]
   _ = _gsCProcedureDefaultCameraSetNearClip(nil, nil, 0, args)
 }
 
-func defaultCameraSetFarClip(_ far: Number) {
+func defaultCameraSetFarClip(far: Number) {
   let args = [
     _gsVoidPointerFromNumber(far),
   ]
   _ = _gsCProcedureDefaultCameraSetFarClip(nil, nil, 0, args)
 }
 
-func defaultCameraSetProjectionMode(_ mode: Number) {
+func defaultCameraSetProjectionMode(mode: Number) {
   let args = [
     _gsVoidPointerFromNumber(mode),
   ]
   _ = _gsCProcedureDefaultCameraSetProjectionMode(nil, nil, 0, args)
 }
 
-func defaultCameraSetAspectRatio(_ aspectRatio: Number) {
+func defaultCameraSetAspectRatio(aspectRatio: Number) {
   let args = [
     _gsVoidPointerFromNumber(aspectRatio),
   ]
   _ = _gsCProcedureDefaultCameraSetAspectRatio(nil, nil, 0, args)
 }
 
-func defaultCameraSetForceAspectRatio(_ forceAspectRatio: Bool) {
+func defaultCameraSetForceAspectRatio(forceAspectRatio: Bool) {
   let args = [
     _gsVoidPointerFromBool(forceAspectRatio),
   ]
   _ = _gsCProcedureDefaultCameraSetForceAspectRatio(nil, nil, 0, args)
 }
 
-func defaultCameraSetLensOffset(_ lensOffsetX: Number, _ lensOffsetY: Number) {
+func defaultCameraSetLensOffset(lensOffsetX: Number, lensOffsetY: Number) {
   let args = [
     _gsVoidPointerFromNumber(lensOffsetX),
     _gsVoidPointerFromNumber(lensOffsetY),
@@ -1236,7 +1236,7 @@ func defaultCameraSetLensOffset(_ lensOffsetX: Number, _ lensOffsetY: Number) {
   _ = _gsCProcedureDefaultCameraSetLensOffset(nil, nil, 0, args)
 }
 
-func defaultCameraSetupPerspective(_ vflip: Bool, _ fov: Number, _ nearDist: Number, _ farDist: Number, _ lensOffsetX: Number, _ lensOffsetY: Number) {
+func defaultCameraSetupPerspective(vflip: Bool, fov: Number, nearDist: Number, farDist: Number, lensOffsetX: Number, lensOffsetY: Number) {
   let args = [
     _gsVoidPointerFromBool(vflip),
     _gsVoidPointerFromNumber(fov),
@@ -1248,7 +1248,7 @@ func defaultCameraSetupPerspective(_ vflip: Bool, _ fov: Number, _ nearDist: Num
   _ = _gsCProcedureDefaultCameraSetupPerspective(nil, nil, 0, args)
 }
 
-func defaultCameraSetupOffAxisViewPortal(_ topLeftX: Number, _ topLeftY: Number, _ topLeftZ: Number, _ bottomLeftX: Number, _ bottomLeftY: Number, _ bottomLeftZ: Number, _ bottomRightX: Number, _ bottomRightY: Number, _ bottomRightZ: Number) {
+func defaultCameraSetupOffAxisViewPortal(topLeftX: Number, topLeftY: Number, topLeftZ: Number, bottomLeftX: Number, bottomLeftY: Number, bottomLeftZ: Number, bottomRightX: Number, bottomRightY: Number, bottomRightZ: Number) {
   let args = [
     _gsVoidPointerFromNumber(topLeftX),
     _gsVoidPointerFromNumber(topLeftY),
@@ -1263,14 +1263,14 @@ func defaultCameraSetupOffAxisViewPortal(_ topLeftX: Number, _ topLeftY: Number,
   _ = _gsCProcedureDefaultCameraSetupOffAxisViewPortal(nil, nil, 0, args)
 }
 
-func defaultCameraSetVFlip(_ vflip: Bool) {
+func defaultCameraSetVFlip(vflip: Bool) {
   let args = [
     _gsVoidPointerFromBool(vflip),
   ]
   _ = _gsCProcedureDefaultCameraSetVFlip(nil, nil, 0, args)
 }
 
-func defaultCameraScreenToWorld(_ screenX: Number, _ screenY: Number, _ screenZ: Number) -> NumberArray /* worldPosition [3] {x, y, z} */ {
+func defaultCameraScreenToWorld(screenX: Number, screenY: Number, screenZ: Number) -> NumberArray /* worldPosition [3] {x, y, z} */ {
   let args = [
     _gsVoidPointerFromNumber(screenX),
     _gsVoidPointerFromNumber(screenY),
@@ -1287,7 +1287,7 @@ func defaultCameraScreenToWorld(_ screenX: Number, _ screenY: Number, _ screenZ:
   return out
 }
 
-func defaultCameraWorldToScreen(_ worldX: Number, _ worldY: Number, _ worldZ: Number) -> NumberArray /* screenPosition [3] {x, y, z} */ {
+func defaultCameraWorldToScreen(worldX: Number, worldY: Number, worldZ: Number) -> NumberArray /* screenPosition [3] {x, y, z} */ {
   let args = [
     _gsVoidPointerFromNumber(worldX),
     _gsVoidPointerFromNumber(worldY),
@@ -1340,28 +1340,28 @@ func defaultCameraGetLookAtVector() -> NumberArray /* lookAtVector [3] {x, y, z}
   return out
 }
 
-func defaultCameraGetProjectionMatrix(_ outPointer: Number) {
+func defaultCameraGetProjectionMatrix(outPointer: Number) {
   let args = [
     _gsVoidPointerFromNumber(outPointer),
   ]
   _ = _gsCProcedureDefaultCameraGetProjectionMatrix(nil, nil, 0, args)
 }
 
-func defaultCameraGetModelViewMatrix(_ outPointer: Number) {
+func defaultCameraGetModelViewMatrix(outPointer: Number) {
   let args = [
     _gsVoidPointerFromNumber(outPointer),
   ]
   _ = _gsCProcedureDefaultCameraGetModelViewMatrix(nil, nil, 0, args)
 }
 
-func defaultCameraGetModelViewProjectionMatrix(_ outPointer: Number) {
+func defaultCameraGetModelViewProjectionMatrix(outPointer: Number) {
   let args = [
     _gsVoidPointerFromNumber(outPointer),
   ]
   _ = _gsCProcedureDefaultCameraGetModelViewProjectionMatrix(nil, nil, 0, args)
 }
 
-func defaultCameraSetControlKeys(_ up: Number, _ down: Number, _ left: Number, _ right: Number, _ forward: Number, _ backward: Number, _ rollLeft: Number, _ rollRight: Number, _ rollReset: Number) {
+func defaultCameraSetControlKeys(up: Number, down: Number, left: Number, right: Number, forward: Number, backward: Number, rollLeft: Number, rollRight: Number, rollReset: Number) {
   let args = [
     _gsVoidPointerFromNumber(up),
     _gsVoidPointerFromNumber(down),
@@ -1376,7 +1376,7 @@ func defaultCameraSetControlKeys(_ up: Number, _ down: Number, _ left: Number, _
   _ = _gsCProcedureDefaultCameraSetControlKeys(nil, nil, 0, args)
 }
 
-func setBackgroundColor(_ r0to255: Number, _ g0to255: Number, _ b0to255: Number, _ a0to255: Number) {
+func setBackgroundColor(r0to255: Number, g0to255: Number, b0to255: Number, a0to255: Number) {
   let args = [
     _gsVoidPointerFromNumber(r0to255),
     _gsVoidPointerFromNumber(g0to255),
@@ -1386,7 +1386,7 @@ func setBackgroundColor(_ r0to255: Number, _ g0to255: Number, _ b0to255: Number,
   _ = _gsCProcedureSetBackgroundColor(nil, nil, 0, args)
 }
 
-func setViewport(_ x: Number, _ y: Number, _ width: Number, _ height: Number, _ vflip: Bool) {
+func setViewport(x: Number, y: Number, width: Number, height: Number, vflip: Bool) {
   let args = [
     _gsVoidPointerFromNumber(x),
     _gsVoidPointerFromNumber(y),
@@ -1405,7 +1405,7 @@ func alphaBlendingDisable() {
   _ = _gsCProcedureAlphaBlendingDisable(nil, nil, 0, nil)
 }
 
-func blendModeEnable(_ mode: Number) {
+func blendModeEnable(mode: Number) {
   let args = [
     _gsVoidPointerFromNumber(mode),
   ]
@@ -1424,7 +1424,7 @@ func depthTestDisable() {
   _ = _gsCProcedureDepthTestDisable(nil, nil, 0, nil)
 }
 
-func cullingEnable(_ mode: Number) {
+func cullingEnable(mode: Number) {
   let args = [
     _gsVoidPointerFromNumber(mode),
   ]
@@ -1435,7 +1435,7 @@ func cullingDisable() {
   _ = _gsCProcedureCullingDisable(nil, nil, 0, nil)
 }
 
-func clear(_ r0to1: Number, _ g0to1: Number, _ b0to1: Number, _ a0to1: Number) {
+func clear(r0to1: Number, g0to1: Number, b0to1: Number, a0to1: Number) {
   let args = [
     _gsVoidPointerFromNumber(r0to1),
     _gsVoidPointerFromNumber(g0to1),
@@ -1453,7 +1453,7 @@ func clearDepth() {
   _ = _gsCProcedureClearDepth(nil, nil, 0, nil)
 }
 
-func saveScreenRawToMemory(_ x: Number, _ y: Number, _ width: Number, _ height: Number, _ out8BitRGBAPixels: Number) {
+func saveScreenRawToMemory(x: Number, y: Number, width: Number, height: Number, out8BitRGBAPixels: Number) {
   let args = [
     _gsVoidPointerFromNumber(x),
     _gsVoidPointerFromNumber(y),
@@ -1464,7 +1464,7 @@ func saveScreenRawToMemory(_ x: Number, _ y: Number, _ width: Number, _ height: 
   _ = _gsCProcedureSaveScreenRawToMemory(nil, nil, 0, args)
 }
 
-func globalArrayNew8Bit(_ label: String, _ count: Number) -> Number /* pointer */ {
+func globalArrayNew8Bit(label: String, count: Number) -> Number /* pointer */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1474,7 +1474,7 @@ func globalArrayNew8Bit(_ label: String, _ count: Number) -> Number /* pointer *
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalArrayNew8Bit(nil, nil, 0, args))
 }
 
-func globalArrayPersistentNew8Bit(_ label: String, _ count: Number) -> Number /* pointer */ {
+func globalArrayPersistentNew8Bit(label: String, count: Number) -> Number /* pointer */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1484,7 +1484,7 @@ func globalArrayPersistentNew8Bit(_ label: String, _ count: Number) -> Number /*
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalArrayPersistentNew8Bit(nil, nil, 0, args))
 }
 
-func globalArrayDelete(_ label: String) {
+func globalArrayDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1493,7 +1493,7 @@ func globalArrayDelete(_ label: String) {
   _ = _gsCProcedureGlobalArrayDelete(nil, nil, 0, args)
 }
 
-func globalArrayPersistentDelete(_ label: String) {
+func globalArrayPersistentDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1510,7 +1510,7 @@ func globalArrayPersistentDeleteAll() {
   _ = _gsCProcedureGlobalArrayPersistentDeleteAll(nil, nil, 0, nil)
 }
 
-func globalArrayGetBytesCount(_ label: String) -> Number /* bytesCount */ {
+func globalArrayGetBytesCount(label: String) -> Number /* bytesCount */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1519,7 +1519,7 @@ func globalArrayGetBytesCount(_ label: String) -> Number /* bytesCount */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalArrayGetBytesCount(nil, nil, 0, args))
 }
 
-func globalArrayGetPointer(_ label: String) -> Number /* pointer */ {
+func globalArrayGetPointer(label: String) -> Number /* pointer */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1528,7 +1528,7 @@ func globalArrayGetPointer(_ label: String) -> Number /* pointer */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalArrayGetPointer(nil, nil, 0, args))
 }
 
-func globalArrayPersistentGetBytesCount(_ label: String) -> Number /* bytesCount */ {
+func globalArrayPersistentGetBytesCount(label: String) -> Number /* bytesCount */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1537,7 +1537,7 @@ func globalArrayPersistentGetBytesCount(_ label: String) -> Number /* bytesCount
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalArrayPersistentGetBytesCount(nil, nil, 0, args))
 }
 
-func globalArrayPersistentGetPointer(_ label: String) -> Number /* pointer */ {
+func globalArrayPersistentGetPointer(label: String) -> Number /* pointer */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1546,7 +1546,7 @@ func globalArrayPersistentGetPointer(_ label: String) -> Number /* pointer */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalArrayPersistentGetPointer(nil, nil, 0, args))
 }
 
-func globalSharedArrayPersistentNew8Bit(_ label: String, _ count: Number) -> Number /* pointer */ {
+func globalSharedArrayPersistentNew8Bit(label: String, count: Number) -> Number /* pointer */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1556,7 +1556,7 @@ func globalSharedArrayPersistentNew8Bit(_ label: String, _ count: Number) -> Num
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalSharedArrayPersistentNew8Bit(nil, nil, 0, args))
 }
 
-func globalSharedArrayPersistentGetBytesCount(_ label: String) -> Number /* bytesCount */ {
+func globalSharedArrayPersistentGetBytesCount(label: String) -> Number /* bytesCount */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1565,7 +1565,7 @@ func globalSharedArrayPersistentGetBytesCount(_ label: String) -> Number /* byte
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalSharedArrayPersistentGetBytesCount(nil, nil, 0, args))
 }
 
-func globalSharedArrayPersistentGetPointer(_ label: String) -> Number /* pointer */ {
+func globalSharedArrayPersistentGetPointer(label: String) -> Number /* pointer */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1574,7 +1574,7 @@ func globalSharedArrayPersistentGetPointer(_ label: String) -> Number /* pointer
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalSharedArrayPersistentGetPointer(nil, nil, 0, args))
 }
 
-func pointerGetBool(_ pointerTo8BitBools: Number, _ index: Number) -> Bool /* value */ {
+func pointerGetBool(pointerTo8BitBools: Number, index: Number) -> Bool /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointerTo8BitBools),
     _gsVoidPointerFromNumber(index),
@@ -1582,7 +1582,7 @@ func pointerGetBool(_ pointerTo8BitBools: Number, _ index: Number) -> Bool /* va
   return _gsBoolFromVoidPointer(_gsCProcedurePointerGetBool(nil, nil, 0, args))
 }
 
-func pointerGetString(_ pointer: Number) -> String /* string */ {
+func pointerGetString(pointer: Number) -> String /* string */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
   ]
@@ -1592,7 +1592,7 @@ func pointerGetString(_ pointer: Number) -> String /* string */ {
   return out
 }
 
-func pointerGetSubstring(_ pointer: Number, _ pointerCharsFirst: Number, _ charsCount: Number) -> String /* string */ {
+func pointerGetSubstring(pointer: Number, pointerCharsFirst: Number, charsCount: Number) -> String /* string */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerCharsFirst),
@@ -1604,7 +1604,7 @@ func pointerGetSubstring(_ pointer: Number, _ pointerCharsFirst: Number, _ chars
   return out
 }
 
-func pointerGetNumber(_ pointerTo32BitFloats: Number, _ index: Number) -> Number /* value */ {
+func pointerGetNumber(pointerTo32BitFloats: Number, index: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointerTo32BitFloats),
     _gsVoidPointerFromNumber(index),
@@ -1612,7 +1612,7 @@ func pointerGetNumber(_ pointerTo32BitFloats: Number, _ index: Number) -> Number
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetNumber(nil, nil, 0, args))
 }
 
-func pointerGetInteger(_ pointerTo32BitInts: Number, _ index: Number) -> Number /* value */ {
+func pointerGetInteger(pointerTo32BitInts: Number, index: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointerTo32BitInts),
     _gsVoidPointerFromNumber(index),
@@ -1620,7 +1620,7 @@ func pointerGetInteger(_ pointerTo32BitInts: Number, _ index: Number) -> Number 
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetInteger(nil, nil, 0, args))
 }
 
-func pointerGetUnsignedInteger(_ pointerTo32BitUints: Number, _ index: Number) -> Number /* value */ {
+func pointerGetUnsignedInteger(pointerTo32BitUints: Number, index: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointerTo32BitUints),
     _gsVoidPointerFromNumber(index),
@@ -1628,7 +1628,7 @@ func pointerGetUnsignedInteger(_ pointerTo32BitUints: Number, _ index: Number) -
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetUnsignedInteger(nil, nil, 0, args))
 }
 
-func pointerGetInteger8Bit(_ pointerTo8BitInts: Number, _ index: Number) -> Number /* value */ {
+func pointerGetInteger8Bit(pointerTo8BitInts: Number, index: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointerTo8BitInts),
     _gsVoidPointerFromNumber(index),
@@ -1636,7 +1636,7 @@ func pointerGetInteger8Bit(_ pointerTo8BitInts: Number, _ index: Number) -> Numb
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetInteger8Bit(nil, nil, 0, args))
 }
 
-func pointerGetUnsignedInteger8Bit(_ pointerTo8BitUints: Number, _ index: Number) -> Number /* value */ {
+func pointerGetUnsignedInteger8Bit(pointerTo8BitUints: Number, index: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointerTo8BitUints),
     _gsVoidPointerFromNumber(index),
@@ -1644,7 +1644,7 @@ func pointerGetUnsignedInteger8Bit(_ pointerTo8BitUints: Number, _ index: Number
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetUnsignedInteger8Bit(nil, nil, 0, args))
 }
 
-func pointerGetAtOffsetNumber(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* value */ {
+func pointerGetAtOffsetNumber(pointer: Number, pointerBytesFirst: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1652,7 +1652,7 @@ func pointerGetAtOffsetNumber(_ pointer: Number, _ pointerBytesFirst: Number) ->
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetAtOffsetNumber(nil, nil, 0, args))
 }
 
-func pointerGetAtOffsetInteger(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* value */ {
+func pointerGetAtOffsetInteger(pointer: Number, pointerBytesFirst: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1660,7 +1660,7 @@ func pointerGetAtOffsetInteger(_ pointer: Number, _ pointerBytesFirst: Number) -
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetAtOffsetInteger(nil, nil, 0, args))
 }
 
-func pointerGetAtOffsetUnsignedInteger(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* value */ {
+func pointerGetAtOffsetUnsignedInteger(pointer: Number, pointerBytesFirst: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1668,7 +1668,7 @@ func pointerGetAtOffsetUnsignedInteger(_ pointer: Number, _ pointerBytesFirst: N
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetAtOffsetUnsignedInteger(nil, nil, 0, args))
 }
 
-func pointerGetAtOffsetInteger16Bit(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* value */ {
+func pointerGetAtOffsetInteger16Bit(pointer: Number, pointerBytesFirst: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1676,7 +1676,7 @@ func pointerGetAtOffsetInteger16Bit(_ pointer: Number, _ pointerBytesFirst: Numb
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetAtOffsetInteger16Bit(nil, nil, 0, args))
 }
 
-func pointerGetAtOffsetUnsignedInteger16Bit(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* value */ {
+func pointerGetAtOffsetUnsignedInteger16Bit(pointer: Number, pointerBytesFirst: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1684,7 +1684,7 @@ func pointerGetAtOffsetUnsignedInteger16Bit(_ pointer: Number, _ pointerBytesFir
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetAtOffsetUnsignedInteger16Bit(nil, nil, 0, args))
 }
 
-func pointerGetAtOffsetNumber64Bit(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* value */ {
+func pointerGetAtOffsetNumber64Bit(pointer: Number, pointerBytesFirst: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1692,7 +1692,7 @@ func pointerGetAtOffsetNumber64Bit(_ pointer: Number, _ pointerBytesFirst: Numbe
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetAtOffsetNumber64Bit(nil, nil, 0, args))
 }
 
-func pointerGetAtOffsetInteger64Bit(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* value */ {
+func pointerGetAtOffsetInteger64Bit(pointer: Number, pointerBytesFirst: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1700,7 +1700,7 @@ func pointerGetAtOffsetInteger64Bit(_ pointer: Number, _ pointerBytesFirst: Numb
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetAtOffsetInteger64Bit(nil, nil, 0, args))
 }
 
-func pointerGetAtOffsetUnsignedInteger64Bit(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* value */ {
+func pointerGetAtOffsetUnsignedInteger64Bit(pointer: Number, pointerBytesFirst: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1708,7 +1708,7 @@ func pointerGetAtOffsetUnsignedInteger64Bit(_ pointer: Number, _ pointerBytesFir
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetAtOffsetUnsignedInteger64Bit(nil, nil, 0, args))
 }
 
-func pointerSetBool(_ pointerTo8BitBools: Number, _ index: Number, _ value: Bool) {
+func pointerSetBool(pointerTo8BitBools: Number, index: Number, value: Bool) {
   let args = [
     _gsVoidPointerFromNumber(pointerTo8BitBools),
     _gsVoidPointerFromNumber(index),
@@ -1717,7 +1717,7 @@ func pointerSetBool(_ pointerTo8BitBools: Number, _ index: Number, _ value: Bool
   _ = _gsCProcedurePointerSetBool(nil, nil, 0, args)
 }
 
-func pointerSetString(_ pointer: Number, _ pointerCharsFirst: Number, _ string: String) {
+func pointerSetString(pointer: Number, pointerCharsFirst: Number, string: String) {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -1728,7 +1728,7 @@ func pointerSetString(_ pointer: Number, _ pointerCharsFirst: Number, _ string: 
   _ = _gsCProcedurePointerSetString(nil, nil, 0, args)
 }
 
-func pointerSetStringExcludingNullChar(_ pointer: Number, _ pointerCharsFirst: Number, _ string: String) {
+func pointerSetStringExcludingNullChar(pointer: Number, pointerCharsFirst: Number, string: String) {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -1739,7 +1739,7 @@ func pointerSetStringExcludingNullChar(_ pointer: Number, _ pointerCharsFirst: N
   _ = _gsCProcedurePointerSetStringExcludingNullChar(nil, nil, 0, args)
 }
 
-func pointerSetSubstring(_ pointer: Number, _ pointerCharsFirst: Number, _ string: String, _ stringCharsFirst: Number, _ stringCharsCount: Number) {
+func pointerSetSubstring(pointer: Number, pointerCharsFirst: Number, string: String, stringCharsFirst: Number, stringCharsCount: Number) {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -1752,7 +1752,7 @@ func pointerSetSubstring(_ pointer: Number, _ pointerCharsFirst: Number, _ strin
   _ = _gsCProcedurePointerSetSubstring(nil, nil, 0, args)
 }
 
-func pointerSetNumber(_ pointerTo32BitFloats: Number, _ index: Number, _ value: Number) {
+func pointerSetNumber(pointerTo32BitFloats: Number, index: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointerTo32BitFloats),
     _gsVoidPointerFromNumber(index),
@@ -1761,7 +1761,7 @@ func pointerSetNumber(_ pointerTo32BitFloats: Number, _ index: Number, _ value: 
   _ = _gsCProcedurePointerSetNumber(nil, nil, 0, args)
 }
 
-func pointerSetInteger(_ pointerTo32BitInts: Number, _ index: Number, _ value: Number) {
+func pointerSetInteger(pointerTo32BitInts: Number, index: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointerTo32BitInts),
     _gsVoidPointerFromNumber(index),
@@ -1770,7 +1770,7 @@ func pointerSetInteger(_ pointerTo32BitInts: Number, _ index: Number, _ value: N
   _ = _gsCProcedurePointerSetInteger(nil, nil, 0, args)
 }
 
-func pointerSetUnsignedInteger(_ pointerTo32BitUints: Number, _ index: Number, _ value: Number) {
+func pointerSetUnsignedInteger(pointerTo32BitUints: Number, index: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointerTo32BitUints),
     _gsVoidPointerFromNumber(index),
@@ -1779,7 +1779,7 @@ func pointerSetUnsignedInteger(_ pointerTo32BitUints: Number, _ index: Number, _
   _ = _gsCProcedurePointerSetUnsignedInteger(nil, nil, 0, args)
 }
 
-func pointerSetInteger8Bit(_ pointerTo8BitInts: Number, _ index: Number, _ value: Number) {
+func pointerSetInteger8Bit(pointerTo8BitInts: Number, index: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointerTo8BitInts),
     _gsVoidPointerFromNumber(index),
@@ -1788,7 +1788,7 @@ func pointerSetInteger8Bit(_ pointerTo8BitInts: Number, _ index: Number, _ value
   _ = _gsCProcedurePointerSetInteger8Bit(nil, nil, 0, args)
 }
 
-func pointerSetUnsignedInteger8Bit(_ pointerTo8BitUints: Number, _ index: Number, _ value: Number) {
+func pointerSetUnsignedInteger8Bit(pointerTo8BitUints: Number, index: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointerTo8BitUints),
     _gsVoidPointerFromNumber(index),
@@ -1797,7 +1797,7 @@ func pointerSetUnsignedInteger8Bit(_ pointerTo8BitUints: Number, _ index: Number
   _ = _gsCProcedurePointerSetUnsignedInteger8Bit(nil, nil, 0, args)
 }
 
-func pointerSetAtOffsetNumber(_ pointer: Number, _ pointerBytesFirst: Number, _ value: Number) {
+func pointerSetAtOffsetNumber(pointer: Number, pointerBytesFirst: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1806,7 +1806,7 @@ func pointerSetAtOffsetNumber(_ pointer: Number, _ pointerBytesFirst: Number, _ 
   _ = _gsCProcedurePointerSetAtOffsetNumber(nil, nil, 0, args)
 }
 
-func pointerSetAtOffsetInteger(_ pointer: Number, _ pointerBytesFirst: Number, _ value: Number) {
+func pointerSetAtOffsetInteger(pointer: Number, pointerBytesFirst: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1815,7 +1815,7 @@ func pointerSetAtOffsetInteger(_ pointer: Number, _ pointerBytesFirst: Number, _
   _ = _gsCProcedurePointerSetAtOffsetInteger(nil, nil, 0, args)
 }
 
-func pointerSetAtOffsetUnsignedInteger(_ pointer: Number, _ pointerBytesFirst: Number, _ value: Number) {
+func pointerSetAtOffsetUnsignedInteger(pointer: Number, pointerBytesFirst: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1824,7 +1824,7 @@ func pointerSetAtOffsetUnsignedInteger(_ pointer: Number, _ pointerBytesFirst: N
   _ = _gsCProcedurePointerSetAtOffsetUnsignedInteger(nil, nil, 0, args)
 }
 
-func pointerSetAtOffsetInteger16Bit(_ pointer: Number, _ pointerBytesFirst: Number, _ value: Number) {
+func pointerSetAtOffsetInteger16Bit(pointer: Number, pointerBytesFirst: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1833,7 +1833,7 @@ func pointerSetAtOffsetInteger16Bit(_ pointer: Number, _ pointerBytesFirst: Numb
   _ = _gsCProcedurePointerSetAtOffsetInteger16Bit(nil, nil, 0, args)
 }
 
-func pointerSetAtOffsetUnsignedInteger16Bit(_ pointer: Number, _ pointerBytesFirst: Number, _ value: Number) {
+func pointerSetAtOffsetUnsignedInteger16Bit(pointer: Number, pointerBytesFirst: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1842,7 +1842,7 @@ func pointerSetAtOffsetUnsignedInteger16Bit(_ pointer: Number, _ pointerBytesFir
   _ = _gsCProcedurePointerSetAtOffsetUnsignedInteger16Bit(nil, nil, 0, args)
 }
 
-func pointerSetAtOffsetNumber64Bit(_ pointer: Number, _ pointerBytesFirst: Number, _ value: Number) {
+func pointerSetAtOffsetNumber64Bit(pointer: Number, pointerBytesFirst: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1851,7 +1851,7 @@ func pointerSetAtOffsetNumber64Bit(_ pointer: Number, _ pointerBytesFirst: Numbe
   _ = _gsCProcedurePointerSetAtOffsetNumber64Bit(nil, nil, 0, args)
 }
 
-func pointerSetAtOffsetInteger64Bit(_ pointer: Number, _ pointerBytesFirst: Number, _ value: Number) {
+func pointerSetAtOffsetInteger64Bit(pointer: Number, pointerBytesFirst: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1860,7 +1860,7 @@ func pointerSetAtOffsetInteger64Bit(_ pointer: Number, _ pointerBytesFirst: Numb
   _ = _gsCProcedurePointerSetAtOffsetInteger64Bit(nil, nil, 0, args)
 }
 
-func pointerSetAtOffsetUnsignedInteger64Bit(_ pointer: Number, _ pointerBytesFirst: Number, _ value: Number) {
+func pointerSetAtOffsetUnsignedInteger64Bit(pointer: Number, pointerBytesFirst: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -1869,7 +1869,7 @@ func pointerSetAtOffsetUnsignedInteger64Bit(_ pointer: Number, _ pointerBytesFir
   _ = _gsCProcedurePointerSetAtOffsetUnsignedInteger64Bit(nil, nil, 0, args)
 }
 
-func pointerGetRaw8Bit(_ pointer: Number, _ bytesFirst: Number) -> Number /* raw8BitsAsDouble */ {
+func pointerGetRaw8Bit(pointer: Number, bytesFirst: Number) -> Number /* raw8BitsAsDouble */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(bytesFirst),
@@ -1877,7 +1877,7 @@ func pointerGetRaw8Bit(_ pointer: Number, _ bytesFirst: Number) -> Number /* raw
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetRaw8Bit(nil, nil, 0, args))
 }
 
-func pointerGetRaw16Bit(_ pointer: Number, _ bytesFirst: Number) -> Number /* raw16BitsAsDouble */ {
+func pointerGetRaw16Bit(pointer: Number, bytesFirst: Number) -> Number /* raw16BitsAsDouble */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(bytesFirst),
@@ -1885,7 +1885,7 @@ func pointerGetRaw16Bit(_ pointer: Number, _ bytesFirst: Number) -> Number /* ra
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetRaw16Bit(nil, nil, 0, args))
 }
 
-func pointerGetRaw32Bit(_ pointer: Number, _ bytesFirst: Number) -> Number /* raw32BitsAsDouble */ {
+func pointerGetRaw32Bit(pointer: Number, bytesFirst: Number) -> Number /* raw32BitsAsDouble */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(bytesFirst),
@@ -1893,7 +1893,7 @@ func pointerGetRaw32Bit(_ pointer: Number, _ bytesFirst: Number) -> Number /* ra
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetRaw32Bit(nil, nil, 0, args))
 }
 
-func pointerGetRaw64Bit(_ pointer: Number, _ bytesFirst: Number) -> Number /* raw64BitsAsDouble */ {
+func pointerGetRaw64Bit(pointer: Number, bytesFirst: Number) -> Number /* raw64BitsAsDouble */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(bytesFirst),
@@ -1901,7 +1901,7 @@ func pointerGetRaw64Bit(_ pointer: Number, _ bytesFirst: Number) -> Number /* ra
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetRaw64Bit(nil, nil, 0, args))
 }
 
-func pointerSetRaw8Bit(_ pointer: Number, _ bytesFirst: Number, _ raw8BitsAsDouble: Number) {
+func pointerSetRaw8Bit(pointer: Number, bytesFirst: Number, raw8BitsAsDouble: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(bytesFirst),
@@ -1910,7 +1910,7 @@ func pointerSetRaw8Bit(_ pointer: Number, _ bytesFirst: Number, _ raw8BitsAsDoub
   _ = _gsCProcedurePointerSetRaw8Bit(nil, nil, 0, args)
 }
 
-func pointerSetRaw16Bit(_ pointer: Number, _ bytesFirst: Number, _ raw16BitsAsDouble: Number) {
+func pointerSetRaw16Bit(pointer: Number, bytesFirst: Number, raw16BitsAsDouble: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(bytesFirst),
@@ -1919,7 +1919,7 @@ func pointerSetRaw16Bit(_ pointer: Number, _ bytesFirst: Number, _ raw16BitsAsDo
   _ = _gsCProcedurePointerSetRaw16Bit(nil, nil, 0, args)
 }
 
-func pointerSetRaw32Bit(_ pointer: Number, _ bytesFirst: Number, _ raw32BitsAsDouble: Number) {
+func pointerSetRaw32Bit(pointer: Number, bytesFirst: Number, raw32BitsAsDouble: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(bytesFirst),
@@ -1928,7 +1928,7 @@ func pointerSetRaw32Bit(_ pointer: Number, _ bytesFirst: Number, _ raw32BitsAsDo
   _ = _gsCProcedurePointerSetRaw32Bit(nil, nil, 0, args)
 }
 
-func pointerSetRaw64Bit(_ pointer: Number, _ bytesFirst: Number, _ raw64BitsAsDouble: Number) {
+func pointerSetRaw64Bit(pointer: Number, bytesFirst: Number, raw64BitsAsDouble: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(bytesFirst),
@@ -1937,7 +1937,7 @@ func pointerSetRaw64Bit(_ pointer: Number, _ bytesFirst: Number, _ raw64BitsAsDo
   _ = _gsCProcedurePointerSetRaw64Bit(nil, nil, 0, args)
 }
 
-func pointerIsNull(_ pointer: Number) -> Bool /* isNull */ {
+func pointerIsNull(pointer: Number) -> Bool /* isNull */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
   ]
@@ -1948,7 +1948,7 @@ func pointerGetNull() -> Number /* nullPointer */ {
   return _gsNumberFromVoidPointer(_gsCProcedurePointerGetNull(nil, nil, 0, nil))
 }
 
-func pointersAreEqual(_ pointerA: Number, _ pointerB: Number) -> Bool /* areEqual */ {
+func pointersAreEqual(pointerA: Number, pointerB: Number) -> Bool /* areEqual */ {
   let args = [
     _gsVoidPointerFromNumber(pointerA),
     _gsVoidPointerFromNumber(pointerB),
@@ -1956,7 +1956,7 @@ func pointersAreEqual(_ pointerA: Number, _ pointerB: Number) -> Bool /* areEqua
   return _gsBoolFromVoidPointer(_gsCProcedurePointersAreEqual(nil, nil, 0, args))
 }
 
-func pointerOffsetByBytes(_ pointer: Number, _ bytesOffset: Number) -> Number /* offsettedPointer */ {
+func pointerOffsetByBytes(pointer: Number, bytesOffset: Number) -> Number /* offsettedPointer */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(bytesOffset),
@@ -1964,7 +1964,7 @@ func pointerOffsetByBytes(_ pointer: Number, _ bytesOffset: Number) -> Number /*
   return _gsNumberFromVoidPointer(_gsCProcedurePointerOffsetByBytes(nil, nil, 0, args))
 }
 
-func pointerDrawPixels(_ pointer: Number, _ pointerBytesOffset: Number, _ pixelsWidth: Number, _ pixelsHeight: Number, _ pixelsFormat: Number, _ pixelsType: Number) -> Bool /* success */ {
+func pointerDrawPixels(pointer: Number, pointerBytesOffset: Number, pixelsWidth: Number, pixelsHeight: Number, pixelsFormat: Number, pixelsType: Number) -> Bool /* success */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesOffset),
@@ -1976,7 +1976,7 @@ func pointerDrawPixels(_ pointer: Number, _ pointerBytesOffset: Number, _ pixels
   return _gsBoolFromVoidPointer(_gsCProcedurePointerDrawPixels(nil, nil, 0, args))
 }
 
-func globalDynamicArrayNew(_ label: String) -> Number /* handle */ {
+func globalDynamicArrayNew(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1985,7 +1985,7 @@ func globalDynamicArrayNew(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalDynamicArrayNew(nil, nil, 0, args))
 }
 
-func globalDynamicArrayPersistentNew(_ label: String) -> Number /* handle */ {
+func globalDynamicArrayPersistentNew(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -1994,7 +1994,7 @@ func globalDynamicArrayPersistentNew(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalDynamicArrayPersistentNew(nil, nil, 0, args))
 }
 
-func globalDynamicArrayDelete(_ label: String) {
+func globalDynamicArrayDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2003,7 +2003,7 @@ func globalDynamicArrayDelete(_ label: String) {
   _ = _gsCProcedureGlobalDynamicArrayDelete(nil, nil, 0, args)
 }
 
-func globalDynamicArrayPersistentDelete(_ label: String) {
+func globalDynamicArrayPersistentDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2020,7 +2020,7 @@ func globalDynamicArrayPersistentDeleteAll() {
   _ = _gsCProcedureGlobalDynamicArrayPersistentDeleteAll(nil, nil, 0, nil)
 }
 
-func globalDynamicArrayGetHandle(_ label: String) -> Number /* handle */ {
+func globalDynamicArrayGetHandle(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2029,7 +2029,7 @@ func globalDynamicArrayGetHandle(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalDynamicArrayGetHandle(nil, nil, 0, args))
 }
 
-func globalDynamicArrayPersistentGetHandle(_ label: String) -> Number /* handle */ {
+func globalDynamicArrayPersistentGetHandle(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2038,7 +2038,7 @@ func globalDynamicArrayPersistentGetHandle(_ label: String) -> Number /* handle 
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalDynamicArrayPersistentGetHandle(nil, nil, 0, args))
 }
 
-func dynamicArrayGet(_ handle: Number, _ index: Number) -> Number /* value */ {
+func dynamicArrayGet(handle: Number, index: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(index),
@@ -2046,7 +2046,7 @@ func dynamicArrayGet(_ handle: Number, _ index: Number) -> Number /* value */ {
   return _gsNumberFromVoidPointer(_gsCProcedureDynamicArrayGet(nil, nil, 0, args))
 }
 
-func dynamicArraySet(_ handle: Number, _ index: Number, _ value: Number) {
+func dynamicArraySet(handle: Number, index: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(index),
@@ -2055,7 +2055,7 @@ func dynamicArraySet(_ handle: Number, _ index: Number, _ value: Number) {
   _ = _gsCProcedureDynamicArraySet(nil, nil, 0, args)
 }
 
-func dynamicArrayAppend(_ handle: Number, _ value: Number) {
+func dynamicArrayAppend(handle: Number, value: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(value),
@@ -2063,7 +2063,7 @@ func dynamicArrayAppend(_ handle: Number, _ value: Number) {
   _ = _gsCProcedureDynamicArrayAppend(nil, nil, 0, args)
 }
 
-func dynamicArrayRemoveAt(_ handle: Number, _ index: Number) -> Bool /* success */ {
+func dynamicArrayRemoveAt(handle: Number, index: Number) -> Bool /* success */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(index),
@@ -2071,21 +2071,21 @@ func dynamicArrayRemoveAt(_ handle: Number, _ index: Number) -> Bool /* success 
   return _gsBoolFromVoidPointer(_gsCProcedureDynamicArrayRemoveAt(nil, nil, 0, args))
 }
 
-func dynamicArrayRemoveLast(_ handle: Number) {
+func dynamicArrayRemoveLast(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureDynamicArrayRemoveLast(nil, nil, 0, args)
 }
 
-func dynamicArrayGetSize(_ handle: Number) -> Number /* size */ {
+func dynamicArrayGetSize(handle: Number) -> Number /* size */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureDynamicArrayGetSize(nil, nil, 0, args))
 }
 
-func memset(_ pointer: Number, _ pointerBytesFirst: Number, _ value8Bit: Number, _ bytesCount: Number) {
+func memset(pointer: Number, pointerBytesFirst: Number, value8Bit: Number, bytesCount: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -2095,7 +2095,7 @@ func memset(_ pointer: Number, _ pointerBytesFirst: Number, _ value8Bit: Number,
   _ = _gsCProcedureMemset(nil, nil, 0, args)
 }
 
-func memcpy(_ pointerTarget: Number, _ pointerTargetBytesFirst: Number, _ pointerSource: Number, _ pointerSourceBytesFirst: Number, _ bytesCount: Number) {
+func memcpy(pointerTarget: Number, pointerTargetBytesFirst: Number, pointerSource: Number, pointerSourceBytesFirst: Number, bytesCount: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointerTarget),
     _gsVoidPointerFromNumber(pointerTargetBytesFirst),
@@ -2106,7 +2106,7 @@ func memcpy(_ pointerTarget: Number, _ pointerTargetBytesFirst: Number, _ pointe
   _ = _gsCProcedureMemcpy(nil, nil, 0, args)
 }
 
-func memcmp(_ pointerA: Number, _ pointerABytesFirst: Number, _ pointerB: Number, _ pointerBBytesFirst: Number, _ bytesCount: Number) -> Bool /* areEqual */ {
+func memcmp(pointerA: Number, pointerABytesFirst: Number, pointerB: Number, pointerBBytesFirst: Number, bytesCount: Number) -> Bool /* areEqual */ {
   let args = [
     _gsVoidPointerFromNumber(pointerA),
     _gsVoidPointerFromNumber(pointerABytesFirst),
@@ -2117,7 +2117,7 @@ func memcmp(_ pointerA: Number, _ pointerABytesFirst: Number, _ pointerB: Number
   return _gsBoolFromVoidPointer(_gsCProcedureMemcmp(nil, nil, 0, args))
 }
 
-func threadSafeMemset(_ pointer: Number, _ pointerBytesFirst: Number, _ value8Bit: Number, _ bytesCount: Number) {
+func threadSafeMemset(pointer: Number, pointerBytesFirst: Number, value8Bit: Number, bytesCount: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -2127,7 +2127,7 @@ func threadSafeMemset(_ pointer: Number, _ pointerBytesFirst: Number, _ value8Bi
   _ = _gsCProcedureThreadSafeMemset(nil, nil, 0, args)
 }
 
-func threadSafeMemcpy(_ pointerTarget: Number, _ pointerTargetBytesFirst: Number, _ pointerSource: Number, _ pointerSourceBytesFirst: Number, _ bytesCount: Number) {
+func threadSafeMemcpy(pointerTarget: Number, pointerTargetBytesFirst: Number, pointerSource: Number, pointerSourceBytesFirst: Number, bytesCount: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointerTarget),
     _gsVoidPointerFromNumber(pointerTargetBytesFirst),
@@ -2138,7 +2138,7 @@ func threadSafeMemcpy(_ pointerTarget: Number, _ pointerTargetBytesFirst: Number
   _ = _gsCProcedureThreadSafeMemcpy(nil, nil, 0, args)
 }
 
-func threadSafeMemcmp(_ pointerA: Number, _ pointerABytesFirst: Number, _ pointerB: Number, _ pointerBBytesFirst: Number, _ bytesCount: Number) -> Bool /* areEqual */ {
+func threadSafeMemcmp(pointerA: Number, pointerABytesFirst: Number, pointerB: Number, pointerBBytesFirst: Number, bytesCount: Number) -> Bool /* areEqual */ {
   let args = [
     _gsVoidPointerFromNumber(pointerA),
     _gsVoidPointerFromNumber(pointerABytesFirst),
@@ -2149,7 +2149,7 @@ func threadSafeMemcmp(_ pointerA: Number, _ pointerABytesFirst: Number, _ pointe
   return _gsBoolFromVoidPointer(_gsCProcedureThreadSafeMemcmp(nil, nil, 0, args))
 }
 
-func threadWaitForEqualUint64Value(_ pointerA: Number, _ pointerABytesFirst: Number, _ pointerB: Number, _ pointerBBytesFirst: Number) -> Bool /* trueIfFinishedFalseIfAborted */ {
+func threadWaitForEqualUint64Value(pointerA: Number, pointerABytesFirst: Number, pointerB: Number, pointerBBytesFirst: Number) -> Bool /* trueIfFinishedFalseIfAborted */ {
   let args = [
     _gsVoidPointerFromNumber(pointerA),
     _gsVoidPointerFromNumber(pointerABytesFirst),
@@ -2159,7 +2159,7 @@ func threadWaitForEqualUint64Value(_ pointerA: Number, _ pointerABytesFirst: Num
   return _gsBoolFromVoidPointer(_gsCProcedureThreadWaitForEqualUint64Value(nil, nil, 0, args))
 }
 
-func threadWaitForEqualOrMoreThanUint64Value(_ pointerA: Number, _ pointerABytesFirst: Number, _ pointerB: Number, _ pointerBBytesFirst: Number) -> Bool /* trueIfFinishedFalseIfAborted */ {
+func threadWaitForEqualOrMoreThanUint64Value(pointerA: Number, pointerABytesFirst: Number, pointerB: Number, pointerBBytesFirst: Number) -> Bool /* trueIfFinishedFalseIfAborted */ {
   let args = [
     _gsVoidPointerFromNumber(pointerA),
     _gsVoidPointerFromNumber(pointerABytesFirst),
@@ -2169,14 +2169,14 @@ func threadWaitForEqualOrMoreThanUint64Value(_ pointerA: Number, _ pointerABytes
   return _gsBoolFromVoidPointer(_gsCProcedureThreadWaitForEqualOrMoreThanUint64Value(nil, nil, 0, args))
 }
 
-func threadWaitForThread2FrameToFinish(_ thread2Frame: Number) -> Bool /* trueIfFinishedFalseIfAborted */ {
+func threadWaitForThread2FrameToFinish(thread2Frame: Number) -> Bool /* trueIfFinishedFalseIfAborted */ {
   let args = [
     _gsVoidPointerFromNumber(thread2Frame),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureThreadWaitForThread2FrameToFinish(nil, nil, 0, args))
 }
 
-func strlenWithNullChar(_ string: String) -> Number /* length */ {
+func strlenWithNullChar(string: String) -> Number /* length */ {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -2185,14 +2185,14 @@ func strlenWithNullChar(_ string: String) -> Number /* length */ {
   return _gsNumberFromVoidPointer(_gsCProcedureStrlenWithNullChar(nil, nil, 0, args))
 }
 
-func keyboardGetGlfwKeyEvent(_ glfwKey: Number) -> Number /* keyEvent */ {
+func keyboardGetGlfwKeyEvent(glfwKey: Number) -> Number /* keyEvent */ {
   let args = [
     _gsVoidPointerFromNumber(glfwKey),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureKeyboardGetGlfwKeyEvent(nil, nil, 0, args))
 }
 
-func keyboardGetGlfwKeyModifiers(_ glfwKey: Number) -> Number /* keyModifiers */ {
+func keyboardGetGlfwKeyModifiers(glfwKey: Number) -> Number /* keyModifiers */ {
   let args = [
     _gsVoidPointerFromNumber(glfwKey),
   ]
@@ -2206,14 +2206,14 @@ func keyboardGetGlfwCodepointString() -> String /* codepoint */ {
   return out
 }
 
-func mouseGlfwSetInputMode(_ mode: Number) {
+func mouseGlfwSetInputMode(mode: Number) {
   let args = [
     _gsVoidPointerFromNumber(mode),
   ]
   _ = _gsCProcedureMouseGlfwSetInputMode(nil, nil, 0, args)
 }
 
-func mouseSetXY(_ x: Number, _ y: Number) {
+func mouseSetXY(x: Number, y: Number) {
   let args = [
     _gsVoidPointerFromNumber(x),
     _gsVoidPointerFromNumber(y),
@@ -2241,21 +2241,21 @@ func mouseGetMoveEvent() -> Number /* mouseEvent */ {
   return _gsNumberFromVoidPointer(_gsCProcedureMouseGetMoveEvent(nil, nil, 0, nil))
 }
 
-func mouseGetButtonIsPressed(_ button: Number) -> Bool /* buttonIsPressed */ {
+func mouseGetButtonIsPressed(button: Number) -> Bool /* buttonIsPressed */ {
   let args = [
     _gsVoidPointerFromNumber(button),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMouseGetButtonIsPressed(nil, nil, 0, args))
 }
 
-func mouseGetButtonIsPressedAndHeld(_ button: Number) -> Bool /* buttonIsPressedAndHeld */ {
+func mouseGetButtonIsPressedAndHeld(button: Number) -> Bool /* buttonIsPressedAndHeld */ {
   let args = [
     _gsVoidPointerFromNumber(button),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMouseGetButtonIsPressedAndHeld(nil, nil, 0, args))
 }
 
-func mouseGetButtonIsReleased(_ button: Number) -> Bool /* buttonIsReleased */ {
+func mouseGetButtonIsReleased(button: Number) -> Bool /* buttonIsReleased */ {
   let args = [
     _gsVoidPointerFromNumber(button),
   ]
@@ -2266,14 +2266,14 @@ func mouseGetWheelScroll() -> Number /* scroll */ {
   return _gsNumberFromVoidPointer(_gsCProcedureMouseGetWheelScroll(nil, nil, 0, nil))
 }
 
-func gamepadIsPresent(_ gamepadId0to15: Number) -> Bool /* gamepadIsPresent */ {
+func gamepadIsPresent(gamepadId0to15: Number) -> Bool /* gamepadIsPresent */ {
   let args = [
     _gsVoidPointerFromNumber(gamepadId0to15),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureGamepadIsPresent(nil, nil, 0, args))
 }
 
-func gamepadGet15Buttons6AxesNumbers(_ gamepadId0to15: Number) -> NumberArray /* buttonsAndAxes [21] {a, b, x, y, leftBumper, rightBumper, back, start, guide, leftThumb, rightThumb, dpadUp, dpadRight, dpadDown, dpadLeft, axisLeftX, axisLeftY, axisRightX, axisRightY, leftTrigger, rightTrigger} */ {
+func gamepadGet15Buttons6AxesNumbers(gamepadId0to15: Number) -> NumberArray /* buttonsAndAxes [21] {a, b, x, y, leftBumper, rightBumper, back, start, guide, leftThumb, rightThumb, dpadUp, dpadRight, dpadDown, dpadLeft, axisLeftX, axisLeftY, axisRightX, axisRightY, leftTrigger, rightTrigger} */ {
   let args = [
     _gsVoidPointerFromNumber(gamepadId0to15),
   ]
@@ -2288,7 +2288,7 @@ func gamepadGet15Buttons6AxesNumbers(_ gamepadId0to15: Number) -> NumberArray /*
   return out
 }
 
-func gamepadGetName(_ gamepadId0to15: Number) -> String /* name */ {
+func gamepadGetName(gamepadId0to15: Number) -> String /* name */ {
   let args = [
     _gsVoidPointerFromNumber(gamepadId0to15),
   ]
@@ -2298,7 +2298,7 @@ func gamepadGetName(_ gamepadId0to15: Number) -> String /* name */ {
   return out
 }
 
-func gamepadGetGUID(_ gamepadId0to15: Number) -> String /* GUID */ {
+func gamepadGetGUID(gamepadId0to15: Number) -> String /* GUID */ {
   let args = [
     _gsVoidPointerFromNumber(gamepadId0to15),
   ]
@@ -2308,7 +2308,7 @@ func gamepadGetGUID(_ gamepadId0to15: Number) -> String /* GUID */ {
   return out
 }
 
-func gamepadUpdateGamecontrollerdbTxt(_ gamepadId0to15: Number, _ mappings: String) -> Bool /* success */ {
+func gamepadUpdateGamecontrollerdbTxt(gamepadId0to15: Number, mappings: String) -> Bool /* success */ {
   let _mappings = UnsafeRawPointer(_strdup(mappings)); defer { free(UnsafeMutableRawPointer(mutating: _mappings)) }
 
   let args = [
@@ -2318,14 +2318,14 @@ func gamepadUpdateGamecontrollerdbTxt(_ gamepadId0to15: Number, _ mappings: Stri
   return _gsBoolFromVoidPointer(_gsCProcedureGamepadUpdateGamecontrollerdbTxt(nil, nil, 0, args))
 }
 
-func boolToNumber(_ boolean: Bool) -> Number /* number */ {
+func boolToNumber(boolean: Bool) -> Number /* number */ {
   let args = [
     _gsVoidPointerFromBool(boolean),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureBoolToNumber(nil, nil, 0, args))
 }
 
-func boolToString(_ boolean: Bool) -> String /* string */ {
+func boolToString(boolean: Bool) -> String /* string */ {
   let args = [
     _gsVoidPointerFromBool(boolean),
   ]
@@ -2335,77 +2335,77 @@ func boolToString(_ boolean: Bool) -> String /* string */ {
   return out
 }
 
-func numberFromRaw8BitInteger(_ raw8BitInteger: Number) -> Number /* number */ {
+func numberFromRaw8BitInteger(raw8BitInteger: Number) -> Number /* number */ {
   let args = [
     _gsVoidPointerFromNumber(raw8BitInteger),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureNumberFromRaw8BitInteger(nil, nil, 0, args))
 }
 
-func numberFromRaw8BitUnsignedInteger(_ raw8BitUnsignedInteger: Number) -> Number /* number */ {
+func numberFromRaw8BitUnsignedInteger(raw8BitUnsignedInteger: Number) -> Number /* number */ {
   let args = [
     _gsVoidPointerFromNumber(raw8BitUnsignedInteger),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureNumberFromRaw8BitUnsignedInteger(nil, nil, 0, args))
 }
 
-func numberFromRaw16BitInteger(_ raw16BitInteger: Number) -> Number /* number */ {
+func numberFromRaw16BitInteger(raw16BitInteger: Number) -> Number /* number */ {
   let args = [
     _gsVoidPointerFromNumber(raw16BitInteger),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureNumberFromRaw16BitInteger(nil, nil, 0, args))
 }
 
-func numberFromRaw16BitUnsignedInteger(_ raw16BitUnsignedInteger: Number) -> Number /* number */ {
+func numberFromRaw16BitUnsignedInteger(raw16BitUnsignedInteger: Number) -> Number /* number */ {
   let args = [
     _gsVoidPointerFromNumber(raw16BitUnsignedInteger),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureNumberFromRaw16BitUnsignedInteger(nil, nil, 0, args))
 }
 
-func numberFromRaw32BitInteger(_ raw32BitInteger: Number) -> Number /* number */ {
+func numberFromRaw32BitInteger(raw32BitInteger: Number) -> Number /* number */ {
   let args = [
     _gsVoidPointerFromNumber(raw32BitInteger),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureNumberFromRaw32BitInteger(nil, nil, 0, args))
 }
 
-func numberFromRaw32BitUnsignedInteger(_ raw32BitUnsignedInteger: Number) -> Number /* number */ {
+func numberFromRaw32BitUnsignedInteger(raw32BitUnsignedInteger: Number) -> Number /* number */ {
   let args = [
     _gsVoidPointerFromNumber(raw32BitUnsignedInteger),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureNumberFromRaw32BitUnsignedInteger(nil, nil, 0, args))
 }
 
-func numberFromRaw32BitFloat(_ raw32BitFloat: Number) -> Number /* number */ {
+func numberFromRaw32BitFloat(raw32BitFloat: Number) -> Number /* number */ {
   let args = [
     _gsVoidPointerFromNumber(raw32BitFloat),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureNumberFromRaw32BitFloat(nil, nil, 0, args))
 }
 
-func numberFromRaw64BitInteger(_ raw64BitInteger: Number) -> Number /* number */ {
+func numberFromRaw64BitInteger(raw64BitInteger: Number) -> Number /* number */ {
   let args = [
     _gsVoidPointerFromNumber(raw64BitInteger),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureNumberFromRaw64BitInteger(nil, nil, 0, args))
 }
 
-func numberFromRaw64BitUnsignedInteger(_ raw64BitUnsignedInteger: Number) -> Number /* number */ {
+func numberFromRaw64BitUnsignedInteger(raw64BitUnsignedInteger: Number) -> Number /* number */ {
   let args = [
     _gsVoidPointerFromNumber(raw64BitUnsignedInteger),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureNumberFromRaw64BitUnsignedInteger(nil, nil, 0, args))
 }
 
-func numberToBool(_ number: Number) -> Bool /* boolean */ {
+func numberToBool(number: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(number),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureNumberToBool(nil, nil, 0, args))
 }
 
-func numberToString(_ number: Number) -> String /* string */ {
+func numberToString(number: Number) -> String /* string */ {
   let args = [
     _gsVoidPointerFromNumber(number),
   ]
@@ -2415,7 +2415,7 @@ func numberToString(_ number: Number) -> String /* string */ {
   return out
 }
 
-func numberToBinaryString(_ number: Number) -> String /* string */ {
+func numberToBinaryString(number: Number) -> String /* string */ {
   let args = [
     _gsVoidPointerFromNumber(number),
   ]
@@ -2425,7 +2425,7 @@ func numberToBinaryString(_ number: Number) -> String /* string */ {
   return out
 }
 
-func numberWholePartToString(_ number: Number) -> String /* string */ {
+func numberWholePartToString(number: Number) -> String /* string */ {
   let args = [
     _gsVoidPointerFromNumber(number),
   ]
@@ -2435,7 +2435,7 @@ func numberWholePartToString(_ number: Number) -> String /* string */ {
   return out
 }
 
-func stringCharToNumber(_ string: String) -> Number /* charNumber */ {
+func stringCharToNumber(string: String) -> Number /* charNumber */ {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -2444,7 +2444,7 @@ func stringCharToNumber(_ string: String) -> Number /* charNumber */ {
   return _gsNumberFromVoidPointer(_gsCProcedureStringCharToNumber(nil, nil, 0, args))
 }
 
-func stringToNumberArray(_ string: String) -> NumberArray /* array [] */ {
+func stringToNumberArray(string: String) -> NumberArray /* array [] */ {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -2461,7 +2461,7 @@ func stringToNumberArray(_ string: String) -> NumberArray /* array [] */ {
   return out
 }
 
-func interpretStringToInteger(_ string: String) -> Number /* integer */ {
+func interpretStringToInteger(string: String) -> Number /* integer */ {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -2470,7 +2470,7 @@ func interpretStringToInteger(_ string: String) -> Number /* integer */ {
   return _gsNumberFromVoidPointer(_gsCProcedureInterpretStringToInteger(nil, nil, 0, args))
 }
 
-func interpretStringToFloat(_ string: String) -> Number /* float */ {
+func interpretStringToFloat(string: String) -> Number /* float */ {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -2479,7 +2479,7 @@ func interpretStringToFloat(_ string: String) -> Number /* float */ {
   return _gsNumberFromVoidPointer(_gsCProcedureInterpretStringToFloat(nil, nil, 0, args))
 }
 
-func interpretStringToDouble(_ string: String) -> Number /* double */ {
+func interpretStringToDouble(string: String) -> Number /* double */ {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -2488,7 +2488,7 @@ func interpretStringToDouble(_ string: String) -> Number /* double */ {
   return _gsNumberFromVoidPointer(_gsCProcedureInterpretStringToDouble(nil, nil, 0, args))
 }
 
-func stringReadFromFile(_ filepath: String) -> String /* string */ {
+func stringReadFromFile(filepath: String) -> String /* string */ {
   let _filepath = UnsafeRawPointer(_strdup(filepath)); defer { free(UnsafeMutableRawPointer(mutating: _filepath)) }
 
   let args = [
@@ -2500,7 +2500,7 @@ func stringReadFromFile(_ filepath: String) -> String /* string */ {
   return out
 }
 
-func stringWriteToFile(_ string: String, _ filepath: String) {
+func stringWriteToFile(string: String, filepath: String) {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
   let _filepath = UnsafeRawPointer(_strdup(filepath)); defer { free(UnsafeMutableRawPointer(mutating: _filepath)) }
 
@@ -2511,7 +2511,7 @@ func stringWriteToFile(_ string: String, _ filepath: String) {
   _ = _gsCProcedureStringWriteToFile(nil, nil, 0, args)
 }
 
-func stringAppendToFile(_ string: String, _ filepath: String) {
+func stringAppendToFile(string: String, filepath: String) {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
   let _filepath = UnsafeRawPointer(_strdup(filepath)); defer { free(UnsafeMutableRawPointer(mutating: _filepath)) }
 
@@ -2522,7 +2522,7 @@ func stringAppendToFile(_ string: String, _ filepath: String) {
   _ = _gsCProcedureStringAppendToFile(nil, nil, 0, args)
 }
 
-func binaryGetByteSizeOfFile(_ filepath: String) -> Number /* bytesCount */ {
+func binaryGetByteSizeOfFile(filepath: String) -> Number /* bytesCount */ {
   let _filepath = UnsafeRawPointer(_strdup(filepath)); defer { free(UnsafeMutableRawPointer(mutating: _filepath)) }
 
   let args = [
@@ -2531,7 +2531,7 @@ func binaryGetByteSizeOfFile(_ filepath: String) -> Number /* bytesCount */ {
   return _gsNumberFromVoidPointer(_gsCProcedureBinaryGetByteSizeOfFile(nil, nil, 0, args))
 }
 
-func binaryReadFromFile(_ filepath: String, _ writeToPointer: Number, _ writeToPointerBytesFirst: Number) {
+func binaryReadFromFile(filepath: String, writeToPointer: Number, writeToPointerBytesFirst: Number) {
   let _filepath = UnsafeRawPointer(_strdup(filepath)); defer { free(UnsafeMutableRawPointer(mutating: _filepath)) }
 
   let args = [
@@ -2542,7 +2542,7 @@ func binaryReadFromFile(_ filepath: String, _ writeToPointer: Number, _ writeToP
   _ = _gsCProcedureBinaryReadFromFile(nil, nil, 0, args)
 }
 
-func binaryWriteToFile(_ pointer: Number, _ pointerBytesFirst: Number, _ pointerBytesCount: Number, _ writeToFilepath: String) {
+func binaryWriteToFile(pointer: Number, pointerBytesFirst: Number, pointerBytesCount: Number, writeToFilepath: String) {
   let _writeToFilepath = UnsafeRawPointer(_strdup(writeToFilepath)); defer { free(UnsafeMutableRawPointer(mutating: _writeToFilepath)) }
 
   let args = [
@@ -2561,7 +2561,7 @@ func getClipboardString() -> String /* clipboard */ {
   return out
 }
 
-func setClipboardString(_ clipboard: String) {
+func setClipboardString(clipboard: String) {
   let _clipboard = UnsafeRawPointer(_strdup(clipboard)); defer { free(UnsafeMutableRawPointer(mutating: _clipboard)) }
 
   let args = [
@@ -2570,7 +2570,7 @@ func setClipboardString(_ clipboard: String) {
   _ = _gsCProcedureSetClipboardString(nil, nil, 0, args)
 }
 
-func gizmoSetMode(_ label: String, _ mode: Number) {
+func gizmoSetMode(label: String, mode: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2580,7 +2580,7 @@ func gizmoSetMode(_ label: String, _ mode: Number) {
   _ = _gsCProcedureGizmoSetMode(nil, nil, 0, args)
 }
 
-func gizmoGetVector(_ label: String) -> NumberArray /* position [3] {x, y, z} */ {
+func gizmoGetVector(label: String) -> NumberArray /* position [3] {x, y, z} */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2597,7 +2597,7 @@ func gizmoGetVector(_ label: String) -> NumberArray /* position [3] {x, y, z} */
   return out
 }
 
-func gizmoGetVersor(_ label: String) -> NumberArray /* quaternion [4] {x, y, z, w} */ {
+func gizmoGetVersor(label: String) -> NumberArray /* quaternion [4] {x, y, z, w} */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2615,7 +2615,7 @@ func gizmoGetVersor(_ label: String) -> NumberArray /* quaternion [4] {x, y, z, 
   return out
 }
 
-func gizmoGetScale(_ label: String) -> NumberArray /* scale [3] {x, y, z} */ {
+func gizmoGetScale(label: String) -> NumberArray /* scale [3] {x, y, z} */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2632,7 +2632,7 @@ func gizmoGetScale(_ label: String) -> NumberArray /* scale [3] {x, y, z} */ {
   return out
 }
 
-func gizmoSetVector(_ label: String, _ x: Number, _ y: Number, _ z: Number) {
+func gizmoSetVector(label: String, x: Number, y: Number, z: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2644,7 +2644,7 @@ func gizmoSetVector(_ label: String, _ x: Number, _ y: Number, _ z: Number) {
   _ = _gsCProcedureGizmoSetVector(nil, nil, 0, args)
 }
 
-func gizmoSetVersor(_ label: String, _ x: Number, _ y: Number, _ z: Number, _ w: Number) {
+func gizmoSetVersor(label: String, x: Number, y: Number, z: Number, w: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2657,7 +2657,7 @@ func gizmoSetVersor(_ label: String, _ x: Number, _ y: Number, _ z: Number, _ w:
   _ = _gsCProcedureGizmoSetVersor(nil, nil, 0, args)
 }
 
-func gizmoSetScale(_ label: String, _ x: Number, _ y: Number, _ z: Number) {
+func gizmoSetScale(label: String, x: Number, y: Number, z: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2669,7 +2669,7 @@ func gizmoSetScale(_ label: String, _ x: Number, _ y: Number, _ z: Number) {
   _ = _gsCProcedureGizmoSetScale(nil, nil, 0, args)
 }
 
-func gizmoSetDrawScale(_ label: String, _ scale: Number) {
+func gizmoSetDrawScale(label: String, scale: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2679,7 +2679,7 @@ func gizmoSetDrawScale(_ label: String, _ scale: Number) {
   _ = _gsCProcedureGizmoSetDrawScale(nil, nil, 0, args)
 }
 
-func gizmoSetDrawColors(_ label: String, _ xr: Number, _ xg: Number, _ xb: Number, _ xa: Number, _ yr: Number, _ yg: Number, _ yb: Number, _ ya: Number, _ zr: Number, _ zg: Number, _ zb: Number, _ za: Number, _ wr: Number, _ wg: Number, _ wb: Number, _ wa: Number, _ selectr: Number, _ selectg: Number, _ selectb: Number, _ selecta: Number) {
+func gizmoSetDrawColors(label: String, xr: Number, xg: Number, xb: Number, xa: Number, yr: Number, yg: Number, yb: Number, ya: Number, zr: Number, zg: Number, zb: Number, za: Number, wr: Number, wg: Number, wb: Number, wa: Number, selectr: Number, selectg: Number, selectb: Number, selecta: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2708,7 +2708,7 @@ func gizmoSetDrawColors(_ label: String, _ xr: Number, _ xg: Number, _ xb: Numbe
   _ = _gsCProcedureGizmoSetDrawColors(nil, nil, 0, args)
 }
 
-func gizmoDelete(_ label: String) {
+func gizmoDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2737,7 +2737,7 @@ func getUnixTime() -> Number /* unixTime */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetUnixTime(nil, nil, 0, nil))
 }
 
-func framebufferBegin(_ label: String, _ width: Number, _ height: Number, _ setupScreenDefaultIs1: Bool) -> Bool /* framebufferIsValid */ {
+func framebufferBegin(label: String, width: Number, height: Number, setupScreenDefaultIs1: Bool) -> Bool /* framebufferIsValid */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2749,7 +2749,7 @@ func framebufferBegin(_ label: String, _ width: Number, _ height: Number, _ setu
   return _gsBoolFromVoidPointer(_gsCProcedureFramebufferBegin(nil, nil, 0, args))
 }
 
-func framebufferEnd(_ label: String) {
+func framebufferEnd(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2758,7 +2758,7 @@ func framebufferEnd(_ label: String) {
   _ = _gsCProcedureFramebufferEnd(nil, nil, 0, args)
 }
 
-func framebufferDraw(_ label: String, _ x: Number, _ y: Number, _ width: Number, _ height: Number) {
+func framebufferDraw(label: String, x: Number, y: Number, width: Number, height: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2771,7 +2771,7 @@ func framebufferDraw(_ label: String, _ x: Number, _ y: Number, _ width: Number,
   _ = _gsCProcedureFramebufferDraw(nil, nil, 0, args)
 }
 
-func framebufferClear(_ label: String) {
+func framebufferClear(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2780,7 +2780,7 @@ func framebufferClear(_ label: String) {
   _ = _gsCProcedureFramebufferClear(nil, nil, 0, args)
 }
 
-func framebufferCopyToImage(_ label: String, _ image: Number) {
+func framebufferCopyToImage(label: String, image: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2790,7 +2790,7 @@ func framebufferCopyToImage(_ label: String, _ image: Number) {
   _ = _gsCProcedureFramebufferCopyToImage(nil, nil, 0, args)
 }
 
-func framebufferDelete(_ label: String) {
+func framebufferDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2803,7 +2803,7 @@ func framebufferDeleteAll() {
   _ = _gsCProcedureFramebufferDeleteAll(nil, nil, 0, nil)
 }
 
-func meshNew(_ label: String) -> Number /* handle */ {
+func meshNew(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2812,7 +2812,7 @@ func meshNew(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureMeshNew(nil, nil, 0, args))
 }
 
-func meshPersistentNew(_ label: String) -> Number /* handle */ {
+func meshPersistentNew(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2821,7 +2821,7 @@ func meshPersistentNew(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureMeshPersistentNew(nil, nil, 0, args))
 }
 
-func meshDelete(_ label: String) {
+func meshDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2830,7 +2830,7 @@ func meshDelete(_ label: String) {
   _ = _gsCProcedureMeshDelete(nil, nil, 0, args)
 }
 
-func meshPersistentDelete(_ label: String) {
+func meshPersistentDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2847,7 +2847,7 @@ func meshPersistentDeleteAll() {
   _ = _gsCProcedureMeshPersistentDeleteAll(nil, nil, 0, nil)
 }
 
-func meshGetHandle(_ label: String) -> Number /* handle */ {
+func meshGetHandle(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2856,7 +2856,7 @@ func meshGetHandle(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureMeshGetHandle(nil, nil, 0, args))
 }
 
-func meshPersistentGetHandle(_ label: String) -> Number /* handle */ {
+func meshPersistentGetHandle(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -2865,154 +2865,154 @@ func meshPersistentGetHandle(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureMeshPersistentGetHandle(nil, nil, 0, args))
 }
 
-func meshIsUsingColors(_ handle: Number) -> Bool /* boolean */ {
+func meshIsUsingColors(handle: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMeshIsUsingColors(nil, nil, 0, args))
 }
 
-func meshIsUsingTextures(_ handle: Number) -> Bool /* boolean */ {
+func meshIsUsingTextures(handle: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMeshIsUsingTextures(nil, nil, 0, args))
 }
 
-func meshIsUsingIndices(_ handle: Number) -> Bool /* boolean */ {
+func meshIsUsingIndices(handle: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMeshIsUsingIndices(nil, nil, 0, args))
 }
 
-func meshEnableColors(_ handle: Number) {
+func meshEnableColors(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshEnableColors(nil, nil, 0, args)
 }
 
-func meshEnableTextures(_ handle: Number) {
+func meshEnableTextures(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshEnableTextures(nil, nil, 0, args)
 }
 
-func meshEnableIndices(_ handle: Number) {
+func meshEnableIndices(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshEnableIndices(nil, nil, 0, args)
 }
 
-func meshDisableColors(_ handle: Number) {
+func meshDisableColors(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshDisableColors(nil, nil, 0, args)
 }
 
-func meshDisableTextures(_ handle: Number) {
+func meshDisableTextures(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshDisableTextures(nil, nil, 0, args)
 }
 
-func meshDisableIndices(_ handle: Number) {
+func meshDisableIndices(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshDisableIndices(nil, nil, 0, args)
 }
 
-func meshHasVertices(_ handle: Number) -> Bool /* boolean */ {
+func meshHasVertices(handle: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMeshHasVertices(nil, nil, 0, args))
 }
 
-func meshHasColors(_ handle: Number) -> Bool /* boolean */ {
+func meshHasColors(handle: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMeshHasColors(nil, nil, 0, args))
 }
 
-func meshHasTexCoords(_ handle: Number) -> Bool /* boolean */ {
+func meshHasTexCoords(handle: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMeshHasTexCoords(nil, nil, 0, args))
 }
 
-func meshHasIndices(_ handle: Number) -> Bool /* boolean */ {
+func meshHasIndices(handle: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMeshHasIndices(nil, nil, 0, args))
 }
 
-func meshGetVerticesCount(_ handle: Number) -> Number /* count */ {
+func meshGetVerticesCount(handle: Number) -> Number /* count */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureMeshGetVerticesCount(nil, nil, 0, args))
 }
 
-func meshGetColorsCount(_ handle: Number) -> Number /* count */ {
+func meshGetColorsCount(handle: Number) -> Number /* count */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureMeshGetColorsCount(nil, nil, 0, args))
 }
 
-func meshGetTexCoordsCount(_ handle: Number) -> Number /* count */ {
+func meshGetTexCoordsCount(handle: Number) -> Number /* count */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureMeshGetTexCoordsCount(nil, nil, 0, args))
 }
 
-func meshGetIndicesCount(_ handle: Number) -> Number /* count */ {
+func meshGetIndicesCount(handle: Number) -> Number /* count */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureMeshGetIndicesCount(nil, nil, 0, args))
 }
 
-func meshHaveVerticesChanged(_ handle: Number) -> Bool /* boolean */ {
+func meshHaveVerticesChanged(handle: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMeshHaveVerticesChanged(nil, nil, 0, args))
 }
 
-func meshHaveColorsChanged(_ handle: Number) -> Bool /* boolean */ {
+func meshHaveColorsChanged(handle: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMeshHaveColorsChanged(nil, nil, 0, args))
 }
 
-func meshHaveTexCoordsChanged(_ handle: Number) -> Bool /* boolean */ {
+func meshHaveTexCoordsChanged(handle: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMeshHaveTexCoordsChanged(nil, nil, 0, args))
 }
 
-func meshHaveIndicesChanged(_ handle: Number) -> Bool /* boolean */ {
+func meshHaveIndicesChanged(handle: Number) -> Bool /* boolean */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureMeshHaveIndicesChanged(nil, nil, 0, args))
 }
 
-func meshAddVertex(_ handle: Number, _ x: Number, _ y: Number, _ z: Number) {
+func meshAddVertex(handle: Number, x: Number, y: Number, z: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(x),
@@ -3022,7 +3022,7 @@ func meshAddVertex(_ handle: Number, _ x: Number, _ y: Number, _ z: Number) {
   _ = _gsCProcedureMeshAddVertex(nil, nil, 0, args)
 }
 
-func meshAddColor(_ handle: Number, _ r0to1: Number, _ g0to1: Number, _ b0to1: Number, _ a0to1: Number) {
+func meshAddColor(handle: Number, r0to1: Number, g0to1: Number, b0to1: Number, a0to1: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(r0to1),
@@ -3033,7 +3033,7 @@ func meshAddColor(_ handle: Number, _ r0to1: Number, _ g0to1: Number, _ b0to1: N
   _ = _gsCProcedureMeshAddColor(nil, nil, 0, args)
 }
 
-func meshAddTexCoord(_ handle: Number, _ u: Number, _ v: Number) {
+func meshAddTexCoord(handle: Number, u: Number, v: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(u),
@@ -3042,7 +3042,7 @@ func meshAddTexCoord(_ handle: Number, _ u: Number, _ v: Number) {
   _ = _gsCProcedureMeshAddTexCoord(nil, nil, 0, args)
 }
 
-func meshAddIndex(_ handle: Number, _ index: Number) {
+func meshAddIndex(handle: Number, index: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(index),
@@ -3050,7 +3050,7 @@ func meshAddIndex(_ handle: Number, _ index: Number) {
   _ = _gsCProcedureMeshAddIndex(nil, nil, 0, args)
 }
 
-func meshRemoveVertex(_ handle: Number, _ index: Number) {
+func meshRemoveVertex(handle: Number, index: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(index),
@@ -3058,7 +3058,7 @@ func meshRemoveVertex(_ handle: Number, _ index: Number) {
   _ = _gsCProcedureMeshRemoveVertex(nil, nil, 0, args)
 }
 
-func meshRemoveColor(_ handle: Number, _ index: Number) {
+func meshRemoveColor(handle: Number, index: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(index),
@@ -3066,7 +3066,7 @@ func meshRemoveColor(_ handle: Number, _ index: Number) {
   _ = _gsCProcedureMeshRemoveColor(nil, nil, 0, args)
 }
 
-func meshRemoveTexCoord(_ handle: Number, _ index: Number) {
+func meshRemoveTexCoord(handle: Number, index: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(index),
@@ -3074,7 +3074,7 @@ func meshRemoveTexCoord(_ handle: Number, _ index: Number) {
   _ = _gsCProcedureMeshRemoveTexCoord(nil, nil, 0, args)
 }
 
-func meshRemoveIndex(_ handle: Number, _ index: Number) {
+func meshRemoveIndex(handle: Number, index: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(index),
@@ -3082,84 +3082,84 @@ func meshRemoveIndex(_ handle: Number, _ index: Number) {
   _ = _gsCProcedureMeshRemoveIndex(nil, nil, 0, args)
 }
 
-func meshClear(_ handle: Number) {
+func meshClear(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshClear(nil, nil, 0, args)
 }
 
-func meshClearVertices(_ handle: Number) {
+func meshClearVertices(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshClearVertices(nil, nil, 0, args)
 }
 
-func meshClearColors(_ handle: Number) {
+func meshClearColors(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshClearColors(nil, nil, 0, args)
 }
 
-func meshClearTexCoords(_ handle: Number) {
+func meshClearTexCoords(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshClearTexCoords(nil, nil, 0, args)
 }
 
-func meshClearIndices(_ handle: Number) {
+func meshClearIndices(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshClearIndices(nil, nil, 0, args)
 }
 
-func meshGetVerticesPointer(_ handle: Number) -> Number /* pointer */ {
+func meshGetVerticesPointer(handle: Number) -> Number /* pointer */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureMeshGetVerticesPointer(nil, nil, 0, args))
 }
 
-func meshGetColorsPointer(_ handle: Number) -> Number /* pointer */ {
+func meshGetColorsPointer(handle: Number) -> Number /* pointer */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureMeshGetColorsPointer(nil, nil, 0, args))
 }
 
-func meshGetTexCoordsPointer(_ handle: Number) -> Number /* pointer */ {
+func meshGetTexCoordsPointer(handle: Number) -> Number /* pointer */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureMeshGetTexCoordsPointer(nil, nil, 0, args))
 }
 
-func meshGetIndicesPointer(_ handle: Number) -> Number /* pointer */ {
+func meshGetIndicesPointer(handle: Number) -> Number /* pointer */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureMeshGetIndicesPointer(nil, nil, 0, args))
 }
 
-func meshMergeDuplicateVertices(_ handle: Number) {
+func meshMergeDuplicateVertices(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshMergeDuplicateVertices(nil, nil, 0, args)
 }
 
-func meshSetupIndicesAuto(_ handle: Number) {
+func meshSetupIndicesAuto(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureMeshSetupIndicesAuto(nil, nil, 0, args)
 }
 
-func meshAddTriangle(_ handle: Number, _ verticesArrayIndex1: Number, _ verticesArrayIndex2: Number, _ verticesArrayIndex3: Number) {
+func meshAddTriangle(handle: Number, verticesArrayIndex1: Number, verticesArrayIndex2: Number, verticesArrayIndex3: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(verticesArrayIndex1),
@@ -3169,7 +3169,7 @@ func meshAddTriangle(_ handle: Number, _ verticesArrayIndex1: Number, _ vertices
   _ = _gsCProcedureMeshAddTriangle(nil, nil, 0, args)
 }
 
-func meshDraw(_ handle: Number, _ renderMode: Number, _ scaleX: Number, _ scaleY: Number, _ scaleZ: Number, _ vectorX: Number, _ vectorY: Number, _ vectorZ: Number, _ rotationAxisX: Number, _ rotationAxisY: Number, _ rotationAxisZ: Number, _ rotationAngleDeg: Number) {
+func meshDraw(handle: Number, renderMode: Number, scaleX: Number, scaleY: Number, scaleZ: Number, vectorX: Number, vectorY: Number, vectorZ: Number, rotationAxisX: Number, rotationAxisY: Number, rotationAxisZ: Number, rotationAngleDeg: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(renderMode),
@@ -3187,7 +3187,7 @@ func meshDraw(_ handle: Number, _ renderMode: Number, _ scaleX: Number, _ scaleY
   _ = _gsCProcedureMeshDraw(nil, nil, 0, args)
 }
 
-func meshDrawWithColor(_ handle: Number, _ renderMode: Number, _ scaleX: Number, _ scaleY: Number, _ scaleZ: Number, _ vectorX: Number, _ vectorY: Number, _ vectorZ: Number, _ rotationAxisX: Number, _ rotationAxisY: Number, _ rotationAxisZ: Number, _ rotationAngleDeg: Number, _ r0to255: Number, _ g0to255: Number, _ b0to255: Number, _ a0to255: Number) {
+func meshDrawWithColor(handle: Number, renderMode: Number, scaleX: Number, scaleY: Number, scaleZ: Number, vectorX: Number, vectorY: Number, vectorZ: Number, rotationAxisX: Number, rotationAxisY: Number, rotationAxisZ: Number, rotationAngleDeg: Number, r0to255: Number, g0to255: Number, b0to255: Number, a0to255: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(renderMode),
@@ -3209,7 +3209,7 @@ func meshDrawWithColor(_ handle: Number, _ renderMode: Number, _ scaleX: Number,
   _ = _gsCProcedureMeshDrawWithColor(nil, nil, 0, args)
 }
 
-func meshDrawDebugVertices(_ label: String) {
+func meshDrawDebugVertices(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3218,7 +3218,7 @@ func meshDrawDebugVertices(_ label: String) {
   _ = _gsCProcedureMeshDrawDebugVertices(nil, nil, 0, args)
 }
 
-func meshDrawDebugColors(_ label: String) {
+func meshDrawDebugColors(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3227,7 +3227,7 @@ func meshDrawDebugColors(_ label: String) {
   _ = _gsCProcedureMeshDrawDebugColors(nil, nil, 0, args)
 }
 
-func meshDrawDebugTexCoords(_ label: String) {
+func meshDrawDebugTexCoords(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3236,7 +3236,7 @@ func meshDrawDebugTexCoords(_ label: String) {
   _ = _gsCProcedureMeshDrawDebugTexCoords(nil, nil, 0, args)
 }
 
-func meshDrawDebugIndices(_ label: String) {
+func meshDrawDebugIndices(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3245,7 +3245,7 @@ func meshDrawDebugIndices(_ label: String) {
   _ = _gsCProcedureMeshDrawDebugIndices(nil, nil, 0, args)
 }
 
-func meshDrawDebugRayTraceIndices(_ label: String, _ maxShowDistanceToDefaultCamera: Number, _ raytraceHighlightTrianglesDefaultCameraLooksAt: Bool) {
+func meshDrawDebugRayTraceIndices(label: String, maxShowDistanceToDefaultCamera: Number, raytraceHighlightTrianglesDefaultCameraLooksAt: Bool) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3256,7 +3256,7 @@ func meshDrawDebugRayTraceIndices(_ label: String, _ maxShowDistanceToDefaultCam
   _ = _gsCProcedureMeshDrawDebugRayTraceIndices(nil, nil, 0, args)
 }
 
-func meshImporterGetMeshesCount(_ meshFilepath: String) -> Number /* count */ {
+func meshImporterGetMeshesCount(meshFilepath: String) -> Number /* count */ {
   let _meshFilepath = UnsafeRawPointer(_strdup(meshFilepath)); defer { free(UnsafeMutableRawPointer(mutating: _meshFilepath)) }
 
   let args = [
@@ -3265,7 +3265,7 @@ func meshImporterGetMeshesCount(_ meshFilepath: String) -> Number /* count */ {
   return _gsNumberFromVoidPointer(_gsCProcedureMeshImporterGetMeshesCount(nil, nil, 0, args))
 }
 
-func meshImporterGetMeshName(_ meshFilepath: String, _ meshIndex: Number) -> String /* name */ {
+func meshImporterGetMeshName(meshFilepath: String, meshIndex: Number) -> String /* name */ {
   let _meshFilepath = UnsafeRawPointer(_strdup(meshFilepath)); defer { free(UnsafeMutableRawPointer(mutating: _meshFilepath)) }
 
   let args = [
@@ -3278,7 +3278,7 @@ func meshImporterGetMeshName(_ meshFilepath: String, _ meshIndex: Number) -> Str
   return out
 }
 
-func meshImporterGetMesh(_ meshFilepath: String, _ meshIndex: Number, _ writeToMesh: Number) {
+func meshImporterGetMesh(meshFilepath: String, meshIndex: Number, writeToMesh: Number) {
   let _meshFilepath = UnsafeRawPointer(_strdup(meshFilepath)); defer { free(UnsafeMutableRawPointer(mutating: _meshFilepath)) }
 
   let args = [
@@ -3289,7 +3289,7 @@ func meshImporterGetMesh(_ meshFilepath: String, _ meshIndex: Number, _ writeToM
   _ = _gsCProcedureMeshImporterGetMesh(nil, nil, 0, args)
 }
 
-func meshImporterDelete(_ meshFilepath: String) {
+func meshImporterDelete(meshFilepath: String) {
   let _meshFilepath = UnsafeRawPointer(_strdup(meshFilepath)); defer { free(UnsafeMutableRawPointer(mutating: _meshFilepath)) }
 
   let args = [
@@ -3302,7 +3302,7 @@ func meshImporterDeleteAll() {
   _ = _gsCProcedureMeshImporterDeleteAll(nil, nil, 0, nil)
 }
 
-func imageNew(_ label: String, _ width: Number, _ height: Number) -> Number /* handle */ {
+func imageNew(label: String, width: Number, height: Number) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3313,7 +3313,7 @@ func imageNew(_ label: String, _ width: Number, _ height: Number) -> Number /* h
   return _gsNumberFromVoidPointer(_gsCProcedureImageNew(nil, nil, 0, args))
 }
 
-func imagePersistentNew(_ label: String, _ width: Number, _ height: Number) -> Number /* handle */ {
+func imagePersistentNew(label: String, width: Number, height: Number) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3324,7 +3324,7 @@ func imagePersistentNew(_ label: String, _ width: Number, _ height: Number) -> N
   return _gsNumberFromVoidPointer(_gsCProcedureImagePersistentNew(nil, nil, 0, args))
 }
 
-func imageNewFromFile(_ label: String, _ filepath: String) -> Number /* handle */ {
+func imageNewFromFile(label: String, filepath: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
   let _filepath = UnsafeRawPointer(_strdup(filepath)); defer { free(UnsafeMutableRawPointer(mutating: _filepath)) }
 
@@ -3335,7 +3335,7 @@ func imageNewFromFile(_ label: String, _ filepath: String) -> Number /* handle *
   return _gsNumberFromVoidPointer(_gsCProcedureImageNewFromFile(nil, nil, 0, args))
 }
 
-func imagePersistentNewFromFile(_ label: String, _ filepath: String) -> Number /* handle */ {
+func imagePersistentNewFromFile(label: String, filepath: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
   let _filepath = UnsafeRawPointer(_strdup(filepath)); defer { free(UnsafeMutableRawPointer(mutating: _filepath)) }
 
@@ -3346,7 +3346,7 @@ func imagePersistentNewFromFile(_ label: String, _ filepath: String) -> Number /
   return _gsNumberFromVoidPointer(_gsCProcedureImagePersistentNewFromFile(nil, nil, 0, args))
 }
 
-func imageDelete(_ label: String) {
+func imageDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3355,7 +3355,7 @@ func imageDelete(_ label: String) {
   _ = _gsCProcedureImageDelete(nil, nil, 0, args)
 }
 
-func imagePersistentDelete(_ label: String) {
+func imagePersistentDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3372,7 +3372,7 @@ func imagePersistentDeleteAll() {
   _ = _gsCProcedureImagePersistentDeleteAll(nil, nil, 0, nil)
 }
 
-func imageGetHandle(_ label: String) -> Number /* handle */ {
+func imageGetHandle(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3381,7 +3381,7 @@ func imageGetHandle(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureImageGetHandle(nil, nil, 0, args))
 }
 
-func imagePersistentGetHandle(_ label: String) -> Number /* handle */ {
+func imagePersistentGetHandle(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3390,7 +3390,7 @@ func imagePersistentGetHandle(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureImagePersistentGetHandle(nil, nil, 0, args))
 }
 
-func imageLoadFromMemory(_ handle: Number, _ pointer: Number, _ pointerBytesFirst: Number, _ pointerBytesCount: Number) -> Bool /* success */ {
+func imageLoadFromMemory(handle: Number, pointer: Number, pointerBytesFirst: Number, pointerBytesCount: Number) -> Bool /* success */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(pointer),
@@ -3400,7 +3400,7 @@ func imageLoadFromMemory(_ handle: Number, _ pointer: Number, _ pointerBytesFirs
   return _gsBoolFromVoidPointer(_gsCProcedureImageLoadFromMemory(nil, nil, 0, args))
 }
 
-func imageClear(_ handle: Number, _ alpha0to255: Number) {
+func imageClear(handle: Number, alpha0to255: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(alpha0to255),
@@ -3408,35 +3408,35 @@ func imageClear(_ handle: Number, _ alpha0to255: Number) {
   _ = _gsCProcedureImageClear(nil, nil, 0, args)
 }
 
-func imageHasMipmap(_ handle: Number) -> Bool /* hasMipmap */ {
+func imageHasMipmap(handle: Number) -> Bool /* hasMipmap */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureImageHasMipmap(nil, nil, 0, args))
 }
 
-func imageMipmapDisable(_ handle: Number) {
+func imageMipmapDisable(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureImageMipmapDisable(nil, nil, 0, args)
 }
 
-func imageMipmapEnable(_ handle: Number) {
+func imageMipmapEnable(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureImageMipmapEnable(nil, nil, 0, args)
 }
 
-func imageMipmapGenerate(_ handle: Number) {
+func imageMipmapGenerate(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureImageMipmapGenerate(nil, nil, 0, args)
 }
 
-func imageSetTextureMinMagFilter(_ handle: Number, _ minFilter: Number, _ magFilter: Number) {
+func imageSetTextureMinMagFilter(handle: Number, minFilter: Number, magFilter: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(minFilter),
@@ -3445,7 +3445,7 @@ func imageSetTextureMinMagFilter(_ handle: Number, _ minFilter: Number, _ magFil
   _ = _gsCProcedureImageSetTextureMinMagFilter(nil, nil, 0, args)
 }
 
-func imageSetTextureWrap(_ handle: Number, _ wrapX: Number, _ wrapY: Number) {
+func imageSetTextureWrap(handle: Number, wrapX: Number, wrapY: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(wrapX),
@@ -3454,7 +3454,7 @@ func imageSetTextureWrap(_ handle: Number, _ wrapX: Number, _ wrapY: Number) {
   _ = _gsCProcedureImageSetTextureWrap(nil, nil, 0, args)
 }
 
-func imageSetTextureMaxAnisotropy(_ handle: Number, _ maxAnisotropy: Number) {
+func imageSetTextureMaxAnisotropy(handle: Number, maxAnisotropy: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(maxAnisotropy),
@@ -3462,42 +3462,42 @@ func imageSetTextureMaxAnisotropy(_ handle: Number, _ maxAnisotropy: Number) {
   _ = _gsCProcedureImageSetTextureMaxAnisotropy(nil, nil, 0, args)
 }
 
-func imageGetWidth(_ handle: Number) -> Number /* width */ {
+func imageGetWidth(handle: Number) -> Number /* width */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureImageGetWidth(nil, nil, 0, args))
 }
 
-func imageGetHeight(_ handle: Number) -> Number /* height */ {
+func imageGetHeight(handle: Number) -> Number /* height */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureImageGetHeight(nil, nil, 0, args))
 }
 
-func imageGetBitsPerPixel(_ handle: Number) -> Number /* bitsPerPixel */ {
+func imageGetBitsPerPixel(handle: Number) -> Number /* bitsPerPixel */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureImageGetBitsPerPixel(nil, nil, 0, args))
 }
 
-func imageGetImageType(_ handle: Number) -> Number /* imageType */ {
+func imageGetImageType(handle: Number) -> Number /* imageType */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureImageGetImageType(nil, nil, 0, args))
 }
 
-func imageGetPixelsPointer(_ handle: Number) -> Number /* pointerToPixels */ {
+func imageGetPixelsPointer(handle: Number) -> Number /* pointerToPixels */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureImageGetPixelsPointer(nil, nil, 0, args))
 }
 
-func imageGetColor(_ handle: Number, _ x: Number, _ y: Number) -> NumberArray /* color [4] {r0To255, g0To255, b0To255, a0To255} */ {
+func imageGetColor(handle: Number, x: Number, y: Number) -> NumberArray /* color [4] {r0To255, g0To255, b0To255, a0To255} */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(x),
@@ -3515,7 +3515,7 @@ func imageGetColor(_ handle: Number, _ x: Number, _ y: Number) -> NumberArray /*
   return out
 }
 
-func imageSetColor(_ handle: Number, _ x: Number, _ y: Number, _ r0to255: Number, _ g0to255: Number, _ b0to255: Number, _ a0to255: Number) {
+func imageSetColor(handle: Number, x: Number, y: Number, r0to255: Number, g0to255: Number, b0to255: Number, a0to255: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(x),
@@ -3528,35 +3528,35 @@ func imageSetColor(_ handle: Number, _ x: Number, _ y: Number, _ r0to255: Number
   _ = _gsCProcedureImageSetColor(nil, nil, 0, args)
 }
 
-func imageGammaCorrect(_ handle: Number) {
+func imageGammaCorrect(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureImageGammaCorrect(nil, nil, 0, args)
 }
 
-func imageUpdate(_ handle: Number) {
+func imageUpdate(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureImageUpdate(nil, nil, 0, args)
 }
 
-func imageBind(_ handle: Number) {
+func imageBind(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureImageBind(nil, nil, 0, args)
 }
 
-func imageUnbind(_ handle: Number) {
+func imageUnbind(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureImageUnbind(nil, nil, 0, args)
 }
 
-func imageDraw(_ handle: Number, _ x: Number, _ y: Number, _ z: Number, _ w: Number, _ h: Number) {
+func imageDraw(handle: Number, x: Number, y: Number, z: Number, w: Number, h: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(x),
@@ -3568,7 +3568,7 @@ func imageDraw(_ handle: Number, _ x: Number, _ y: Number, _ z: Number, _ w: Num
   _ = _gsCProcedureImageDraw(nil, nil, 0, args)
 }
 
-func imageDrawSubsection(_ handle: Number, _ x: Number, _ y: Number, _ z: Number, _ w: Number, _ h: Number, _ sx: Number, _ sy: Number, _ sw: Number, _ sh: Number) {
+func imageDrawSubsection(handle: Number, x: Number, y: Number, z: Number, w: Number, h: Number, sx: Number, sy: Number, sw: Number, sh: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(x),
@@ -3584,7 +3584,7 @@ func imageDrawSubsection(_ handle: Number, _ x: Number, _ y: Number, _ z: Number
   _ = _gsCProcedureImageDrawSubsection(nil, nil, 0, args)
 }
 
-func shaderBegin(_ label: String, _ filepathShaderVert: String, _ filepathShaderFrag: String) -> Bool /* shadersAreValid */ {
+func shaderBegin(label: String, filepathShaderVert: String, filepathShaderFrag: String) -> Bool /* shadersAreValid */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
   let _filepathShaderVert = UnsafeRawPointer(_strdup(filepathShaderVert)); defer { free(UnsafeMutableRawPointer(mutating: _filepathShaderVert)) }
   let _filepathShaderFrag = UnsafeRawPointer(_strdup(filepathShaderFrag)); defer { free(UnsafeMutableRawPointer(mutating: _filepathShaderFrag)) }
@@ -3597,7 +3597,7 @@ func shaderBegin(_ label: String, _ filepathShaderVert: String, _ filepathShader
   return _gsBoolFromVoidPointer(_gsCProcedureShaderBegin(nil, nil, 0, args))
 }
 
-func shaderEnd(_ label: String) {
+func shaderEnd(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3606,7 +3606,7 @@ func shaderEnd(_ label: String) {
   _ = _gsCProcedureShaderEnd(nil, nil, 0, args)
 }
 
-func shaderSetUniform4f(_ label: String, _ uniformName: String, _ x: Number, _ y: Number, _ z: Number, _ w: Number) {
+func shaderSetUniform4f(label: String, uniformName: String, x: Number, y: Number, z: Number, w: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
   let _uniformName = UnsafeRawPointer(_strdup(uniformName)); defer { free(UnsafeMutableRawPointer(mutating: _uniformName)) }
 
@@ -3621,7 +3621,7 @@ func shaderSetUniform4f(_ label: String, _ uniformName: String, _ x: Number, _ y
   _ = _gsCProcedureShaderSetUniform4f(nil, nil, 0, args)
 }
 
-func shaderSetUniform4fv(_ label: String, _ uniformName: String, _ pointer: Number, _ count: Number) {
+func shaderSetUniform4fv(label: String, uniformName: String, pointer: Number, count: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
   let _uniformName = UnsafeRawPointer(_strdup(uniformName)); defer { free(UnsafeMutableRawPointer(mutating: _uniformName)) }
 
@@ -3634,7 +3634,7 @@ func shaderSetUniform4fv(_ label: String, _ uniformName: String, _ pointer: Numb
   _ = _gsCProcedureShaderSetUniform4fv(nil, nil, 0, args)
 }
 
-func shaderSetUniformMatrix4f(_ label: String, _ uniformName: String, _ pointer: Number) {
+func shaderSetUniformMatrix4f(label: String, uniformName: String, pointer: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
   let _uniformName = UnsafeRawPointer(_strdup(uniformName)); defer { free(UnsafeMutableRawPointer(mutating: _uniformName)) }
 
@@ -3646,7 +3646,7 @@ func shaderSetUniformMatrix4f(_ label: String, _ uniformName: String, _ pointer:
   _ = _gsCProcedureShaderSetUniformMatrix4f(nil, nil, 0, args)
 }
 
-func shaderSetUniformImage(_ label: String, _ uniformName: String, _ imageHandle: Number, _ textureLocation: Number) {
+func shaderSetUniformImage(label: String, uniformName: String, imageHandle: Number, textureLocation: Number) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
   let _uniformName = UnsafeRawPointer(_strdup(uniformName)); defer { free(UnsafeMutableRawPointer(mutating: _uniformName)) }
 
@@ -3659,7 +3659,7 @@ func shaderSetUniformImage(_ label: String, _ uniformName: String, _ imageHandle
   _ = _gsCProcedureShaderSetUniformImage(nil, nil, 0, args)
 }
 
-func shaderDelete(_ label: String) {
+func shaderDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3672,7 +3672,7 @@ func shaderDeleteAll() {
   _ = _gsCProcedureShaderDeleteAll(nil, nil, 0, nil)
 }
 
-func soundPlayerNew(_ label: String) -> Number /* handle */ {
+func soundPlayerNew(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3681,7 +3681,7 @@ func soundPlayerNew(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureSoundPlayerNew(nil, nil, 0, args))
 }
 
-func soundPlayerPersistentNew(_ label: String) -> Number /* handle */ {
+func soundPlayerPersistentNew(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3690,7 +3690,7 @@ func soundPlayerPersistentNew(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureSoundPlayerPersistentNew(nil, nil, 0, args))
 }
 
-func soundPlayerDelete(_ label: String) {
+func soundPlayerDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3699,7 +3699,7 @@ func soundPlayerDelete(_ label: String) {
   _ = _gsCProcedureSoundPlayerDelete(nil, nil, 0, args)
 }
 
-func soundPlayerPersistentDelete(_ label: String) {
+func soundPlayerPersistentDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3716,7 +3716,7 @@ func soundPlayerPersistentDeleteAll() {
   _ = _gsCProcedureSoundPlayerPersistentDeleteAll(nil, nil, 0, nil)
 }
 
-func soundPlayerGetHandle(_ label: String) -> Number /* handle */ {
+func soundPlayerGetHandle(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3725,7 +3725,7 @@ func soundPlayerGetHandle(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureSoundPlayerGetHandle(nil, nil, 0, args))
 }
 
-func soundPlayerPersistentGetHandle(_ label: String) -> Number /* handle */ {
+func soundPlayerPersistentGetHandle(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -3734,7 +3734,7 @@ func soundPlayerPersistentGetHandle(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureSoundPlayerPersistentGetHandle(nil, nil, 0, args))
 }
 
-func soundPlayerLoad(_ handle: Number, _ filepath: String, _ streamDefaultIsFalse: Bool) -> Bool /* success */ {
+func soundPlayerLoad(handle: Number, filepath: String, streamDefaultIsFalse: Bool) -> Bool /* success */ {
   let _filepath = UnsafeRawPointer(_strdup(filepath)); defer { free(UnsafeMutableRawPointer(mutating: _filepath)) }
 
   let args = [
@@ -3745,28 +3745,28 @@ func soundPlayerLoad(_ handle: Number, _ filepath: String, _ streamDefaultIsFals
   return _gsBoolFromVoidPointer(_gsCProcedureSoundPlayerLoad(nil, nil, 0, args))
 }
 
-func soundPlayerUnload(_ handle: Number) {
+func soundPlayerUnload(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureSoundPlayerUnload(nil, nil, 0, args)
 }
 
-func soundPlayerPlay(_ handle: Number) {
+func soundPlayerPlay(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureSoundPlayerPlay(nil, nil, 0, args)
 }
 
-func soundPlayerStop(_ handle: Number) {
+func soundPlayerStop(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureSoundPlayerStop(nil, nil, 0, args)
 }
 
-func soundPlayerSetVolume(_ handle: Number, _ volume0to1: Number) {
+func soundPlayerSetVolume(handle: Number, volume0to1: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(volume0to1),
@@ -3774,7 +3774,7 @@ func soundPlayerSetVolume(_ handle: Number, _ volume0to1: Number) {
   _ = _gsCProcedureSoundPlayerSetVolume(nil, nil, 0, args)
 }
 
-func soundPlayerSetPan(_ handle: Number, _ panMinus1to1: Number) {
+func soundPlayerSetPan(handle: Number, panMinus1to1: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(panMinus1to1),
@@ -3782,7 +3782,7 @@ func soundPlayerSetPan(_ handle: Number, _ panMinus1to1: Number) {
   _ = _gsCProcedureSoundPlayerSetPan(nil, nil, 0, args)
 }
 
-func soundPlayerSetSpeed(_ handle: Number, _ speedDefaultIs1: Number) {
+func soundPlayerSetSpeed(handle: Number, speedDefaultIs1: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(speedDefaultIs1),
@@ -3790,7 +3790,7 @@ func soundPlayerSetSpeed(_ handle: Number, _ speedDefaultIs1: Number) {
   _ = _gsCProcedureSoundPlayerSetSpeed(nil, nil, 0, args)
 }
 
-func soundPlayerSetPaused(_ handle: Number, _ paused: Bool) {
+func soundPlayerSetPaused(handle: Number, paused: Bool) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromBool(paused),
@@ -3798,7 +3798,7 @@ func soundPlayerSetPaused(_ handle: Number, _ paused: Bool) {
   _ = _gsCProcedureSoundPlayerSetPaused(nil, nil, 0, args)
 }
 
-func soundPlayerSetLoop(_ handle: Number, _ loop: Bool) {
+func soundPlayerSetLoop(handle: Number, loop: Bool) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromBool(loop),
@@ -3806,7 +3806,7 @@ func soundPlayerSetLoop(_ handle: Number, _ loop: Bool) {
   _ = _gsCProcedureSoundPlayerSetLoop(nil, nil, 0, args)
 }
 
-func soundPlayerSetMultiPlay(_ handle: Number, _ multiplay: Bool) {
+func soundPlayerSetMultiPlay(handle: Number, multiplay: Bool) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromBool(multiplay),
@@ -3814,7 +3814,7 @@ func soundPlayerSetMultiPlay(_ handle: Number, _ multiplay: Bool) {
   _ = _gsCProcedureSoundPlayerSetMultiPlay(nil, nil, 0, args)
 }
 
-func soundPlayerSetPosition(_ handle: Number, _ percent0to1: Number) {
+func soundPlayerSetPosition(handle: Number, percent0to1: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(percent0to1),
@@ -3822,14 +3822,14 @@ func soundPlayerSetPosition(_ handle: Number, _ percent0to1: Number) {
   _ = _gsCProcedureSoundPlayerSetPosition(nil, nil, 0, args)
 }
 
-func soundPlayerGetPosition(_ handle: Number) -> Number /* percent0to1 */ {
+func soundPlayerGetPosition(handle: Number) -> Number /* percent0to1 */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureSoundPlayerGetPosition(nil, nil, 0, args))
 }
 
-func soundPlayerSetPositionMS(_ handle: Number, _ milliseconds: Number) {
+func soundPlayerSetPositionMS(handle: Number, milliseconds: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(milliseconds),
@@ -3837,49 +3837,49 @@ func soundPlayerSetPositionMS(_ handle: Number, _ milliseconds: Number) {
   _ = _gsCProcedureSoundPlayerSetPositionMS(nil, nil, 0, args)
 }
 
-func soundPlayerGetPositionMS(_ handle: Number) -> Number /* milliseconds */ {
+func soundPlayerGetPositionMS(handle: Number) -> Number /* milliseconds */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureSoundPlayerGetPositionMS(nil, nil, 0, args))
 }
 
-func soundPlayerIsPlaying(_ handle: Number) -> Bool /* isPlaying */ {
+func soundPlayerIsPlaying(handle: Number) -> Bool /* isPlaying */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureSoundPlayerIsPlaying(nil, nil, 0, args))
 }
 
-func soundPlayerGetSpeed(_ handle: Number) -> Number /* speed */ {
+func soundPlayerGetSpeed(handle: Number) -> Number /* speed */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureSoundPlayerGetSpeed(nil, nil, 0, args))
 }
 
-func soundPlayerGetPan(_ handle: Number) -> Number /* pan */ {
+func soundPlayerGetPan(handle: Number) -> Number /* pan */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureSoundPlayerGetPan(nil, nil, 0, args))
 }
 
-func soundPlayerGetVolume(_ handle: Number) -> Number /* volume */ {
+func soundPlayerGetVolume(handle: Number) -> Number /* volume */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureSoundPlayerGetVolume(nil, nil, 0, args))
 }
 
-func soundPlayerIsLoaded(_ handle: Number) -> Bool /* isLoaded */ {
+func soundPlayerIsLoaded(handle: Number) -> Bool /* isLoaded */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsBoolFromVoidPointer(_gsCProcedureSoundPlayerIsLoaded(nil, nil, 0, args))
 }
 
-func soundSetVolume(_ volume0to1: Number) {
+func soundSetVolume(volume0to1: Number) {
   let args = [
     _gsVoidPointerFromNumber(volume0to1),
   ]
@@ -3906,7 +3906,7 @@ func imguiEnd() {
   _ = _gsCProcedureImguiEnd(nil, nil, 0, nil)
 }
 
-func imguiWindowBegin(_ windowName: String, _ outPointerToWindowIsOpenBool: Number, _ outPointerToWindowIsOpenBoolBytesFirst: Number) -> Bool /* state */ {
+func imguiWindowBegin(windowName: String, outPointerToWindowIsOpenBool: Number, outPointerToWindowIsOpenBoolBytesFirst: Number) -> Bool /* state */ {
   let _windowName = UnsafeRawPointer(_strdup(windowName)); defer { free(UnsafeMutableRawPointer(mutating: _windowName)) }
 
   let args = [
@@ -3921,7 +3921,7 @@ func imguiWindowEnd() {
   _ = _gsCProcedureImguiWindowEnd(nil, nil, 0, nil)
 }
 
-func imguiButton(_ buttonName: String, _ buttonWidth: Number, _ buttonHeight: Number) -> Bool /* state */ {
+func imguiButton(buttonName: String, buttonWidth: Number, buttonHeight: Number) -> Bool /* state */ {
   let _buttonName = UnsafeRawPointer(_strdup(buttonName)); defer { free(UnsafeMutableRawPointer(mutating: _buttonName)) }
 
   let args = [
@@ -3932,7 +3932,7 @@ func imguiButton(_ buttonName: String, _ buttonWidth: Number, _ buttonHeight: Nu
   return _gsBoolFromVoidPointer(_gsCProcedureImguiButton(nil, nil, 0, args))
 }
 
-func imguiText(_ text: String) {
+func imguiText(text: String) {
   let _text = UnsafeRawPointer(_strdup(text)); defer { free(UnsafeMutableRawPointer(mutating: _text)) }
 
   let args = [
@@ -3941,7 +3941,7 @@ func imguiText(_ text: String) {
   _ = _gsCProcedureImguiText(nil, nil, 0, args)
 }
 
-func imguiTextMultiline(_ textFieldName: String, _ text: String, _ textFieldWidth: Number, _ textFieldHeight: Number) -> Bool /* state */ {
+func imguiTextMultiline(textFieldName: String, text: String, textFieldWidth: Number, textFieldHeight: Number) -> Bool /* state */ {
   let _textFieldName = UnsafeRawPointer(_strdup(textFieldName)); defer { free(UnsafeMutableRawPointer(mutating: _textFieldName)) }
   let _text = UnsafeRawPointer(_strdup(text)); defer { free(UnsafeMutableRawPointer(mutating: _text)) }
 
@@ -3954,7 +3954,7 @@ func imguiTextMultiline(_ textFieldName: String, _ text: String, _ textFieldWidt
   return _gsBoolFromVoidPointer(_gsCProcedureImguiTextMultiline(nil, nil, 0, args))
 }
 
-func imguiInputText(_ textFieldName: String, _ outPointerToString: Number, _ outPointerToStringBytesFirst: Number, _ outPointerToStringBytesCountMax: Number) -> Bool /* state */ {
+func imguiInputText(textFieldName: String, outPointerToString: Number, outPointerToStringBytesFirst: Number, outPointerToStringBytesCountMax: Number) -> Bool /* state */ {
   let _textFieldName = UnsafeRawPointer(_strdup(textFieldName)); defer { free(UnsafeMutableRawPointer(mutating: _textFieldName)) }
 
   let args = [
@@ -3966,7 +3966,7 @@ func imguiInputText(_ textFieldName: String, _ outPointerToString: Number, _ out
   return _gsBoolFromVoidPointer(_gsCProcedureImguiInputText(nil, nil, 0, args))
 }
 
-func imguiInputTextMultiline(_ textFieldName: String, _ outPointerToString: Number, _ outPointerToStringBytesFirst: Number, _ outPointerToStringBytesCountMax: Number, _ textFieldWidth: Number, _ textFieldHeight: Number) -> Bool /* state */ {
+func imguiInputTextMultiline(textFieldName: String, outPointerToString: Number, outPointerToStringBytesFirst: Number, outPointerToStringBytesCountMax: Number, textFieldWidth: Number, textFieldHeight: Number) -> Bool /* state */ {
   let _textFieldName = UnsafeRawPointer(_strdup(textFieldName)); defer { free(UnsafeMutableRawPointer(mutating: _textFieldName)) }
 
   let args = [
@@ -3980,7 +3980,7 @@ func imguiInputTextMultiline(_ textFieldName: String, _ outPointerToString: Numb
   return _gsBoolFromVoidPointer(_gsCProcedureImguiInputTextMultiline(nil, nil, 0, args))
 }
 
-func profileBegin(_ mark: String) {
+func profileBegin(mark: String) {
   let _mark = UnsafeRawPointer(_strdup(mark)); defer { free(UnsafeMutableRawPointer(mutating: _mark)) }
 
   let args = [
@@ -3989,7 +3989,7 @@ func profileBegin(_ mark: String) {
   _ = _gsCProcedureProfileBegin(nil, nil, 0, args)
 }
 
-func profileEnd(_ mark: String) {
+func profileEnd(mark: String) {
   let _mark = UnsafeRawPointer(_strdup(mark)); defer { free(UnsafeMutableRawPointer(mutating: _mark)) }
 
   let args = [
@@ -3998,7 +3998,7 @@ func profileEnd(_ mark: String) {
   _ = _gsCProcedureProfileEnd(nil, nil, 0, args)
 }
 
-func systemCommand(_ command: String) -> String /* output */ {
+func systemCommand(command: String) -> String /* output */ {
   let _command = UnsafeRawPointer(_strdup(command)); defer { free(UnsafeMutableRawPointer(mutating: _command)) }
 
   let args = [
@@ -4010,7 +4010,7 @@ func systemCommand(_ command: String) -> String /* output */ {
   return out
 }
 
-func glGetIntegerv(_ glenum: Number, _ outPointer: Number, _ outPointerBytesFirst: Number) -> Bool /* success */ {
+func glGetIntegerv(glenum: Number, outPointer: Number, outPointerBytesFirst: Number) -> Bool /* success */ {
   let args = [
     _gsVoidPointerFromNumber(glenum),
     _gsVoidPointerFromNumber(outPointer),
@@ -4047,7 +4047,7 @@ func getLastDragAndDropFilepathsCount() -> Number /* count */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetLastDragAndDropFilepathsCount(nil, nil, 0, nil))
 }
 
-func getLastDragAndDropFilepath(_ index: Number) -> String /* filepath */ {
+func getLastDragAndDropFilepath(index: Number) -> String /* filepath */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -4065,7 +4065,7 @@ func getLastDragAndDropPositionY() -> Number /* y */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetLastDragAndDropPositionY(nil, nil, 0, nil))
 }
 
-func githubR_lyehLz4xEncode(_ pointer: Number, _ pointerBytesFirst: Number, _ pointerBytesCount: Number, _ outPointer: Number, _ outPointerBytesFirst: Number, _ outPointerBytesCount: Number, _ flags: Number) -> Number /* value */ {
+func githubR_lyehLz4xEncode(pointer: Number, pointerBytesFirst: Number, pointerBytesCount: Number, outPointer: Number, outPointerBytesFirst: Number, outPointerBytesCount: Number, flags: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4078,7 +4078,7 @@ func githubR_lyehLz4xEncode(_ pointer: Number, _ pointerBytesFirst: Number, _ po
   return _gsNumberFromVoidPointer(_gsCProcedureGithubR_lyehLz4xEncode(nil, nil, 0, args))
 }
 
-func githubR_lyehLz4xDecode(_ pointer: Number, _ pointerBytesFirst: Number, _ pointerBytesCount: Number, _ outPointer: Number, _ outPointerBytesFirst: Number, _ outPointerBytesCount: Number) -> Number /* value */ {
+func githubR_lyehLz4xDecode(pointer: Number, pointerBytesFirst: Number, pointerBytesCount: Number, outPointer: Number, outPointerBytesFirst: Number, outPointerBytesCount: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4090,7 +4090,7 @@ func githubR_lyehLz4xDecode(_ pointer: Number, _ pointerBytesFirst: Number, _ po
   return _gsNumberFromVoidPointer(_gsCProcedureGithubR_lyehLz4xDecode(nil, nil, 0, args))
 }
 
-func githubR_lyehLz4xBoundsEncodeOutBytesCount(_ bytesCount: Number, _ flags: Number) -> Number /* value */ {
+func githubR_lyehLz4xBoundsEncodeOutBytesCount(bytesCount: Number, flags: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(bytesCount),
     _gsVoidPointerFromNumber(flags),
@@ -4098,7 +4098,7 @@ func githubR_lyehLz4xBoundsEncodeOutBytesCount(_ bytesCount: Number, _ flags: Nu
   return _gsNumberFromVoidPointer(_gsCProcedureGithubR_lyehLz4xBoundsEncodeOutBytesCount(nil, nil, 0, args))
 }
 
-func githubR_lyehUlzEncode(_ pointer: Number, _ pointerBytesFirst: Number, _ pointerBytesCount: Number, _ outPointer: Number, _ outPointerBytesFirst: Number, _ outPointerBytesCount: Number, _ flags: Number) -> Number /* value */ {
+func githubR_lyehUlzEncode(pointer: Number, pointerBytesFirst: Number, pointerBytesCount: Number, outPointer: Number, outPointerBytesFirst: Number, outPointerBytesCount: Number, flags: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4111,7 +4111,7 @@ func githubR_lyehUlzEncode(_ pointer: Number, _ pointerBytesFirst: Number, _ poi
   return _gsNumberFromVoidPointer(_gsCProcedureGithubR_lyehUlzEncode(nil, nil, 0, args))
 }
 
-func githubR_lyehUlzDecode(_ pointer: Number, _ pointerBytesFirst: Number, _ pointerBytesCount: Number, _ outPointer: Number, _ outPointerBytesFirst: Number, _ outPointerBytesCount: Number) -> Number /* value */ {
+func githubR_lyehUlzDecode(pointer: Number, pointerBytesFirst: Number, pointerBytesCount: Number, outPointer: Number, outPointerBytesFirst: Number, outPointerBytesCount: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4123,7 +4123,7 @@ func githubR_lyehUlzDecode(_ pointer: Number, _ pointerBytesFirst: Number, _ poi
   return _gsNumberFromVoidPointer(_gsCProcedureGithubR_lyehUlzDecode(nil, nil, 0, args))
 }
 
-func githubR_lyehUlzBoundsEncodeOutBytesCount(_ bytesCount: Number, _ flags: Number) -> Number /* value */ {
+func githubR_lyehUlzBoundsEncodeOutBytesCount(bytesCount: Number, flags: Number) -> Number /* value */ {
   let args = [
     _gsVoidPointerFromNumber(bytesCount),
     _gsVoidPointerFromNumber(flags),
@@ -4150,7 +4150,7 @@ func getGameScriptString() -> String /* script */ {
   return out
 }
 
-func setGameScriptStringForNextFrame(_ string: String) {
+func setGameScriptStringForNextFrame(string: String) {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -4159,7 +4159,7 @@ func setGameScriptStringForNextFrame(_ string: String) {
   _ = _gsCProcedureSetGameScriptStringForNextFrame(nil, nil, 0, args)
 }
 
-func setGameScriptStringForNextFrameFromPointer(_ pointer: Number, _ pointerBytesFirst: Number) {
+func setGameScriptStringForNextFrameFromPointer(pointer: Number, pointerBytesFirst: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4174,7 +4174,7 @@ func getThread2ScriptString() -> String /* script */ {
   return out
 }
 
-func setThread2ScriptStringForNextFrame(_ string: String) {
+func setThread2ScriptStringForNextFrame(string: String) {
   let _string = UnsafeRawPointer(_strdup(string)); defer { free(UnsafeMutableRawPointer(mutating: _string)) }
 
   let args = [
@@ -4183,7 +4183,7 @@ func setThread2ScriptStringForNextFrame(_ string: String) {
   _ = _gsCProcedureSetThread2ScriptStringForNextFrame(nil, nil, 0, args)
 }
 
-func setThread2ScriptStringForNextFrameFromPointer(_ pointer: Number, _ pointerBytesFirst: Number) {
+func setThread2ScriptStringForNextFrameFromPointer(pointer: Number, pointerBytesFirst: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4191,14 +4191,14 @@ func setThread2ScriptStringForNextFrameFromPointer(_ pointer: Number, _ pointerB
   _ = _gsCProcedureSetThread2ScriptStringForNextFrameFromPointer(nil, nil, 0, args)
 }
 
-func libGameScriptExternalProcedureReload(_ printErrors: Bool) {
+func libGameScriptExternalProcedureReload(printErrors: Bool) {
   let args = [
     _gsVoidPointerFromBool(printErrors),
   ]
   _ = _gsCProcedureLibGameScriptExternalProcedureReload(nil, nil, 0, args)
 }
 
-func libGameScriptExternalProcedureCall2(_ parameter1: Number, _ parameter2: Number) {
+func libGameScriptExternalProcedureCall2(parameter1: Number, parameter2: Number) {
   let args = [
     _gsVoidPointerFromNumber(parameter1),
     _gsVoidPointerFromNumber(parameter2),
@@ -4206,7 +4206,7 @@ func libGameScriptExternalProcedureCall2(_ parameter1: Number, _ parameter2: Num
   _ = _gsCProcedureLibGameScriptExternalProcedureCall2(nil, nil, 0, args)
 }
 
-func libGameScriptExternalProcedureCall3(_ parameter1: Number, _ parameter2: Number, _ parameter3: Number) {
+func libGameScriptExternalProcedureCall3(parameter1: Number, parameter2: Number, parameter3: Number) {
   let args = [
     _gsVoidPointerFromNumber(parameter1),
     _gsVoidPointerFromNumber(parameter2),
@@ -4219,7 +4219,7 @@ func programGetArgumentsCount() -> Number /* argumentsCount */ {
   return _gsNumberFromVoidPointer(_gsCProcedureProgramGetArgumentsCount(nil, nil, 0, nil))
 }
 
-func programGetArgument(_ index: Number) -> String /* argument */ {
+func programGetArgument(index: Number) -> String /* argument */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -4241,7 +4241,7 @@ func globalMeshesPersistentGetCount() -> Number /* count */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalMeshesPersistentGetCount(nil, nil, 0, nil))
 }
 
-func globalMeshesGetMeshLabelByMeshIndex(_ index: Number) -> String /* label */ {
+func globalMeshesGetMeshLabelByMeshIndex(index: Number) -> String /* label */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -4251,7 +4251,7 @@ func globalMeshesGetMeshLabelByMeshIndex(_ index: Number) -> String /* label */ 
   return out
 }
 
-func globalMeshesPersistentGetMeshLabelByMeshIndex(_ index: Number) -> String /* label */ {
+func globalMeshesPersistentGetMeshLabelByMeshIndex(index: Number) -> String /* label */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -4261,14 +4261,14 @@ func globalMeshesPersistentGetMeshLabelByMeshIndex(_ index: Number) -> String /*
   return out
 }
 
-func globalMeshesGetMeshHandleByMeshIndex(_ index: Number) -> Number /* handle */ {
+func globalMeshesGetMeshHandleByMeshIndex(index: Number) -> Number /* handle */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalMeshesGetMeshHandleByMeshIndex(nil, nil, 0, args))
 }
 
-func globalMeshesPersistentGetMeshHandleByMeshIndex(_ index: Number) -> Number /* handle */ {
+func globalMeshesPersistentGetMeshHandleByMeshIndex(index: Number) -> Number /* handle */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -4307,7 +4307,7 @@ func globalMeshesPersistentGetHaveIndicesChangedMeshIndexesCount() -> Number /* 
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalMeshesPersistentGetHaveIndicesChangedMeshIndexesCount(nil, nil, 0, nil))
 }
 
-func globalMeshesGetHaveVerticesChangedMeshIndexes(_ count: Number) -> NumberArray /* indexes [] */ {
+func globalMeshesGetHaveVerticesChangedMeshIndexes(count: Number) -> NumberArray /* indexes [] */ {
   let args = [
     _gsVoidPointerFromNumber(count),
   ]
@@ -4322,7 +4322,7 @@ func globalMeshesGetHaveVerticesChangedMeshIndexes(_ count: Number) -> NumberArr
   return out
 }
 
-func globalMeshesGetHaveColorsChangedMeshIndexes(_ count: Number) -> NumberArray /* indexes [] */ {
+func globalMeshesGetHaveColorsChangedMeshIndexes(count: Number) -> NumberArray /* indexes [] */ {
   let args = [
     _gsVoidPointerFromNumber(count),
   ]
@@ -4337,7 +4337,7 @@ func globalMeshesGetHaveColorsChangedMeshIndexes(_ count: Number) -> NumberArray
   return out
 }
 
-func globalMeshesGetHaveTexCoordsChangedMeshIndexes(_ count: Number) -> NumberArray /* indexes [] */ {
+func globalMeshesGetHaveTexCoordsChangedMeshIndexes(count: Number) -> NumberArray /* indexes [] */ {
   let args = [
     _gsVoidPointerFromNumber(count),
   ]
@@ -4352,7 +4352,7 @@ func globalMeshesGetHaveTexCoordsChangedMeshIndexes(_ count: Number) -> NumberAr
   return out
 }
 
-func globalMeshesGetHaveIndicesChangedMeshIndexes(_ count: Number) -> NumberArray /* indexes [] */ {
+func globalMeshesGetHaveIndicesChangedMeshIndexes(count: Number) -> NumberArray /* indexes [] */ {
   let args = [
     _gsVoidPointerFromNumber(count),
   ]
@@ -4367,7 +4367,7 @@ func globalMeshesGetHaveIndicesChangedMeshIndexes(_ count: Number) -> NumberArra
   return out
 }
 
-func globalMeshesPersistentGetHaveVerticesChangedMeshIndexes(_ count: Number) -> NumberArray /* indexes [] */ {
+func globalMeshesPersistentGetHaveVerticesChangedMeshIndexes(count: Number) -> NumberArray /* indexes [] */ {
   let args = [
     _gsVoidPointerFromNumber(count),
   ]
@@ -4382,7 +4382,7 @@ func globalMeshesPersistentGetHaveVerticesChangedMeshIndexes(_ count: Number) ->
   return out
 }
 
-func globalMeshesPersistentGetHaveColorsChangedMeshIndexes(_ count: Number) -> NumberArray /* indexes [] */ {
+func globalMeshesPersistentGetHaveColorsChangedMeshIndexes(count: Number) -> NumberArray /* indexes [] */ {
   let args = [
     _gsVoidPointerFromNumber(count),
   ]
@@ -4397,7 +4397,7 @@ func globalMeshesPersistentGetHaveColorsChangedMeshIndexes(_ count: Number) -> N
   return out
 }
 
-func globalMeshesPersistentGetHaveTexCoordsChangedMeshIndexes(_ count: Number) -> NumberArray /* indexes [] */ {
+func globalMeshesPersistentGetHaveTexCoordsChangedMeshIndexes(count: Number) -> NumberArray /* indexes [] */ {
   let args = [
     _gsVoidPointerFromNumber(count),
   ]
@@ -4412,7 +4412,7 @@ func globalMeshesPersistentGetHaveTexCoordsChangedMeshIndexes(_ count: Number) -
   return out
 }
 
-func globalMeshesPersistentGetHaveIndicesChangedMeshIndexes(_ count: Number) -> NumberArray /* indexes [] */ {
+func globalMeshesPersistentGetHaveIndicesChangedMeshIndexes(count: Number) -> NumberArray /* indexes [] */ {
   let args = [
     _gsVoidPointerFromNumber(count),
   ]
@@ -4431,7 +4431,7 @@ func globalKeyPropertyGetKeyLabelsCount() -> Number /* count */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalKeyPropertyGetKeyLabelsCount(nil, nil, 0, nil))
 }
 
-func globalKeyPropertyIsKeyLabelExists(_ key: String) -> Bool /* exists */ {
+func globalKeyPropertyIsKeyLabelExists(key: String) -> Bool /* exists */ {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
 
   let args = [
@@ -4440,7 +4440,7 @@ func globalKeyPropertyIsKeyLabelExists(_ key: String) -> Bool /* exists */ {
   return _gsBoolFromVoidPointer(_gsCProcedureGlobalKeyPropertyIsKeyLabelExists(nil, nil, 0, args))
 }
 
-func globalKeyPropertyGetKeyLabelByKeyIndex(_ index: Number) -> String /* label */ {
+func globalKeyPropertyGetKeyLabelByKeyIndex(index: Number) -> String /* label */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -4450,7 +4450,7 @@ func globalKeyPropertyGetKeyLabelByKeyIndex(_ index: Number) -> String /* label 
   return out
 }
 
-func globalKeyPropertyGetKeyPropertyLabelsCount(_ key: String) -> Number /* count */ {
+func globalKeyPropertyGetKeyPropertyLabelsCount(key: String) -> Number /* count */ {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
 
   let args = [
@@ -4459,7 +4459,7 @@ func globalKeyPropertyGetKeyPropertyLabelsCount(_ key: String) -> Number /* coun
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalKeyPropertyGetKeyPropertyLabelsCount(nil, nil, 0, args))
 }
 
-func globalKeyPropertyIsKeyPropertyLabelExists(_ key: String, _ property: String) -> Bool /* exists */ {
+func globalKeyPropertyIsKeyPropertyLabelExists(key: String, property: String) -> Bool /* exists */ {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
@@ -4470,7 +4470,7 @@ func globalKeyPropertyIsKeyPropertyLabelExists(_ key: String, _ property: String
   return _gsBoolFromVoidPointer(_gsCProcedureGlobalKeyPropertyIsKeyPropertyLabelExists(nil, nil, 0, args))
 }
 
-func globalKeyPropertyGetKeyPropertyLabelByPropertyIndex(_ key: String, _ index: Number) -> String /* label */ {
+func globalKeyPropertyGetKeyPropertyLabelByPropertyIndex(key: String, index: Number) -> String /* label */ {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
 
   let args = [
@@ -4483,7 +4483,7 @@ func globalKeyPropertyGetKeyPropertyLabelByPropertyIndex(_ key: String, _ index:
   return out
 }
 
-func globalKeyPropertyRemoveKey(_ key: String) {
+func globalKeyPropertyRemoveKey(key: String) {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
 
   let args = [
@@ -4496,7 +4496,7 @@ func globalKeyPropertyRemoveAllKeys() {
   _ = _gsCProcedureGlobalKeyPropertyRemoveAllKeys(nil, nil, 0, nil)
 }
 
-func globalKeyPropertyRemoveProperty(_ key: String, _ property: String) {
+func globalKeyPropertyRemoveProperty(key: String, property: String) {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
@@ -4507,7 +4507,7 @@ func globalKeyPropertyRemoveProperty(_ key: String, _ property: String) {
   _ = _gsCProcedureGlobalKeyPropertyRemoveProperty(nil, nil, 0, args)
 }
 
-func globalKeyPropertyRemoveAllProperties(_ key: String) {
+func globalKeyPropertyRemoveAllProperties(key: String) {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
 
   let args = [
@@ -4516,7 +4516,7 @@ func globalKeyPropertyRemoveAllProperties(_ key: String) {
   _ = _gsCProcedureGlobalKeyPropertyRemoveAllProperties(nil, nil, 0, args)
 }
 
-func globalKeyPropertySetString(_ key: String, _ property: String, _ value: String) {
+func globalKeyPropertySetString(key: String, property: String, value: String) {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
   let _value = UnsafeRawPointer(_strdup(value)); defer { free(UnsafeMutableRawPointer(mutating: _value)) }
@@ -4529,7 +4529,7 @@ func globalKeyPropertySetString(_ key: String, _ property: String, _ value: Stri
   _ = _gsCProcedureGlobalKeyPropertySetString(nil, nil, 0, args)
 }
 
-func globalKeyPropertySetNumber(_ key: String, _ property: String, _ value: Number) {
+func globalKeyPropertySetNumber(key: String, property: String, value: Number) {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
@@ -4541,7 +4541,7 @@ func globalKeyPropertySetNumber(_ key: String, _ property: String, _ value: Numb
   _ = _gsCProcedureGlobalKeyPropertySetNumber(nil, nil, 0, args)
 }
 
-func globalKeyPropertySetBool(_ key: String, _ property: String, _ value: Bool) {
+func globalKeyPropertySetBool(key: String, property: String, value: Bool) {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
@@ -4553,7 +4553,7 @@ func globalKeyPropertySetBool(_ key: String, _ property: String, _ value: Bool) 
   _ = _gsCProcedureGlobalKeyPropertySetBool(nil, nil, 0, args)
 }
 
-func globalKeyPropertyGetString(_ key: String, _ property: String) -> String /* value */ {
+func globalKeyPropertyGetString(key: String, property: String) -> String /* value */ {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
@@ -4567,7 +4567,7 @@ func globalKeyPropertyGetString(_ key: String, _ property: String) -> String /* 
   return out
 }
 
-func globalKeyPropertyGetNumber(_ key: String, _ property: String) -> Number /* value */ {
+func globalKeyPropertyGetNumber(key: String, property: String) -> Number /* value */ {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
@@ -4578,7 +4578,7 @@ func globalKeyPropertyGetNumber(_ key: String, _ property: String) -> Number /* 
   return _gsNumberFromVoidPointer(_gsCProcedureGlobalKeyPropertyGetNumber(nil, nil, 0, args))
 }
 
-func globalKeyPropertyGetBool(_ key: String, _ property: String) -> Bool /* value */ {
+func globalKeyPropertyGetBool(key: String, property: String) -> Bool /* value */ {
   let _key = UnsafeRawPointer(_strdup(key)); defer { free(UnsafeMutableRawPointer(mutating: _key)) }
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
@@ -4593,14 +4593,14 @@ func getCurrentFrameThread2() -> Number /* frameOfThread2 */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetCurrentFrameThread2(nil, nil, 0, nil))
 }
 
-func setCurrentFrameThread2(_ frameOfThread2: Number) {
+func setCurrentFrameThread2(frameOfThread2: Number) {
   let args = [
     _gsVoidPointerFromNumber(frameOfThread2),
   ]
   _ = _gsCProcedureSetCurrentFrameThread2(nil, nil, 0, args)
 }
 
-func threadWaitForThread1FrameToFinish(_ thread1Frame: Number) -> Bool /* trueIfFinishedFalseIfAborted */ {
+func threadWaitForThread1FrameToFinish(thread1Frame: Number) -> Bool /* trueIfFinishedFalseIfAborted */ {
   let args = [
     _gsVoidPointerFromNumber(thread1Frame),
   ]
@@ -4611,7 +4611,7 @@ func ertAffineSpace3fGetSizeOfInBytes() -> Number /* sizeOfInBytes */ {
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetSizeOfInBytes(nil, nil, 0, nil))
 }
 
-func ertAffineSpace3fSetDefaultInitialize(_ outPointer: Number, _ outPointerBytesFirst: Number) {
+func ertAffineSpace3fSetDefaultInitialize(outPointer: Number, outPointerBytesFirst: Number) {
   let args = [
     _gsVoidPointerFromNumber(outPointer),
     _gsVoidPointerFromNumber(outPointerBytesFirst),
@@ -4619,7 +4619,7 @@ func ertAffineSpace3fSetDefaultInitialize(_ outPointer: Number, _ outPointerByte
   _ = _gsCProcedureErtAffineSpace3fSetDefaultInitialize(nil, nil, 0, args)
 }
 
-func ertAffineSpace3fSetInitialize(_ outPointer: Number, _ outPointerBytesFirst: Number, _ v0: Number, _ v1: Number, _ v2: Number, _ v3: Number, _ v4: Number, _ v5: Number, _ v6: Number, _ v7: Number, _ v8: Number, _ v9: Number, _ v10: Number, _ v11: Number) {
+func ertAffineSpace3fSetInitialize(outPointer: Number, outPointerBytesFirst: Number, v0: Number, v1: Number, v2: Number, v3: Number, v4: Number, v5: Number, v6: Number, v7: Number, v8: Number, v9: Number, v10: Number, v11: Number) {
   let args = [
     _gsVoidPointerFromNumber(outPointer),
     _gsVoidPointerFromNumber(outPointerBytesFirst),
@@ -4639,7 +4639,7 @@ func ertAffineSpace3fSetInitialize(_ outPointer: Number, _ outPointerBytesFirst:
   _ = _gsCProcedureErtAffineSpace3fSetInitialize(nil, nil, 0, args)
 }
 
-func ertAffineSpace3fSetLookAtPoint(_ outPointer: Number, _ outPointerBytesFirst: Number, _ posX: Number, _ posY: Number, _ posZ: Number, _ targetX: Number, _ targetY: Number, _ targetZ: Number, _ upX: Number, _ upY: Number, _ upZ: Number) {
+func ertAffineSpace3fSetLookAtPoint(outPointer: Number, outPointerBytesFirst: Number, posX: Number, posY: Number, posZ: Number, targetX: Number, targetY: Number, targetZ: Number, upX: Number, upY: Number, upZ: Number) {
   let args = [
     _gsVoidPointerFromNumber(outPointer),
     _gsVoidPointerFromNumber(outPointerBytesFirst),
@@ -4656,7 +4656,7 @@ func ertAffineSpace3fSetLookAtPoint(_ outPointer: Number, _ outPointerBytesFirst
   _ = _gsCProcedureErtAffineSpace3fSetLookAtPoint(nil, nil, 0, args)
 }
 
-func ertAffineSpace3fScale(_ outPointer: Number, _ outPointerBytesFirst: Number, _ scaleX: Number, _ scaleY: Number, _ scaleZ: Number) {
+func ertAffineSpace3fScale(outPointer: Number, outPointerBytesFirst: Number, scaleX: Number, scaleY: Number, scaleZ: Number) {
   let args = [
     _gsVoidPointerFromNumber(outPointer),
     _gsVoidPointerFromNumber(outPointerBytesFirst),
@@ -4667,7 +4667,7 @@ func ertAffineSpace3fScale(_ outPointer: Number, _ outPointerBytesFirst: Number,
   _ = _gsCProcedureErtAffineSpace3fScale(nil, nil, 0, args)
 }
 
-func ertAffineSpace3fTranslate(_ outPointer: Number, _ outPointerBytesFirst: Number, _ translateX: Number, _ translateY: Number, _ translateZ: Number) {
+func ertAffineSpace3fTranslate(outPointer: Number, outPointerBytesFirst: Number, translateX: Number, translateY: Number, translateZ: Number) {
   let args = [
     _gsVoidPointerFromNumber(outPointer),
     _gsVoidPointerFromNumber(outPointerBytesFirst),
@@ -4678,7 +4678,7 @@ func ertAffineSpace3fTranslate(_ outPointer: Number, _ outPointerBytesFirst: Num
   _ = _gsCProcedureErtAffineSpace3fTranslate(nil, nil, 0, args)
 }
 
-func ertAffineSpace3fRotate(_ outPointer: Number, _ outPointerBytesFirst: Number, _ rotatePosX: Number, _ rotatePosY: Number, _ rotatePosZ: Number, _ rotateAxisX: Number, _ rotateAxisY: Number, _ rotateAxisZ: Number, _ rotateAngle: Number) {
+func ertAffineSpace3fRotate(outPointer: Number, outPointerBytesFirst: Number, rotatePosX: Number, rotatePosY: Number, rotatePosZ: Number, rotateAxisX: Number, rotateAxisY: Number, rotateAxisZ: Number, rotateAngle: Number) {
   let args = [
     _gsVoidPointerFromNumber(outPointer),
     _gsVoidPointerFromNumber(outPointerBytesFirst),
@@ -4693,7 +4693,7 @@ func ertAffineSpace3fRotate(_ outPointer: Number, _ outPointerBytesFirst: Number
   _ = _gsCProcedureErtAffineSpace3fRotate(nil, nil, 0, args)
 }
 
-func ertAffineSpace3fGetLVXX(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* l_vx_x */ {
+func ertAffineSpace3fGetLVXX(pointer: Number, pointerBytesFirst: Number) -> Number /* l_vx_x */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4701,7 +4701,7 @@ func ertAffineSpace3fGetLVXX(_ pointer: Number, _ pointerBytesFirst: Number) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetLVXX(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fGetLVXY(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* l_vx_y */ {
+func ertAffineSpace3fGetLVXY(pointer: Number, pointerBytesFirst: Number) -> Number /* l_vx_y */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4709,7 +4709,7 @@ func ertAffineSpace3fGetLVXY(_ pointer: Number, _ pointerBytesFirst: Number) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetLVXY(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fGetLVXZ(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* l_vx_z */ {
+func ertAffineSpace3fGetLVXZ(pointer: Number, pointerBytesFirst: Number) -> Number /* l_vx_z */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4717,7 +4717,7 @@ func ertAffineSpace3fGetLVXZ(_ pointer: Number, _ pointerBytesFirst: Number) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetLVXZ(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fGetLVYX(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* l_vy_x */ {
+func ertAffineSpace3fGetLVYX(pointer: Number, pointerBytesFirst: Number) -> Number /* l_vy_x */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4725,7 +4725,7 @@ func ertAffineSpace3fGetLVYX(_ pointer: Number, _ pointerBytesFirst: Number) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetLVYX(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fGetLVYY(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* l_vy_y */ {
+func ertAffineSpace3fGetLVYY(pointer: Number, pointerBytesFirst: Number) -> Number /* l_vy_y */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4733,7 +4733,7 @@ func ertAffineSpace3fGetLVYY(_ pointer: Number, _ pointerBytesFirst: Number) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetLVYY(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fGetLVYZ(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* l_vy_z */ {
+func ertAffineSpace3fGetLVYZ(pointer: Number, pointerBytesFirst: Number) -> Number /* l_vy_z */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4741,7 +4741,7 @@ func ertAffineSpace3fGetLVYZ(_ pointer: Number, _ pointerBytesFirst: Number) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetLVYZ(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fGetLVZX(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* l_vz_x */ {
+func ertAffineSpace3fGetLVZX(pointer: Number, pointerBytesFirst: Number) -> Number /* l_vz_x */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4749,7 +4749,7 @@ func ertAffineSpace3fGetLVZX(_ pointer: Number, _ pointerBytesFirst: Number) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetLVZX(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fGetLVZY(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* l_vz_y */ {
+func ertAffineSpace3fGetLVZY(pointer: Number, pointerBytesFirst: Number) -> Number /* l_vz_y */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4757,7 +4757,7 @@ func ertAffineSpace3fGetLVZY(_ pointer: Number, _ pointerBytesFirst: Number) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetLVZY(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fGetLVZZ(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* l_vz_z */ {
+func ertAffineSpace3fGetLVZZ(pointer: Number, pointerBytesFirst: Number) -> Number /* l_vz_z */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4765,7 +4765,7 @@ func ertAffineSpace3fGetLVZZ(_ pointer: Number, _ pointerBytesFirst: Number) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetLVZZ(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fGetPX(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* p_x */ {
+func ertAffineSpace3fGetPX(pointer: Number, pointerBytesFirst: Number) -> Number /* p_x */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4773,7 +4773,7 @@ func ertAffineSpace3fGetPX(_ pointer: Number, _ pointerBytesFirst: Number) -> Nu
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetPX(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fGetPY(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* p_y */ {
+func ertAffineSpace3fGetPY(pointer: Number, pointerBytesFirst: Number) -> Number /* p_y */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4781,7 +4781,7 @@ func ertAffineSpace3fGetPY(_ pointer: Number, _ pointerBytesFirst: Number) -> Nu
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetPY(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fGetPZ(_ pointer: Number, _ pointerBytesFirst: Number) -> Number /* p_z */ {
+func ertAffineSpace3fGetPZ(pointer: Number, pointerBytesFirst: Number) -> Number /* p_z */ {
   let args = [
     _gsVoidPointerFromNumber(pointer),
     _gsVoidPointerFromNumber(pointerBytesFirst),
@@ -4789,7 +4789,7 @@ func ertAffineSpace3fGetPZ(_ pointer: Number, _ pointerBytesFirst: Number) -> Nu
   return _gsNumberFromVoidPointer(_gsCProcedureErtAffineSpace3fGetPZ(nil, nil, 0, args))
 }
 
-func ertAffineSpace3fCopyFromArray(_ in12FloatsPointer: Number, _ in12FloatsPointerBytesFirst: Number, _ outAffineSpace3fPointer: Number, _ outAffineSpace3fPointerBytesFirst: Number) {
+func ertAffineSpace3fCopyFromArray(in12FloatsPointer: Number, in12FloatsPointerBytesFirst: Number, outAffineSpace3fPointer: Number, outAffineSpace3fPointerBytesFirst: Number) {
   let args = [
     _gsVoidPointerFromNumber(in12FloatsPointer),
     _gsVoidPointerFromNumber(in12FloatsPointerBytesFirst),
@@ -4799,7 +4799,7 @@ func ertAffineSpace3fCopyFromArray(_ in12FloatsPointer: Number, _ in12FloatsPoin
   _ = _gsCProcedureErtAffineSpace3fCopyFromArray(nil, nil, 0, args)
 }
 
-func ertAffineSpace3fCopyToArray(_ inAffineSpace3fPointer: Number, _ inAffineSpace3fPointerBytesFirst: Number, _ out12FloatsPointer: Number, _ out12FloatsPointerBytesFirst: Number) {
+func ertAffineSpace3fCopyToArray(inAffineSpace3fPointer: Number, inAffineSpace3fPointerBytesFirst: Number, out12FloatsPointer: Number, out12FloatsPointerBytesFirst: Number) {
   let args = [
     _gsVoidPointerFromNumber(inAffineSpace3fPointer),
     _gsVoidPointerFromNumber(inAffineSpace3fPointerBytesFirst),
@@ -4809,7 +4809,7 @@ func ertAffineSpace3fCopyToArray(_ inAffineSpace3fPointer: Number, _ inAffineSpa
   _ = _gsCProcedureErtAffineSpace3fCopyToArray(nil, nil, 0, args)
 }
 
-func ertCreateDevice(_ typeDefaultIsdefault: String, _ numThreadsDefaultIs0: Number) -> Number /* deviceHandle */ {
+func ertCreateDevice(typeDefaultIsdefault: String, numThreadsDefaultIs0: Number) -> Number /* deviceHandle */ {
   let _typeDefaultIsdefault = UnsafeRawPointer(_strdup(typeDefaultIsdefault)); defer { free(UnsafeMutableRawPointer(mutating: _typeDefaultIsdefault)) }
 
   let args = [
@@ -4819,14 +4819,14 @@ func ertCreateDevice(_ typeDefaultIsdefault: String, _ numThreadsDefaultIs0: Num
   return _gsNumberFromVoidPointer(_gsCProcedureErtCreateDevice(nil, nil, 0, args))
 }
 
-func ertDestroyDevice(_ deviceHandle: Number) {
+func ertDestroyDevice(deviceHandle: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
   ]
   _ = _gsCProcedureErtDestroyDevice(nil, nil, 0, args)
 }
 
-func ertNewCamera(_ deviceHandle: Number, _ type: String) -> Number /* cameraHandle */ {
+func ertNewCamera(deviceHandle: Number, type: String) -> Number /* cameraHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
   let args = [
@@ -4836,7 +4836,7 @@ func ertNewCamera(_ deviceHandle: Number, _ type: String) -> Number /* cameraHan
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewCamera(nil, nil, 0, args))
 }
 
-func ertNewData(_ deviceHandle: Number, _ type: String, _ bytes: Number, _ dataPointer: Number, _ dataPointerBytesFirst: Number) -> Number /* dataHandle */ {
+func ertNewData(deviceHandle: Number, type: String, bytes: Number, dataPointer: Number, dataPointerBytesFirst: Number) -> Number /* dataHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
   let args = [
@@ -4849,7 +4849,7 @@ func ertNewData(_ deviceHandle: Number, _ type: String, _ bytes: Number, _ dataP
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewData(nil, nil, 0, args))
 }
 
-func ertNewDataFromFile(_ deviceHandle: Number, _ type: String, _ file: String, _ offset: Number, _ bytes: Number) -> Number /* dataHandle */ {
+func ertNewDataFromFile(deviceHandle: Number, type: String, file: String, offset: Number, bytes: Number) -> Number /* dataHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
   let _file = UnsafeRawPointer(_strdup(file)); defer { free(UnsafeMutableRawPointer(mutating: _file)) }
 
@@ -4863,7 +4863,7 @@ func ertNewDataFromFile(_ deviceHandle: Number, _ type: String, _ file: String, 
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewDataFromFile(nil, nil, 0, args))
 }
 
-func ertNewImage(_ deviceHandle: Number, _ type: String, _ width: Number, _ height: Number, _ dataPointer: Number, _ dataPointerBytesFirst: Number) -> Number /* imageHandle */ {
+func ertNewImage(deviceHandle: Number, type: String, width: Number, height: Number, dataPointer: Number, dataPointerBytesFirst: Number) -> Number /* imageHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
   let args = [
@@ -4877,7 +4877,7 @@ func ertNewImage(_ deviceHandle: Number, _ type: String, _ width: Number, _ heig
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewImage(nil, nil, 0, args))
 }
 
-func ertNewImageFromFile(_ deviceHandle: Number, _ file: String) -> Number /* imageHandle */ {
+func ertNewImageFromFile(deviceHandle: Number, file: String) -> Number /* imageHandle */ {
   let _file = UnsafeRawPointer(_strdup(file)); defer { free(UnsafeMutableRawPointer(mutating: _file)) }
 
   let args = [
@@ -4887,7 +4887,7 @@ func ertNewImageFromFile(_ deviceHandle: Number, _ file: String) -> Number /* im
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewImageFromFile(nil, nil, 0, args))
 }
 
-func ertNewTexture(_ deviceHandle: Number, _ type: String) -> Number /* textureHandle */ {
+func ertNewTexture(deviceHandle: Number, type: String) -> Number /* textureHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
   let args = [
@@ -4897,7 +4897,7 @@ func ertNewTexture(_ deviceHandle: Number, _ type: String) -> Number /* textureH
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewTexture(nil, nil, 0, args))
 }
 
-func ertNewMaterial(_ deviceHandle: Number, _ type: String) -> Number /* materialHandle */ {
+func ertNewMaterial(deviceHandle: Number, type: String) -> Number /* materialHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
   let args = [
@@ -4907,7 +4907,7 @@ func ertNewMaterial(_ deviceHandle: Number, _ type: String) -> Number /* materia
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewMaterial(nil, nil, 0, args))
 }
 
-func ertNewShape(_ deviceHandle: Number, _ type: String) -> Number /* shapeHandle */ {
+func ertNewShape(deviceHandle: Number, type: String) -> Number /* shapeHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
   let args = [
@@ -4917,7 +4917,7 @@ func ertNewShape(_ deviceHandle: Number, _ type: String) -> Number /* shapeHandl
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewShape(nil, nil, 0, args))
 }
 
-func ertNewLight(_ deviceHandle: Number, _ type: String) -> Number /* lightHandle */ {
+func ertNewLight(deviceHandle: Number, type: String) -> Number /* lightHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
   let args = [
@@ -4927,7 +4927,7 @@ func ertNewLight(_ deviceHandle: Number, _ type: String) -> Number /* lightHandl
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewLight(nil, nil, 0, args))
 }
 
-func ertNewShapePrimitive(_ deviceHandle: Number, _ shapeHandle: Number, _ materialHandle: Number, _ transformPointer: Number, _ transformPointerBytesFirst: Number) -> Number /* primitiveHandle */ {
+func ertNewShapePrimitive(deviceHandle: Number, shapeHandle: Number, materialHandle: Number, transformPointer: Number, transformPointerBytesFirst: Number) -> Number /* primitiveHandle */ {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(shapeHandle),
@@ -4938,7 +4938,7 @@ func ertNewShapePrimitive(_ deviceHandle: Number, _ shapeHandle: Number, _ mater
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewShapePrimitive(nil, nil, 0, args))
 }
 
-func ertNewLightPrimitive(_ deviceHandle: Number, _ lightHandle: Number, _ transformPointer: Number, _ transformPointerBytesFirst: Number) -> Number /* primitiveHandle */ {
+func ertNewLightPrimitive(deviceHandle: Number, lightHandle: Number, transformPointer: Number, transformPointerBytesFirst: Number) -> Number /* primitiveHandle */ {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(lightHandle),
@@ -4948,7 +4948,7 @@ func ertNewLightPrimitive(_ deviceHandle: Number, _ lightHandle: Number, _ trans
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewLightPrimitive(nil, nil, 0, args))
 }
 
-func ertTransformPrimitive(_ deviceHandle: Number, _ primitiveHandle: Number, _ transformPointer: Number, _ transformPointerBytesFirst: Number) -> Number /* primitiveHandle */ {
+func ertTransformPrimitive(deviceHandle: Number, primitiveHandle: Number, transformPointer: Number, transformPointerBytesFirst: Number) -> Number /* primitiveHandle */ {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(primitiveHandle),
@@ -4958,7 +4958,7 @@ func ertTransformPrimitive(_ deviceHandle: Number, _ primitiveHandle: Number, _ 
   return _gsNumberFromVoidPointer(_gsCProcedureErtTransformPrimitive(nil, nil, 0, args))
 }
 
-func ertNewScene(_ deviceHandle: Number, _ type: String, _ primitiveHandlesPointer: Number, _ primitiveHandlesPointerBytesFirst: Number, _ size: Number) -> Number /* sceneHandle */ {
+func ertNewScene(deviceHandle: Number, type: String, primitiveHandlesPointer: Number, primitiveHandlesPointerBytesFirst: Number, size: Number) -> Number /* sceneHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
   let args = [
@@ -4971,7 +4971,7 @@ func ertNewScene(_ deviceHandle: Number, _ type: String, _ primitiveHandlesPoint
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewScene(nil, nil, 0, args))
 }
 
-func ertNewToneMapper(_ deviceHandle: Number, _ type: String) -> Number /* toneMapperHandle */ {
+func ertNewToneMapper(deviceHandle: Number, type: String) -> Number /* toneMapperHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
   let args = [
@@ -4981,7 +4981,7 @@ func ertNewToneMapper(_ deviceHandle: Number, _ type: String) -> Number /* toneM
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewToneMapper(nil, nil, 0, args))
 }
 
-func ertNewRenderer(_ deviceHandle: Number, _ type: String) -> Number /* rendererHandle */ {
+func ertNewRenderer(deviceHandle: Number, type: String) -> Number /* rendererHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
   let args = [
@@ -4991,7 +4991,7 @@ func ertNewRenderer(_ deviceHandle: Number, _ type: String) -> Number /* rendere
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewRenderer(nil, nil, 0, args))
 }
 
-func ertNewFrameBuffer(_ deviceHandle: Number, _ type: String, _ width: Number, _ height: Number, _ buffersDefaultIs1: Number) -> Number /* frameBufferHandle */ {
+func ertNewFrameBuffer(deviceHandle: Number, type: String, width: Number, height: Number, buffersDefaultIs1: Number) -> Number /* frameBufferHandle */ {
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
   let args = [
@@ -5004,7 +5004,7 @@ func ertNewFrameBuffer(_ deviceHandle: Number, _ type: String, _ width: Number, 
   return _gsNumberFromVoidPointer(_gsCProcedureErtNewFrameBuffer(nil, nil, 0, args))
 }
 
-func ertGetFrameBufferWidth(_ deviceHandle: Number, _ frameBufferHandle: Number) -> Number /* width */ {
+func ertGetFrameBufferWidth(deviceHandle: Number, frameBufferHandle: Number) -> Number /* width */ {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(frameBufferHandle),
@@ -5012,7 +5012,7 @@ func ertGetFrameBufferWidth(_ deviceHandle: Number, _ frameBufferHandle: Number)
   return _gsNumberFromVoidPointer(_gsCProcedureErtGetFrameBufferWidth(nil, nil, 0, args))
 }
 
-func ertGetFrameBufferHeight(_ deviceHandle: Number, _ frameBufferHandle: Number) -> Number /* height */ {
+func ertGetFrameBufferHeight(deviceHandle: Number, frameBufferHandle: Number) -> Number /* height */ {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(frameBufferHandle),
@@ -5020,7 +5020,7 @@ func ertGetFrameBufferHeight(_ deviceHandle: Number, _ frameBufferHandle: Number
   return _gsNumberFromVoidPointer(_gsCProcedureErtGetFrameBufferHeight(nil, nil, 0, args))
 }
 
-func ertMapFrameBuffer(_ deviceHandle: Number, _ frameBufferHandle: Number) -> Number /* pointer */ {
+func ertMapFrameBuffer(deviceHandle: Number, frameBufferHandle: Number) -> Number /* pointer */ {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(frameBufferHandle),
@@ -5028,7 +5028,7 @@ func ertMapFrameBuffer(_ deviceHandle: Number, _ frameBufferHandle: Number) -> N
   return _gsNumberFromVoidPointer(_gsCProcedureErtMapFrameBuffer(nil, nil, 0, args))
 }
 
-func ertUnmapFrameBuffer(_ deviceHandle: Number, _ frameBufferHandle: Number) {
+func ertUnmapFrameBuffer(deviceHandle: Number, frameBufferHandle: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(frameBufferHandle),
@@ -5036,7 +5036,7 @@ func ertUnmapFrameBuffer(_ deviceHandle: Number, _ frameBufferHandle: Number) {
   _ = _gsCProcedureErtUnmapFrameBuffer(nil, nil, 0, args)
 }
 
-func ertSwapBuffers(_ deviceHandle: Number, _ frameBufferHandle: Number) {
+func ertSwapBuffers(deviceHandle: Number, frameBufferHandle: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(frameBufferHandle),
@@ -5044,7 +5044,7 @@ func ertSwapBuffers(_ deviceHandle: Number, _ frameBufferHandle: Number) {
   _ = _gsCProcedureErtSwapBuffers(nil, nil, 0, args)
 }
 
-func ertIncRef(_ deviceHandle: Number, _ handle: Number) {
+func ertIncRef(deviceHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(handle),
@@ -5052,7 +5052,7 @@ func ertIncRef(_ deviceHandle: Number, _ handle: Number) {
   _ = _gsCProcedureErtIncRef(nil, nil, 0, args)
 }
 
-func ertDecRef(_ deviceHandle: Number, _ handle: Number) {
+func ertDecRef(deviceHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(handle),
@@ -5060,7 +5060,7 @@ func ertDecRef(_ deviceHandle: Number, _ handle: Number) {
   _ = _gsCProcedureErtDecRef(nil, nil, 0, args)
 }
 
-func ertSetBool1(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Bool) {
+func ertSetBool1(deviceHandle: Number, handle: Number, property: String, x: Bool) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5072,7 +5072,7 @@ func ertSetBool1(_ deviceHandle: Number, _ handle: Number, _ property: String, _
   _ = _gsCProcedureErtSetBool1(nil, nil, 0, args)
 }
 
-func ertSetBool2(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Bool, _ y: Bool) {
+func ertSetBool2(deviceHandle: Number, handle: Number, property: String, x: Bool, y: Bool) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5085,7 +5085,7 @@ func ertSetBool2(_ deviceHandle: Number, _ handle: Number, _ property: String, _
   _ = _gsCProcedureErtSetBool2(nil, nil, 0, args)
 }
 
-func ertSetBool3(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Bool, _ y: Bool, _ z: Bool) {
+func ertSetBool3(deviceHandle: Number, handle: Number, property: String, x: Bool, y: Bool, z: Bool) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5099,7 +5099,7 @@ func ertSetBool3(_ deviceHandle: Number, _ handle: Number, _ property: String, _
   _ = _gsCProcedureErtSetBool3(nil, nil, 0, args)
 }
 
-func ertSetBool4(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Bool, _ y: Bool, _ z: Bool, _ w: Bool) {
+func ertSetBool4(deviceHandle: Number, handle: Number, property: String, x: Bool, y: Bool, z: Bool, w: Bool) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5114,7 +5114,7 @@ func ertSetBool4(_ deviceHandle: Number, _ handle: Number, _ property: String, _
   _ = _gsCProcedureErtSetBool4(nil, nil, 0, args)
 }
 
-func ertSetInt1(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Number) {
+func ertSetInt1(deviceHandle: Number, handle: Number, property: String, x: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5126,7 +5126,7 @@ func ertSetInt1(_ deviceHandle: Number, _ handle: Number, _ property: String, _ 
   _ = _gsCProcedureErtSetInt1(nil, nil, 0, args)
 }
 
-func ertSetInt2(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Number, _ y: Number) {
+func ertSetInt2(deviceHandle: Number, handle: Number, property: String, x: Number, y: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5139,7 +5139,7 @@ func ertSetInt2(_ deviceHandle: Number, _ handle: Number, _ property: String, _ 
   _ = _gsCProcedureErtSetInt2(nil, nil, 0, args)
 }
 
-func ertSetInt3(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Number, _ y: Number, _ z: Number) {
+func ertSetInt3(deviceHandle: Number, handle: Number, property: String, x: Number, y: Number, z: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5153,7 +5153,7 @@ func ertSetInt3(_ deviceHandle: Number, _ handle: Number, _ property: String, _ 
   _ = _gsCProcedureErtSetInt3(nil, nil, 0, args)
 }
 
-func ertSetInt4(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Number, _ y: Number, _ z: Number, _ w: Number) {
+func ertSetInt4(deviceHandle: Number, handle: Number, property: String, x: Number, y: Number, z: Number, w: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5168,7 +5168,7 @@ func ertSetInt4(_ deviceHandle: Number, _ handle: Number, _ property: String, _ 
   _ = _gsCProcedureErtSetInt4(nil, nil, 0, args)
 }
 
-func ertSetFloat1(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Number) {
+func ertSetFloat1(deviceHandle: Number, handle: Number, property: String, x: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5180,7 +5180,7 @@ func ertSetFloat1(_ deviceHandle: Number, _ handle: Number, _ property: String, 
   _ = _gsCProcedureErtSetFloat1(nil, nil, 0, args)
 }
 
-func ertSetFloat2(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Number, _ y: Number) {
+func ertSetFloat2(deviceHandle: Number, handle: Number, property: String, x: Number, y: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5193,7 +5193,7 @@ func ertSetFloat2(_ deviceHandle: Number, _ handle: Number, _ property: String, 
   _ = _gsCProcedureErtSetFloat2(nil, nil, 0, args)
 }
 
-func ertSetFloat3(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Number, _ y: Number, _ z: Number) {
+func ertSetFloat3(deviceHandle: Number, handle: Number, property: String, x: Number, y: Number, z: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5207,7 +5207,7 @@ func ertSetFloat3(_ deviceHandle: Number, _ handle: Number, _ property: String, 
   _ = _gsCProcedureErtSetFloat3(nil, nil, 0, args)
 }
 
-func ertSetFloat4(_ deviceHandle: Number, _ handle: Number, _ property: String, _ x: Number, _ y: Number, _ z: Number, _ w: Number) {
+func ertSetFloat4(deviceHandle: Number, handle: Number, property: String, x: Number, y: Number, z: Number, w: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5222,7 +5222,7 @@ func ertSetFloat4(_ deviceHandle: Number, _ handle: Number, _ property: String, 
   _ = _gsCProcedureErtSetFloat4(nil, nil, 0, args)
 }
 
-func ertSetArray(_ deviceHandle: Number, _ handle: Number, _ property: String, _ type: String, _ dataHandle: Number, _ size: Number, _ stride: Number, _ ofs: Number) {
+func ertSetArray(deviceHandle: Number, handle: Number, property: String, type: String, dataHandle: Number, size: Number, stride: Number, ofs: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
   let _type = UnsafeRawPointer(_strdup(type)); defer { free(UnsafeMutableRawPointer(mutating: _type)) }
 
@@ -5239,7 +5239,7 @@ func ertSetArray(_ deviceHandle: Number, _ handle: Number, _ property: String, _
   _ = _gsCProcedureErtSetArray(nil, nil, 0, args)
 }
 
-func ertSetString(_ deviceHandle: Number, _ handle: Number, _ property: String, _ str: String) {
+func ertSetString(deviceHandle: Number, handle: Number, property: String, str: String) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
   let _str = UnsafeRawPointer(_strdup(str)); defer { free(UnsafeMutableRawPointer(mutating: _str)) }
 
@@ -5252,7 +5252,7 @@ func ertSetString(_ deviceHandle: Number, _ handle: Number, _ property: String, 
   _ = _gsCProcedureErtSetString(nil, nil, 0, args)
 }
 
-func ertSetImage(_ deviceHandle: Number, _ handle: Number, _ property: String, _ imageHandle: Number) {
+func ertSetImage(deviceHandle: Number, handle: Number, property: String, imageHandle: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5264,7 +5264,7 @@ func ertSetImage(_ deviceHandle: Number, _ handle: Number, _ property: String, _
   _ = _gsCProcedureErtSetImage(nil, nil, 0, args)
 }
 
-func ertSetTexture(_ deviceHandle: Number, _ handle: Number, _ property: String, _ textureHandle: Number) {
+func ertSetTexture(deviceHandle: Number, handle: Number, property: String, textureHandle: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5276,7 +5276,7 @@ func ertSetTexture(_ deviceHandle: Number, _ handle: Number, _ property: String,
   _ = _gsCProcedureErtSetTexture(nil, nil, 0, args)
 }
 
-func ertSetTransform(_ deviceHandle: Number, _ handle: Number, _ property: String, _ transformPointer: Number, _ transformPointerBytesFirst: Number) {
+func ertSetTransform(deviceHandle: Number, handle: Number, property: String, transformPointer: Number, transformPointerBytesFirst: Number) {
   let _property = UnsafeRawPointer(_strdup(property)); defer { free(UnsafeMutableRawPointer(mutating: _property)) }
 
   let args = [
@@ -5289,7 +5289,7 @@ func ertSetTransform(_ deviceHandle: Number, _ handle: Number, _ property: Strin
   _ = _gsCProcedureErtSetTransform(nil, nil, 0, args)
 }
 
-func ertClear(_ deviceHandle: Number, _ handle: Number) {
+func ertClear(deviceHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(handle),
@@ -5297,7 +5297,7 @@ func ertClear(_ deviceHandle: Number, _ handle: Number) {
   _ = _gsCProcedureErtClear(nil, nil, 0, args)
 }
 
-func ertCommit(_ deviceHandle: Number, _ handle: Number) {
+func ertCommit(deviceHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(handle),
@@ -5305,7 +5305,7 @@ func ertCommit(_ deviceHandle: Number, _ handle: Number) {
   _ = _gsCProcedureErtCommit(nil, nil, 0, args)
 }
 
-func ertRenderFrame(_ deviceHandle: Number, _ rendererHandle: Number, _ cameraHandle: Number, _ sceneHandle: Number, _ toneMapperHandle: Number, _ frameBufferHandle: Number, _ accumulate: Number) {
+func ertRenderFrame(deviceHandle: Number, rendererHandle: Number, cameraHandle: Number, sceneHandle: Number, toneMapperHandle: Number, frameBufferHandle: Number, accumulate: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(rendererHandle),
@@ -5318,7 +5318,7 @@ func ertRenderFrame(_ deviceHandle: Number, _ rendererHandle: Number, _ cameraHa
   _ = _gsCProcedureErtRenderFrame(nil, nil, 0, args)
 }
 
-func ertPick(_ deviceHandle: Number, _ cameraHandle: Number, _ x: Number, _ y: Number, _ sceneHandle: Number) -> NumberArray /* point [4] {x, y, z, isHit} */ {
+func ertPick(deviceHandle: Number, cameraHandle: Number, x: Number, y: Number, sceneHandle: Number) -> NumberArray /* point [4] {x, y, z, isHit} */ {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(cameraHandle),
@@ -5338,7 +5338,7 @@ func ertPick(_ deviceHandle: Number, _ cameraHandle: Number, _ x: Number, _ y: N
   return out
 }
 
-func ertInitializeRayStruct(_ deviceHandle: Number, _ orgX: Number, _ orgY: Number, _ orgZ: Number, _ dirX: Number, _ dirY: Number, _ dirZ: Number, _ nearDefaultIs0: Number, _ farDefaultIsEmbreeInf: Number, _ timeDefaultIs0: Number, _ outRayStructPointer: Number, _ outRayStructPointerBytesFirst: Number) {
+func ertInitializeRayStruct(deviceHandle: Number, orgX: Number, orgY: Number, orgZ: Number, dirX: Number, dirY: Number, dirZ: Number, nearDefaultIs0: Number, farDefaultIsEmbreeInf: Number, timeDefaultIs0: Number, outRayStructPointer: Number, outRayStructPointerBytesFirst: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(orgX),
@@ -5356,7 +5356,7 @@ func ertInitializeRayStruct(_ deviceHandle: Number, _ orgX: Number, _ orgY: Numb
   _ = _gsCProcedureErtInitializeRayStruct(nil, nil, 0, args)
 }
 
-func ertInitializeRayStructForCameraPixelSample(_ deviceHandle: Number, _ cameraHandle: Number, _ pixelXFrom0To1: Number, _ pixelYFrom0To1: Number, _ pixelSamplePosXFrom0ToExcluded1DefaultIs0Point5: Number, _ pixelSamplePosYFrom0ToExcluded1DefaultIs0Point5: Number, _ outRayStructPointer: Number, _ outRayStructPointerBytesFirst: Number) {
+func ertInitializeRayStructForCameraPixelSample(deviceHandle: Number, cameraHandle: Number, pixelXFrom0To1: Number, pixelYFrom0To1: Number, pixelSamplePosXFrom0ToExcluded1DefaultIs0Point5: Number, pixelSamplePosYFrom0ToExcluded1DefaultIs0Point5: Number, outRayStructPointer: Number, outRayStructPointerBytesFirst: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(cameraHandle),
@@ -5370,7 +5370,7 @@ func ertInitializeRayStructForCameraPixelSample(_ deviceHandle: Number, _ camera
   _ = _gsCProcedureErtInitializeRayStructForCameraPixelSample(nil, nil, 0, args)
 }
 
-func ertSceneIntersectRayStructToHitStruct(_ deviceHandle: Number, _ sceneHandle: Number, _ inRayStructPointer: Number, _ inRayStructPointerBytesFirst: Number, _ outHitStructPointer: Number, _ outHitStructPointerBytesFirst: Number) {
+func ertSceneIntersectRayStructToHitStruct(deviceHandle: Number, sceneHandle: Number, inRayStructPointer: Number, inRayStructPointerBytesFirst: Number, outHitStructPointer: Number, outHitStructPointerBytesFirst: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(sceneHandle),
@@ -5382,7 +5382,7 @@ func ertSceneIntersectRayStructToHitStruct(_ deviceHandle: Number, _ sceneHandle
   _ = _gsCProcedureErtSceneIntersectRayStructToHitStruct(nil, nil, 0, args)
 }
 
-func onRerunCallErtDecRef(_ deviceHandle: Number, _ handle: Number) {
+func onRerunCallErtDecRef(deviceHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
     _gsVoidPointerFromNumber(handle),
@@ -5390,7 +5390,7 @@ func onRerunCallErtDecRef(_ deviceHandle: Number, _ handle: Number) {
   _ = _gsCProcedureOnRerunCallErtDecRef(nil, nil, 0, args)
 }
 
-func onRerunCallErtDestroyDevice(_ deviceHandle: Number) {
+func onRerunCallErtDestroyDevice(deviceHandle: Number) {
   let args = [
     _gsVoidPointerFromNumber(deviceHandle),
   ]
@@ -5401,7 +5401,7 @@ func getRedStructsCount() -> Number /* count */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetRedStructsCount(nil, nil, 0, nil))
 }
 
-func getRedStructName(_ index: Number) -> String /* name */ {
+func getRedStructName(index: Number) -> String /* name */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -5415,7 +5415,7 @@ func getRedStructMembersCount() -> Number /* count */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetRedStructMembersCount(nil, nil, 0, nil))
 }
 
-func getRedStructMemberName(_ index: Number) -> String /* name */ {
+func getRedStructMemberName(index: Number) -> String /* name */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -5425,7 +5425,7 @@ func getRedStructMemberName(_ index: Number) -> String /* name */ {
   return out
 }
 
-func redStructSizeof(_ structName: String) -> Number /* bytesCount */ {
+func redStructSizeof(structName: String) -> Number /* bytesCount */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
 
   let args = [
@@ -5434,7 +5434,7 @@ func redStructSizeof(_ structName: String) -> Number /* bytesCount */ {
   return _gsNumberFromVoidPointer(_gsCProcedureRedStructSizeof(nil, nil, 0, args))
 }
 
-func redStructMemberSizeof(_ structName: String, _ structMemberName: String) -> Number /* bytesCount */ {
+func redStructMemberSizeof(structName: String, structMemberName: String) -> Number /* bytesCount */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
   let _structMemberName = UnsafeRawPointer(_strdup(structMemberName)); defer { free(UnsafeMutableRawPointer(mutating: _structMemberName)) }
 
@@ -5445,7 +5445,7 @@ func redStructMemberSizeof(_ structName: String, _ structMemberName: String) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureRedStructMemberSizeof(nil, nil, 0, args))
 }
 
-func redStructMemberOffsetof(_ structName: String, _ structMemberName: String) -> Number /* bytesFirst */ {
+func redStructMemberOffsetof(structName: String, structMemberName: String) -> Number /* bytesFirst */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
   let _structMemberName = UnsafeRawPointer(_strdup(structMemberName)); defer { free(UnsafeMutableRawPointer(mutating: _structMemberName)) }
 
@@ -5456,7 +5456,7 @@ func redStructMemberOffsetof(_ structName: String, _ structMemberName: String) -
   return _gsNumberFromVoidPointer(_gsCProcedureRedStructMemberOffsetof(nil, nil, 0, args))
 }
 
-func redStructMemberTypeof(_ structName: String, _ structMemberName: String) -> Number /* structMemberType */ {
+func redStructMemberTypeof(structName: String, structMemberName: String) -> Number /* structMemberType */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
   let _structMemberName = UnsafeRawPointer(_strdup(structMemberName)); defer { free(UnsafeMutableRawPointer(mutating: _structMemberName)) }
 
@@ -5467,28 +5467,28 @@ func redStructMemberTypeof(_ structName: String, _ structMemberName: String) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureRedStructMemberTypeof(nil, nil, 0, args))
 }
 
-func redCreateContext(_ enableDebugMode: Bool) -> Number /* context */ {
+func redCreateContext(enableDebugMode: Bool) -> Number /* context */ {
   let args = [
     _gsVoidPointerFromBool(enableDebugMode),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateContext(nil, nil, 0, args))
 }
 
-func redCreateContextWithRayTracingFeatureLevel1(_ enableDebugMode: Bool) -> Number /* context */ {
+func redCreateContextWithRayTracingFeatureLevel1(enableDebugMode: Bool) -> Number /* context */ {
   let args = [
     _gsVoidPointerFromBool(enableDebugMode),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateContextWithRayTracingFeatureLevel1(nil, nil, 0, args))
 }
 
-func redCreateContextWithRayTracingFeatureLevel2(_ enableDebugMode: Bool) -> Number /* context */ {
+func redCreateContextWithRayTracingFeatureLevel2(enableDebugMode: Bool) -> Number /* context */ {
   let args = [
     _gsVoidPointerFromBool(enableDebugMode),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateContextWithRayTracingFeatureLevel2(nil, nil, 0, args))
 }
 
-func redHandleContextGetProcAddr(_ contextHandle: Number, _ procedureName: String) -> Number /* address */ {
+func redHandleContextGetProcAddr(contextHandle: Number, procedureName: String) -> Number /* address */ {
   let _procedureName = UnsafeRawPointer(_strdup(procedureName)); defer { free(UnsafeMutableRawPointer(mutating: _procedureName)) }
 
   let args = [
@@ -5498,7 +5498,7 @@ func redHandleContextGetProcAddr(_ contextHandle: Number, _ procedureName: Strin
   return _gsNumberFromVoidPointer(_gsCProcedureRedHandleContextGetProcAddr(nil, nil, 0, args))
 }
 
-func redMemoryGetBudget(_ context: Number, _ gpuHandle: Number, _ outMemoryBudget: Number, _ outStatuses: Number) {
+func redMemoryGetBudget(context: Number, gpuHandle: Number, outMemoryBudget: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5508,7 +5508,7 @@ func redMemoryGetBudget(_ context: Number, _ gpuHandle: Number, _ outMemoryBudge
   _ = _gsCProcedureRedMemoryGetBudget(nil, nil, 0, args)
 }
 
-func redMemoryAllocate(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ bytesCount: Number, _ memoryTypeIndex: Number, _ dedicateToArray: Number, _ dedicateToImage: Number, _ memoryBitflags: Number, _ outStatuses: Number) -> Number /* memoryHandle */ {
+func redMemoryAllocate(context: Number, gpuHandle: Number, handleName: String, bytesCount: Number, memoryTypeIndex: Number, dedicateToArray: Number, dedicateToImage: Number, memoryBitflags: Number, outStatuses: Number) -> Number /* memoryHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5525,7 +5525,7 @@ func redMemoryAllocate(_ context: Number, _ gpuHandle: Number, _ handleName: Str
   return _gsNumberFromVoidPointer(_gsCProcedureRedMemoryAllocate(nil, nil, 0, args))
 }
 
-func redMemoryAllocateMappable(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ dedicate: Bool, _ array: Number, _ arrayMemoryBytesCount: Number, _ memoryTypeIndex: Number, _ memoryBitflags: Number, _ outStatuses: Number) -> Number /* memoryHandle */ {
+func redMemoryAllocateMappable(context: Number, gpuHandle: Number, handleName: String, dedicate: Bool, array: Number, arrayMemoryBytesCount: Number, memoryTypeIndex: Number, memoryBitflags: Number, outStatuses: Number) -> Number /* memoryHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5542,7 +5542,7 @@ func redMemoryAllocateMappable(_ context: Number, _ gpuHandle: Number, _ handleN
   return _gsNumberFromVoidPointer(_gsCProcedureRedMemoryAllocateMappable(nil, nil, 0, args))
 }
 
-func redMemoryFree(_ context: Number, _ gpuHandle: Number, _ memory: Number) {
+func redMemoryFree(context: Number, gpuHandle: Number, memory: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5551,7 +5551,7 @@ func redMemoryFree(_ context: Number, _ gpuHandle: Number, _ memory: Number) {
   _ = _gsCProcedureRedMemoryFree(nil, nil, 0, args)
 }
 
-func redMemorySet(_ context: Number, _ gpuHandle: Number, _ memoryArraysCount: Number, _ memoryArrays: Number, _ memoryImagesCount: Number, _ memoryImages: Number, _ outStatuses: Number) {
+func redMemorySet(context: Number, gpuHandle: Number, memoryArraysCount: Number, memoryArrays: Number, memoryImagesCount: Number, memoryImages: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5564,7 +5564,7 @@ func redMemorySet(_ context: Number, _ gpuHandle: Number, _ memoryArraysCount: N
   _ = _gsCProcedureRedMemorySet(nil, nil, 0, args)
 }
 
-func redMemoryMap(_ context: Number, _ gpuHandle: Number, _ mappableMemory: Number, _ mappableMemoryBytesFirst: Number, _ mappableMemoryBytesCount: Number, _ outStatuses: Number) -> Number /* pointer */ {
+func redMemoryMap(context: Number, gpuHandle: Number, mappableMemory: Number, mappableMemoryBytesFirst: Number, mappableMemoryBytesCount: Number, outStatuses: Number) -> Number /* pointer */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5576,7 +5576,7 @@ func redMemoryMap(_ context: Number, _ gpuHandle: Number, _ mappableMemory: Numb
   return _gsNumberFromVoidPointer(_gsCProcedureRedMemoryMap(nil, nil, 0, args))
 }
 
-func redMemoryUnmap(_ context: Number, _ gpuHandle: Number, _ mappableMemory: Number) {
+func redMemoryUnmap(context: Number, gpuHandle: Number, mappableMemory: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5585,7 +5585,7 @@ func redMemoryUnmap(_ context: Number, _ gpuHandle: Number, _ mappableMemory: Nu
   _ = _gsCProcedureRedMemoryUnmap(nil, nil, 0, args)
 }
 
-func redMemoryNonCoherentFlush(_ context: Number, _ gpuHandle: Number, _ mappableMemoryRangesCount: Number, _ mappableMemoryRanges: Number, _ outStatuses: Number) {
+func redMemoryNonCoherentFlush(context: Number, gpuHandle: Number, mappableMemoryRangesCount: Number, mappableMemoryRanges: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5596,7 +5596,7 @@ func redMemoryNonCoherentFlush(_ context: Number, _ gpuHandle: Number, _ mappabl
   _ = _gsCProcedureRedMemoryNonCoherentFlush(nil, nil, 0, args)
 }
 
-func redMemoryNonCoherentInvalidate(_ context: Number, _ gpuHandle: Number, _ mappableMemoryRangesCount: Number, _ mappableMemoryRanges: Number, _ outStatuses: Number) {
+func redMemoryNonCoherentInvalidate(context: Number, gpuHandle: Number, mappableMemoryRangesCount: Number, mappableMemoryRanges: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5607,7 +5607,7 @@ func redMemoryNonCoherentInvalidate(_ context: Number, _ gpuHandle: Number, _ ma
   _ = _gsCProcedureRedMemoryNonCoherentInvalidate(nil, nil, 0, args)
 }
 
-func redStructsMemoryAllocate(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ maxStructsCount: Number, _ maxStructsMembersOfTypeArrayROConstantCount: Number, _ maxStructsMembersOfTypeArrayROOrArrayRWCount: Number, _ maxStructsMembersOfTypeTextureROCount: Number, _ maxStructsMembersOfTypeTextureRWCount: Number, _ outStatuses: Number) -> Number /* structsMemoryHandle */ {
+func redStructsMemoryAllocate(context: Number, gpuHandle: Number, handleName: String, maxStructsCount: Number, maxStructsMembersOfTypeArrayROConstantCount: Number, maxStructsMembersOfTypeArrayROOrArrayRWCount: Number, maxStructsMembersOfTypeTextureROCount: Number, maxStructsMembersOfTypeTextureRWCount: Number, outStatuses: Number) -> Number /* structsMemoryHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5624,7 +5624,7 @@ func redStructsMemoryAllocate(_ context: Number, _ gpuHandle: Number, _ handleNa
   return _gsNumberFromVoidPointer(_gsCProcedureRedStructsMemoryAllocate(nil, nil, 0, args))
 }
 
-func redStructsMemoryAllocateSamplers(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ maxStructsCount: Number, _ maxStructsMembersOfTypeSamplerCount: Number, _ outStatuses: Number) -> Number /* structsMemoryHandle */ {
+func redStructsMemoryAllocateSamplers(context: Number, gpuHandle: Number, handleName: String, maxStructsCount: Number, maxStructsMembersOfTypeSamplerCount: Number, outStatuses: Number) -> Number /* structsMemoryHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5638,7 +5638,7 @@ func redStructsMemoryAllocateSamplers(_ context: Number, _ gpuHandle: Number, _ 
   return _gsNumberFromVoidPointer(_gsCProcedureRedStructsMemoryAllocateSamplers(nil, nil, 0, args))
 }
 
-func redStructsMemorySuballocateStructs(_ context: Number, _ gpuHandle: Number, _ handleNames: Number, _ structsMemory: Number, _ structsDeclarationsCount: Number, _ structsDeclarations: Number, _ outStructs: Number, _ outStatuses: Number) {
+func redStructsMemorySuballocateStructs(context: Number, gpuHandle: Number, handleNames: Number, structsMemory: Number, structsDeclarationsCount: Number, structsDeclarations: Number, outStructs: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5652,7 +5652,7 @@ func redStructsMemorySuballocateStructs(_ context: Number, _ gpuHandle: Number, 
   _ = _gsCProcedureRedStructsMemorySuballocateStructs(nil, nil, 0, args)
 }
 
-func redStructsMemoryReset(_ context: Number, _ gpuHandle: Number, _ structsMemory: Number, _ outStatuses: Number) {
+func redStructsMemoryReset(context: Number, gpuHandle: Number, structsMemory: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5662,7 +5662,7 @@ func redStructsMemoryReset(_ context: Number, _ gpuHandle: Number, _ structsMemo
   _ = _gsCProcedureRedStructsMemoryReset(nil, nil, 0, args)
 }
 
-func redStructsMemoryFree(_ context: Number, _ gpuHandle: Number, _ structsMemory: Number) {
+func redStructsMemoryFree(context: Number, gpuHandle: Number, structsMemory: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5671,7 +5671,7 @@ func redStructsMemoryFree(_ context: Number, _ gpuHandle: Number, _ structsMemor
   _ = _gsCProcedureRedStructsMemoryFree(nil, nil, 0, args)
 }
 
-func redStructsSet(_ context: Number, _ gpuHandle: Number, _ structsMembersCount: Number, _ structsMembers: Number) {
+func redStructsSet(context: Number, gpuHandle: Number, structsMembersCount: Number, structsMembers: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5681,7 +5681,7 @@ func redStructsSet(_ context: Number, _ gpuHandle: Number, _ structsMembersCount
   _ = _gsCProcedureRedStructsSet(nil, nil, 0, args)
 }
 
-func redCreateArray(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ type: Number, _ bytesCount: Number, _ structuredBufferElementBytesCount: Number, _ initialAccess: Number, _ initialQueueFamilyIndex: Number, _ dedicate: Bool, _ outArray: Number, _ outStatuses: Number) -> Number /* arrayHandle */ {
+func redCreateArray(context: Number, gpuHandle: Number, handleName: String, type: Number, bytesCount: Number, structuredBufferElementBytesCount: Number, initialAccess: Number, initialQueueFamilyIndex: Number, dedicate: Bool, outArray: Number, outStatuses: Number) -> Number /* arrayHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5700,7 +5700,7 @@ func redCreateArray(_ context: Number, _ gpuHandle: Number, _ handleName: String
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateArray(nil, nil, 0, args))
 }
 
-func redCreateImage(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ dimensions: Number, _ format: Number, _ width: Number, _ height: Number, _ depth: Number, _ levelsCount: Number, _ layersCount: Number, _ multisampleCount: Number, _ restrictToAccess: Number, _ initialAccess: Number, _ initialQueueFamilyIndex: Number, _ dedicate: Bool, _ outImage: Number, _ outStatuses: Number) -> Number /* imageHandle */ {
+func redCreateImage(context: Number, gpuHandle: Number, handleName: String, dimensions: Number, format: Number, width: Number, height: Number, depth: Number, levelsCount: Number, layersCount: Number, multisampleCount: Number, restrictToAccess: Number, initialAccess: Number, initialQueueFamilyIndex: Number, dedicate: Bool, outImage: Number, outStatuses: Number) -> Number /* imageHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5725,7 +5725,7 @@ func redCreateImage(_ context: Number, _ gpuHandle: Number, _ handleName: String
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateImage(nil, nil, 0, args))
 }
 
-func redCreateSampler(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ filteringMag: Number, _ filteringMin: Number, _ filteringMip: Number, _ behaviorOutsideTextureCoordinateU: Number, _ behaviorOutsideTextureCoordinateV: Number, _ behaviorOutsideTextureCoordinateW: Number, _ mipLodBias: Number, _ enableAnisotropy: Bool, _ maxAnisotropy: Number, _ enableCompare: Bool, _ compareOp: Number, _ minLod: Number, _ maxLod: Number, _ outStatuses: Number) -> Number /* samplerHandle */ {
+func redCreateSampler(context: Number, gpuHandle: Number, handleName: String, filteringMag: Number, filteringMin: Number, filteringMip: Number, behaviorOutsideTextureCoordinateU: Number, behaviorOutsideTextureCoordinateV: Number, behaviorOutsideTextureCoordinateW: Number, mipLodBias: Number, enableAnisotropy: Bool, maxAnisotropy: Number, enableCompare: Bool, compareOp: Number, minLod: Number, maxLod: Number, outStatuses: Number) -> Number /* samplerHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5750,7 +5750,7 @@ func redCreateSampler(_ context: Number, _ gpuHandle: Number, _ handleName: Stri
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateSampler(nil, nil, 0, args))
 }
 
-func redCreateTexture(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ image: Number, _ parts: Number, _ dimensions: Number, _ format: Number, _ levelsFirst: Number, _ levelsCount: Number, _ layersFirst: Number, _ layersCount: Number, _ restrictToAccess: Number, _ outStatuses: Number) -> Number /* textureHandle */ {
+func redCreateTexture(context: Number, gpuHandle: Number, handleName: String, image: Number, parts: Number, dimensions: Number, format: Number, levelsFirst: Number, levelsCount: Number, layersFirst: Number, layersCount: Number, restrictToAccess: Number, outStatuses: Number) -> Number /* textureHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5771,7 +5771,7 @@ func redCreateTexture(_ context: Number, _ gpuHandle: Number, _ handleName: Stri
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateTexture(nil, nil, 0, args))
 }
 
-func redCreateGpuCode(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ irBytesCount: Number, _ ir: Number, _ outStatuses: Number) -> Number /* gpuCodeHandle */ {
+func redCreateGpuCode(context: Number, gpuHandle: Number, handleName: String, irBytesCount: Number, ir: Number, outStatuses: Number) -> Number /* gpuCodeHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5785,7 +5785,7 @@ func redCreateGpuCode(_ context: Number, _ gpuHandle: Number, _ handleName: Stri
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateGpuCode(nil, nil, 0, args))
 }
 
-func redCreateOutputDeclaration(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ outputDeclarationMembers: Number, _ outputDeclarationMembersResolveSources: Number, _ dependencyByRegion: Bool, _ dependencyByRegionAllowUsageAliasOrderBarriers: Bool, _ outStatuses: Number) -> Number /* outputDeclarationHandle */ {
+func redCreateOutputDeclaration(context: Number, gpuHandle: Number, handleName: String, outputDeclarationMembers: Number, outputDeclarationMembersResolveSources: Number, dependencyByRegion: Bool, dependencyByRegionAllowUsageAliasOrderBarriers: Bool, outStatuses: Number) -> Number /* outputDeclarationHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5801,7 +5801,7 @@ func redCreateOutputDeclaration(_ context: Number, _ gpuHandle: Number, _ handle
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateOutputDeclaration(nil, nil, 0, args))
 }
 
-func redCreateStructDeclaration(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ structDeclarationMembersCount: Number, _ structDeclarationMembers: Number, _ structDeclarationMembersArrayROCount: Number, _ structDeclarationMembersArrayRO: Number, _ procedureParametersHandlesDeclaration: Bool, _ outStatuses: Number) -> Number /* structDeclarationHandle */ {
+func redCreateStructDeclaration(context: Number, gpuHandle: Number, handleName: String, structDeclarationMembersCount: Number, structDeclarationMembers: Number, structDeclarationMembersArrayROCount: Number, structDeclarationMembersArrayRO: Number, procedureParametersHandlesDeclaration: Bool, outStatuses: Number) -> Number /* structDeclarationHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5818,7 +5818,7 @@ func redCreateStructDeclaration(_ context: Number, _ gpuHandle: Number, _ handle
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateStructDeclaration(nil, nil, 0, args))
 }
 
-func redCreateProcedureParameters(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ procedureParametersDeclaration: Number, _ outStatuses: Number) -> Number /* procedureParametersHandle */ {
+func redCreateProcedureParameters(context: Number, gpuHandle: Number, handleName: String, procedureParametersDeclaration: Number, outStatuses: Number) -> Number /* procedureParametersHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5831,7 +5831,7 @@ func redCreateProcedureParameters(_ context: Number, _ gpuHandle: Number, _ hand
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateProcedureParameters(nil, nil, 0, args))
 }
 
-func redCreateProcedureCache(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ fromBlobBytesCount: Number, _ fromBlob: Number, _ outStatuses: Number) -> Number /* procedureCacheHandle */ {
+func redCreateProcedureCache(context: Number, gpuHandle: Number, handleName: String, fromBlobBytesCount: Number, fromBlob: Number, outStatuses: Number) -> Number /* procedureCacheHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5845,7 +5845,7 @@ func redCreateProcedureCache(_ context: Number, _ gpuHandle: Number, _ handleNam
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateProcedureCache(nil, nil, 0, args))
 }
 
-func redCreateProcedure(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ procedureCache: Number, _ outputDeclaration: Number, _ procedureParameters: Number, _ gpuCodeVertexMainProcedureName: String, _ gpuCodeVertex: Number, _ gpuCodeFragmentMainProcedureName: String, _ gpuCodeFragment: Number, _ state: Number, _ stateExtension: Number, _ deriveBase: Bool, _ deriveFrom: Number, _ outStatuses: Number) -> Number /* procedureHandle */ {
+func redCreateProcedure(context: Number, gpuHandle: Number, handleName: String, procedureCache: Number, outputDeclaration: Number, procedureParameters: Number, gpuCodeVertexMainProcedureName: String, gpuCodeVertex: Number, gpuCodeFragmentMainProcedureName: String, gpuCodeFragment: Number, state: Number, stateExtension: Number, deriveBase: Bool, deriveFrom: Number, outStatuses: Number) -> Number /* procedureHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
   let _gpuCodeVertexMainProcedureName = UnsafeRawPointer(_strdup(gpuCodeVertexMainProcedureName)); defer { free(UnsafeMutableRawPointer(mutating: _gpuCodeVertexMainProcedureName)) }
   let _gpuCodeFragmentMainProcedureName = UnsafeRawPointer(_strdup(gpuCodeFragmentMainProcedureName)); defer { free(UnsafeMutableRawPointer(mutating: _gpuCodeFragmentMainProcedureName)) }
@@ -5870,7 +5870,7 @@ func redCreateProcedure(_ context: Number, _ gpuHandle: Number, _ handleName: St
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateProcedure(nil, nil, 0, args))
 }
 
-func redCreateProcedureCompute(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ procedureCache: Number, _ procedureParameters: Number, _ gpuCodeMainProcedureName: String, _ gpuCode: Number, _ outStatuses: Number) -> Number /* procedureHandle */ {
+func redCreateProcedureCompute(context: Number, gpuHandle: Number, handleName: String, procedureCache: Number, procedureParameters: Number, gpuCodeMainProcedureName: String, gpuCode: Number, outStatuses: Number) -> Number /* procedureHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
   let _gpuCodeMainProcedureName = UnsafeRawPointer(_strdup(gpuCodeMainProcedureName)); defer { free(UnsafeMutableRawPointer(mutating: _gpuCodeMainProcedureName)) }
 
@@ -5887,7 +5887,7 @@ func redCreateProcedureCompute(_ context: Number, _ gpuHandle: Number, _ handleN
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateProcedureCompute(nil, nil, 0, args))
 }
 
-func redCreateOutput(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ outputDeclaration: Number, _ outputMembers: Number, _ outputMembersResolveTargets: Number, _ width: Number, _ height: Number, _ outOutput: Number, _ outStatuses: Number) -> Number /* outputHandle */ {
+func redCreateOutput(context: Number, gpuHandle: Number, handleName: String, outputDeclaration: Number, outputMembers: Number, outputMembersResolveTargets: Number, width: Number, height: Number, outOutput: Number, outStatuses: Number) -> Number /* outputHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5905,7 +5905,7 @@ func redCreateOutput(_ context: Number, _ gpuHandle: Number, _ handleName: Strin
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateOutput(nil, nil, 0, args))
 }
 
-func redCreateCpuSignal(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ createSignaled: Bool, _ outStatuses: Number) -> Number /* cpuSignalHandle */ {
+func redCreateCpuSignal(context: Number, gpuHandle: Number, handleName: String, createSignaled: Bool, outStatuses: Number) -> Number /* cpuSignalHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5918,7 +5918,7 @@ func redCreateCpuSignal(_ context: Number, _ gpuHandle: Number, _ handleName: St
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateCpuSignal(nil, nil, 0, args))
 }
 
-func redCreateGpuSignal(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ outStatuses: Number) -> Number /* gpuSignalHandle */ {
+func redCreateGpuSignal(context: Number, gpuHandle: Number, handleName: String, outStatuses: Number) -> Number /* gpuSignalHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5930,7 +5930,7 @@ func redCreateGpuSignal(_ context: Number, _ gpuHandle: Number, _ handleName: St
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateGpuSignal(nil, nil, 0, args))
 }
 
-func redCreateGpuToCpuSignal(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ outStatuses: Number) -> Number /* gpuToCpuSignalHandle */ {
+func redCreateGpuToCpuSignal(context: Number, gpuHandle: Number, handleName: String, outStatuses: Number) -> Number /* gpuToCpuSignalHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5942,7 +5942,7 @@ func redCreateGpuToCpuSignal(_ context: Number, _ gpuHandle: Number, _ handleNam
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateGpuToCpuSignal(nil, nil, 0, args))
 }
 
-func redCreateCalls(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ queueFamilyIndex: Number, _ outCalls: Number, _ outStatuses: Number) {
+func redCreateCalls(context: Number, gpuHandle: Number, handleName: String, queueFamilyIndex: Number, outCalls: Number, outStatuses: Number) {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5956,7 +5956,7 @@ func redCreateCalls(_ context: Number, _ gpuHandle: Number, _ handleName: String
   _ = _gsCProcedureRedCreateCalls(nil, nil, 0, args)
 }
 
-func redCreateCallsReusable(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ queueFamilyIndex: Number, _ outCalls: Number, _ outStatuses: Number) {
+func redCreateCallsReusable(context: Number, gpuHandle: Number, handleName: String, queueFamilyIndex: Number, outCalls: Number, outStatuses: Number) {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -5970,14 +5970,14 @@ func redCreateCallsReusable(_ context: Number, _ gpuHandle: Number, _ handleName
   _ = _gsCProcedureRedCreateCallsReusable(nil, nil, 0, args)
 }
 
-func redDestroyContext(_ context: Number) {
+func redDestroyContext(context: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
   ]
   _ = _gsCProcedureRedDestroyContext(nil, nil, 0, args)
 }
 
-func redDestroyArray(_ context: Number, _ gpuHandle: Number, _ array: Number) {
+func redDestroyArray(context: Number, gpuHandle: Number, array: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5986,7 +5986,7 @@ func redDestroyArray(_ context: Number, _ gpuHandle: Number, _ array: Number) {
   _ = _gsCProcedureRedDestroyArray(nil, nil, 0, args)
 }
 
-func redDestroyImage(_ context: Number, _ gpuHandle: Number, _ image: Number) {
+func redDestroyImage(context: Number, gpuHandle: Number, image: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -5995,7 +5995,7 @@ func redDestroyImage(_ context: Number, _ gpuHandle: Number, _ image: Number) {
   _ = _gsCProcedureRedDestroyImage(nil, nil, 0, args)
 }
 
-func redDestroySampler(_ context: Number, _ gpuHandle: Number, _ sampler: Number) {
+func redDestroySampler(context: Number, gpuHandle: Number, sampler: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6004,7 +6004,7 @@ func redDestroySampler(_ context: Number, _ gpuHandle: Number, _ sampler: Number
   _ = _gsCProcedureRedDestroySampler(nil, nil, 0, args)
 }
 
-func redDestroyTexture(_ context: Number, _ gpuHandle: Number, _ texture: Number) {
+func redDestroyTexture(context: Number, gpuHandle: Number, texture: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6013,7 +6013,7 @@ func redDestroyTexture(_ context: Number, _ gpuHandle: Number, _ texture: Number
   _ = _gsCProcedureRedDestroyTexture(nil, nil, 0, args)
 }
 
-func redDestroyGpuCode(_ context: Number, _ gpuHandle: Number, _ gpuCode: Number) {
+func redDestroyGpuCode(context: Number, gpuHandle: Number, gpuCode: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6022,7 +6022,7 @@ func redDestroyGpuCode(_ context: Number, _ gpuHandle: Number, _ gpuCode: Number
   _ = _gsCProcedureRedDestroyGpuCode(nil, nil, 0, args)
 }
 
-func redDestroyOutputDeclaration(_ context: Number, _ gpuHandle: Number, _ outputDeclaration: Number) {
+func redDestroyOutputDeclaration(context: Number, gpuHandle: Number, outputDeclaration: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6031,7 +6031,7 @@ func redDestroyOutputDeclaration(_ context: Number, _ gpuHandle: Number, _ outpu
   _ = _gsCProcedureRedDestroyOutputDeclaration(nil, nil, 0, args)
 }
 
-func redDestroyStructDeclaration(_ context: Number, _ gpuHandle: Number, _ structDeclaration: Number) {
+func redDestroyStructDeclaration(context: Number, gpuHandle: Number, structDeclaration: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6040,7 +6040,7 @@ func redDestroyStructDeclaration(_ context: Number, _ gpuHandle: Number, _ struc
   _ = _gsCProcedureRedDestroyStructDeclaration(nil, nil, 0, args)
 }
 
-func redDestroyProcedureParameters(_ context: Number, _ gpuHandle: Number, _ procedureParameters: Number) {
+func redDestroyProcedureParameters(context: Number, gpuHandle: Number, procedureParameters: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6049,7 +6049,7 @@ func redDestroyProcedureParameters(_ context: Number, _ gpuHandle: Number, _ pro
   _ = _gsCProcedureRedDestroyProcedureParameters(nil, nil, 0, args)
 }
 
-func redDestroyProcedureCache(_ context: Number, _ gpuHandle: Number, _ procedureCache: Number) {
+func redDestroyProcedureCache(context: Number, gpuHandle: Number, procedureCache: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6058,7 +6058,7 @@ func redDestroyProcedureCache(_ context: Number, _ gpuHandle: Number, _ procedur
   _ = _gsCProcedureRedDestroyProcedureCache(nil, nil, 0, args)
 }
 
-func redDestroyProcedure(_ context: Number, _ gpuHandle: Number, _ procedure: Number) {
+func redDestroyProcedure(context: Number, gpuHandle: Number, procedure: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6067,7 +6067,7 @@ func redDestroyProcedure(_ context: Number, _ gpuHandle: Number, _ procedure: Nu
   _ = _gsCProcedureRedDestroyProcedure(nil, nil, 0, args)
 }
 
-func redDestroyOutput(_ context: Number, _ gpuHandle: Number, _ output: Number) {
+func redDestroyOutput(context: Number, gpuHandle: Number, output: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6076,7 +6076,7 @@ func redDestroyOutput(_ context: Number, _ gpuHandle: Number, _ output: Number) 
   _ = _gsCProcedureRedDestroyOutput(nil, nil, 0, args)
 }
 
-func redDestroyCpuSignal(_ context: Number, _ gpuHandle: Number, _ cpuSignal: Number) {
+func redDestroyCpuSignal(context: Number, gpuHandle: Number, cpuSignal: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6085,7 +6085,7 @@ func redDestroyCpuSignal(_ context: Number, _ gpuHandle: Number, _ cpuSignal: Nu
   _ = _gsCProcedureRedDestroyCpuSignal(nil, nil, 0, args)
 }
 
-func redDestroyGpuSignal(_ context: Number, _ gpuHandle: Number, _ gpuSignal: Number) {
+func redDestroyGpuSignal(context: Number, gpuHandle: Number, gpuSignal: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6094,7 +6094,7 @@ func redDestroyGpuSignal(_ context: Number, _ gpuHandle: Number, _ gpuSignal: Nu
   _ = _gsCProcedureRedDestroyGpuSignal(nil, nil, 0, args)
 }
 
-func redDestroyGpuToCpuSignal(_ context: Number, _ gpuHandle: Number, _ gpuToCpuSignal: Number) {
+func redDestroyGpuToCpuSignal(context: Number, gpuHandle: Number, gpuToCpuSignal: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6103,7 +6103,7 @@ func redDestroyGpuToCpuSignal(_ context: Number, _ gpuHandle: Number, _ gpuToCpu
   _ = _gsCProcedureRedDestroyGpuToCpuSignal(nil, nil, 0, args)
 }
 
-func redDestroyCalls(_ context: Number, _ gpuHandle: Number, _ calls: Number, _ callsMemory: Number) {
+func redDestroyCalls(context: Number, gpuHandle: Number, calls: Number, callsMemory: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6113,7 +6113,7 @@ func redDestroyCalls(_ context: Number, _ gpuHandle: Number, _ calls: Number, _ 
   _ = _gsCProcedureRedDestroyCalls(nil, nil, 0, args)
 }
 
-func redProcedureCacheGetBlob(_ context: Number, _ gpuHandle: Number, _ procedureCache: Number, _ outBlobBytesCount: Number, _ outBlob: Number, _ outStatuses: Number) {
+func redProcedureCacheGetBlob(context: Number, gpuHandle: Number, procedureCache: Number, outBlobBytesCount: Number, outBlob: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6125,7 +6125,7 @@ func redProcedureCacheGetBlob(_ context: Number, _ gpuHandle: Number, _ procedur
   _ = _gsCProcedureRedProcedureCacheGetBlob(nil, nil, 0, args)
 }
 
-func redProcedureCacheMergeCaches(_ context: Number, _ gpuHandle: Number, _ sourceProcedureCachesCount: Number, _ sourceProcedureCaches: Number, _ targetProcedureCache: Number, _ outStatuses: Number) {
+func redProcedureCacheMergeCaches(context: Number, gpuHandle: Number, sourceProcedureCachesCount: Number, sourceProcedureCaches: Number, targetProcedureCache: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6137,7 +6137,7 @@ func redProcedureCacheMergeCaches(_ context: Number, _ gpuHandle: Number, _ sour
   _ = _gsCProcedureRedProcedureCacheMergeCaches(nil, nil, 0, args)
 }
 
-func redCpuSignalGetStatus(_ context: Number, _ gpuHandle: Number, _ cpuSignal: Number) -> Number /* status */ {
+func redCpuSignalGetStatus(context: Number, gpuHandle: Number, cpuSignal: Number) -> Number /* status */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6146,7 +6146,7 @@ func redCpuSignalGetStatus(_ context: Number, _ gpuHandle: Number, _ cpuSignal: 
   return _gsNumberFromVoidPointer(_gsCProcedureRedCpuSignalGetStatus(nil, nil, 0, args))
 }
 
-func redCpuSignalWait(_ context: Number, _ gpuHandle: Number, _ cpuSignalsCount: Number, _ cpuSignals: Number, _ waitAll: Bool, _ outStatuses: Number) {
+func redCpuSignalWait(context: Number, gpuHandle: Number, cpuSignalsCount: Number, cpuSignals: Number, waitAll: Bool, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6158,7 +6158,7 @@ func redCpuSignalWait(_ context: Number, _ gpuHandle: Number, _ cpuSignalsCount:
   _ = _gsCProcedureRedCpuSignalWait(nil, nil, 0, args)
 }
 
-func redCpuSignalUnsignal(_ context: Number, _ gpuHandle: Number, _ cpuSignalsCount: Number, _ cpuSignals: Number, _ outStatuses: Number) {
+func redCpuSignalUnsignal(context: Number, gpuHandle: Number, cpuSignalsCount: Number, cpuSignals: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6169,7 +6169,7 @@ func redCpuSignalUnsignal(_ context: Number, _ gpuHandle: Number, _ cpuSignalsCo
   _ = _gsCProcedureRedCpuSignalUnsignal(nil, nil, 0, args)
 }
 
-func redGpuToCpuSignalGetStatus(_ context: Number, _ gpuHandle: Number, _ gpuToCpuSignal: Number) -> Number /* status */ {
+func redGpuToCpuSignalGetStatus(context: Number, gpuHandle: Number, gpuToCpuSignal: Number) -> Number /* status */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6178,7 +6178,7 @@ func redGpuToCpuSignalGetStatus(_ context: Number, _ gpuHandle: Number, _ gpuToC
   return _gsNumberFromVoidPointer(_gsCProcedureRedGpuToCpuSignalGetStatus(nil, nil, 0, args))
 }
 
-func redGpuToCpuSignalUnsignal(_ context: Number, _ gpuHandle: Number, _ gpuToCpuSignal: Number, _ outStatuses: Number) {
+func redGpuToCpuSignalUnsignal(context: Number, gpuHandle: Number, gpuToCpuSignal: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6188,7 +6188,7 @@ func redGpuToCpuSignalUnsignal(_ context: Number, _ gpuHandle: Number, _ gpuToCp
   _ = _gsCProcedureRedGpuToCpuSignalUnsignal(nil, nil, 0, args)
 }
 
-func redCallsSet(_ context: Number, _ gpuHandle: Number, _ calls: Number, _ callsMemory: Number, _ callsReusable: Bool, _ outStatuses: Number) {
+func redCallsSet(context: Number, gpuHandle: Number, calls: Number, callsMemory: Number, callsReusable: Bool, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6200,7 +6200,7 @@ func redCallsSet(_ context: Number, _ gpuHandle: Number, _ calls: Number, _ call
   _ = _gsCProcedureRedCallsSet(nil, nil, 0, args)
 }
 
-func redCallsEnd(_ context: Number, _ gpuHandle: Number, _ calls: Number, _ callsMemory: Number, _ outStatuses: Number) {
+func redCallsEnd(context: Number, gpuHandle: Number, calls: Number, callsMemory: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6211,7 +6211,7 @@ func redCallsEnd(_ context: Number, _ gpuHandle: Number, _ calls: Number, _ call
   _ = _gsCProcedureRedCallsEnd(nil, nil, 0, args)
 }
 
-func redGetCallProceduresAndAddresses(_ context: Number, _ gpuHandle: Number, _ outCallProceduresAndAddresses: Number, _ outStatuses: Number) {
+func redGetCallProceduresAndAddresses(context: Number, gpuHandle: Number, outCallProceduresAndAddresses: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6221,7 +6221,7 @@ func redGetCallProceduresAndAddresses(_ context: Number, _ gpuHandle: Number, _ 
   _ = _gsCProcedureRedGetCallProceduresAndAddresses(nil, nil, 0, args)
 }
 
-func redCallGpuToCpuSignalSignal(_ callProceduresAndAddresses: Number, _ calls: Number, _ signalGpuToCpuSignal: Number, _ setTo8192: Number) {
+func redCallGpuToCpuSignalSignal(callProceduresAndAddresses: Number, calls: Number, signalGpuToCpuSignal: Number, setTo8192: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6231,7 +6231,7 @@ func redCallGpuToCpuSignalSignal(_ callProceduresAndAddresses: Number, _ calls: 
   _ = _gsCProcedureRedCallGpuToCpuSignalSignal(nil, nil, 0, args)
 }
 
-func redCallCopyArrayToArray(_ callProceduresAndAddresses: Number, _ calls: Number, _ arrayR: Number, _ arrayW: Number, _ rangesCount: Number, _ ranges: Number) {
+func redCallCopyArrayToArray(callProceduresAndAddresses: Number, calls: Number, arrayR: Number, arrayW: Number, rangesCount: Number, ranges: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6243,7 +6243,7 @@ func redCallCopyArrayToArray(_ callProceduresAndAddresses: Number, _ calls: Numb
   _ = _gsCProcedureRedCallCopyArrayToArray(nil, nil, 0, args)
 }
 
-func redCallCopyImageToImage(_ callProceduresAndAddresses: Number, _ calls: Number, _ imageR: Number, _ setTo1: Number, _ imageW: Number, _ setTo01: Number, _ rangesCount: Number, _ ranges: Number) {
+func redCallCopyImageToImage(callProceduresAndAddresses: Number, calls: Number, imageR: Number, setTo1: Number, imageW: Number, setTo01: Number, rangesCount: Number, ranges: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6257,7 +6257,7 @@ func redCallCopyImageToImage(_ callProceduresAndAddresses: Number, _ calls: Numb
   _ = _gsCProcedureRedCallCopyImageToImage(nil, nil, 0, args)
 }
 
-func redCallCopyArrayToImage(_ callProceduresAndAddresses: Number, _ calls: Number, _ arrayR: Number, _ imageW: Number, _ setTo1: Number, _ rangesCount: Number, _ ranges: Number) {
+func redCallCopyArrayToImage(callProceduresAndAddresses: Number, calls: Number, arrayR: Number, imageW: Number, setTo1: Number, rangesCount: Number, ranges: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6270,7 +6270,7 @@ func redCallCopyArrayToImage(_ callProceduresAndAddresses: Number, _ calls: Numb
   _ = _gsCProcedureRedCallCopyArrayToImage(nil, nil, 0, args)
 }
 
-func redCallCopyImageToArray(_ callProceduresAndAddresses: Number, _ calls: Number, _ imageR: Number, _ setTo1: Number, _ arrayW: Number, _ rangesCount: Number, _ ranges: Number) {
+func redCallCopyImageToArray(callProceduresAndAddresses: Number, calls: Number, imageR: Number, setTo1: Number, arrayW: Number, rangesCount: Number, ranges: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6283,7 +6283,7 @@ func redCallCopyImageToArray(_ callProceduresAndAddresses: Number, _ calls: Numb
   _ = _gsCProcedureRedCallCopyImageToArray(nil, nil, 0, args)
 }
 
-func redCallProcedure(_ callProceduresAndAddresses: Number, _ calls: Number, _ vertexCount: Number, _ instanceCount: Number, _ vertexFirst: Number, _ instanceFirst: Number) {
+func redCallProcedure(callProceduresAndAddresses: Number, calls: Number, vertexCount: Number, instanceCount: Number, vertexFirst: Number, instanceFirst: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6295,7 +6295,7 @@ func redCallProcedure(_ callProceduresAndAddresses: Number, _ calls: Number, _ v
   _ = _gsCProcedureRedCallProcedure(nil, nil, 0, args)
 }
 
-func redCallProcedureIndexed(_ callProceduresAndAddresses: Number, _ calls: Number, _ indexCount: Number, _ instanceCount: Number, _ indexFirst: Number, _ vertexBase: Number, _ instanceFirst: Number) {
+func redCallProcedureIndexed(callProceduresAndAddresses: Number, calls: Number, indexCount: Number, instanceCount: Number, indexFirst: Number, vertexBase: Number, instanceFirst: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6308,7 +6308,7 @@ func redCallProcedureIndexed(_ callProceduresAndAddresses: Number, _ calls: Numb
   _ = _gsCProcedureRedCallProcedureIndexed(nil, nil, 0, args)
 }
 
-func redCallProcedureCompute(_ callProceduresAndAddresses: Number, _ calls: Number, _ workgroupsCountX: Number, _ workgroupsCountY: Number, _ workgroupsCountZ: Number) {
+func redCallProcedureCompute(callProceduresAndAddresses: Number, calls: Number, workgroupsCountX: Number, workgroupsCountY: Number, workgroupsCountZ: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6319,7 +6319,7 @@ func redCallProcedureCompute(_ callProceduresAndAddresses: Number, _ calls: Numb
   _ = _gsCProcedureRedCallProcedureCompute(nil, nil, 0, args)
 }
 
-func redCallSetProcedure(_ callProceduresAndAddresses: Number, _ calls: Number, _ procedureType: Number, _ procedure: Number) {
+func redCallSetProcedure(callProceduresAndAddresses: Number, calls: Number, procedureType: Number, procedure: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6329,7 +6329,7 @@ func redCallSetProcedure(_ callProceduresAndAddresses: Number, _ calls: Number, 
   _ = _gsCProcedureRedCallSetProcedure(nil, nil, 0, args)
 }
 
-func redCallSetProcedureIndices(_ callProceduresAndAddresses: Number, _ calls: Number, _ array: Number, _ setTo0: Number, _ setTo1: Number) {
+func redCallSetProcedureIndices(callProceduresAndAddresses: Number, calls: Number, array: Number, setTo0: Number, setTo1: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6340,7 +6340,7 @@ func redCallSetProcedureIndices(_ callProceduresAndAddresses: Number, _ calls: N
   _ = _gsCProcedureRedCallSetProcedureIndices(nil, nil, 0, args)
 }
 
-func redCallSetProcedureParametersVariables(_ callProceduresAndAddresses: Number, _ calls: Number, _ procedureParameters: Number, _ visibleToStages: Number, _ variablesBytesFirst: Number, _ dataBytesCount: Number, _ data: Number) {
+func redCallSetProcedureParametersVariables(callProceduresAndAddresses: Number, calls: Number, procedureParameters: Number, visibleToStages: Number, variablesBytesFirst: Number, dataBytesCount: Number, data: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6353,7 +6353,7 @@ func redCallSetProcedureParametersVariables(_ callProceduresAndAddresses: Number
   _ = _gsCProcedureRedCallSetProcedureParametersVariables(nil, nil, 0, args)
 }
 
-func redCallSetProcedureParametersStructs(_ callProceduresAndAddresses: Number, _ calls: Number, _ procedureType: Number, _ procedureParameters: Number, _ procedureParametersDeclarationStructsDeclarationsFirst: Number, _ structsCount: Number, _ structs: Number, _ setTo0: Number, _ setTo00: Number) {
+func redCallSetProcedureParametersStructs(callProceduresAndAddresses: Number, calls: Number, procedureType: Number, procedureParameters: Number, procedureParametersDeclarationStructsDeclarationsFirst: Number, structsCount: Number, structs: Number, setTo0: Number, setTo00: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6368,7 +6368,7 @@ func redCallSetProcedureParametersStructs(_ callProceduresAndAddresses: Number, 
   _ = _gsCProcedureRedCallSetProcedureParametersStructs(nil, nil, 0, args)
 }
 
-func redCallSetProcedureParametersHandles(_ callProceduresAndAddresses: Number, _ calls: Number, _ procedureType: Number, _ procedureParameters: Number, _ procedureParametersDeclarationStructsDeclarationsCount: Number, _ handlesCount: Number, _ handles: Number) {
+func redCallSetProcedureParametersHandles(callProceduresAndAddresses: Number, calls: Number, procedureType: Number, procedureParameters: Number, procedureParametersDeclarationStructsDeclarationsCount: Number, handlesCount: Number, handles: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6381,7 +6381,7 @@ func redCallSetProcedureParametersHandles(_ callProceduresAndAddresses: Number, 
   _ = _gsCProcedureRedCallSetProcedureParametersHandles(nil, nil, 0, args)
 }
 
-func redCallSetDynamicDepthBias(_ callProceduresAndAddresses: Number, _ calls: Number, _ constantFactor: Number, _ clamp: Number, _ slopeFactor: Number) {
+func redCallSetDynamicDepthBias(callProceduresAndAddresses: Number, calls: Number, constantFactor: Number, clamp: Number, slopeFactor: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6392,7 +6392,7 @@ func redCallSetDynamicDepthBias(_ callProceduresAndAddresses: Number, _ calls: N
   _ = _gsCProcedureRedCallSetDynamicDepthBias(nil, nil, 0, args)
 }
 
-func redCallSetDynamicDepthBounds(_ callProceduresAndAddresses: Number, _ calls: Number, _ min: Number, _ max: Number) {
+func redCallSetDynamicDepthBounds(callProceduresAndAddresses: Number, calls: Number, min: Number, max: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6402,7 +6402,7 @@ func redCallSetDynamicDepthBounds(_ callProceduresAndAddresses: Number, _ calls:
   _ = _gsCProcedureRedCallSetDynamicDepthBounds(nil, nil, 0, args)
 }
 
-func redCallSetDynamicStencilCompareMask(_ callProceduresAndAddresses: Number, _ calls: Number, _ face: Number, _ compareMask: Number) {
+func redCallSetDynamicStencilCompareMask(callProceduresAndAddresses: Number, calls: Number, face: Number, compareMask: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6412,7 +6412,7 @@ func redCallSetDynamicStencilCompareMask(_ callProceduresAndAddresses: Number, _
   _ = _gsCProcedureRedCallSetDynamicStencilCompareMask(nil, nil, 0, args)
 }
 
-func redCallSetDynamicStencilWriteMask(_ callProceduresAndAddresses: Number, _ calls: Number, _ face: Number, _ writeMask: Number) {
+func redCallSetDynamicStencilWriteMask(callProceduresAndAddresses: Number, calls: Number, face: Number, writeMask: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6422,7 +6422,7 @@ func redCallSetDynamicStencilWriteMask(_ callProceduresAndAddresses: Number, _ c
   _ = _gsCProcedureRedCallSetDynamicStencilWriteMask(nil, nil, 0, args)
 }
 
-func redCallSetDynamicStencilReference(_ callProceduresAndAddresses: Number, _ calls: Number, _ face: Number, _ reference: Number) {
+func redCallSetDynamicStencilReference(callProceduresAndAddresses: Number, calls: Number, face: Number, reference: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6432,7 +6432,7 @@ func redCallSetDynamicStencilReference(_ callProceduresAndAddresses: Number, _ c
   _ = _gsCProcedureRedCallSetDynamicStencilReference(nil, nil, 0, args)
 }
 
-func redCallSetDynamicBlendConstants(_ callProceduresAndAddresses: Number, _ calls: Number, _ blendConstants: Number) {
+func redCallSetDynamicBlendConstants(callProceduresAndAddresses: Number, calls: Number, blendConstants: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6441,7 +6441,7 @@ func redCallSetDynamicBlendConstants(_ callProceduresAndAddresses: Number, _ cal
   _ = _gsCProcedureRedCallSetDynamicBlendConstants(nil, nil, 0, args)
 }
 
-func redCallSetDynamicViewport(_ callProceduresAndAddresses: Number, _ calls: Number, _ x: Number, _ y: Number, _ width: Number, _ height: Number, _ depthMin: Number, _ depthMax: Number) {
+func redCallSetDynamicViewport(callProceduresAndAddresses: Number, calls: Number, x: Number, y: Number, width: Number, height: Number, depthMin: Number, depthMax: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6455,7 +6455,7 @@ func redCallSetDynamicViewport(_ callProceduresAndAddresses: Number, _ calls: Nu
   _ = _gsCProcedureRedCallSetDynamicViewport(nil, nil, 0, args)
 }
 
-func redCallSetDynamicScissor(_ callProceduresAndAddresses: Number, _ calls: Number, _ x: Number, _ y: Number, _ width: Number, _ height: Number) {
+func redCallSetDynamicScissor(callProceduresAndAddresses: Number, calls: Number, x: Number, y: Number, width: Number, height: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6467,7 +6467,7 @@ func redCallSetDynamicScissor(_ callProceduresAndAddresses: Number, _ calls: Num
   _ = _gsCProcedureRedCallSetDynamicScissor(nil, nil, 0, args)
 }
 
-func redCallSetStructsMemory(_ callProceduresAndAddresses: Number, _ calls: Number, _ structsMemory: Number, _ structsMemorySamplers: Number) {
+func redCallSetStructsMemory(callProceduresAndAddresses: Number, calls: Number, structsMemory: Number, structsMemorySamplers: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6477,7 +6477,7 @@ func redCallSetStructsMemory(_ callProceduresAndAddresses: Number, _ calls: Numb
   _ = _gsCProcedureRedCallSetStructsMemory(nil, nil, 0, args)
 }
 
-func redCallSetProcedureParameters(_ callProceduresAndAddresses: Number, _ calls: Number, _ procedureType: Number, _ procedureParameters: Number) {
+func redCallSetProcedureParameters(callProceduresAndAddresses: Number, calls: Number, procedureType: Number, procedureParameters: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6487,7 +6487,7 @@ func redCallSetProcedureParameters(_ callProceduresAndAddresses: Number, _ calls
   _ = _gsCProcedureRedCallSetProcedureParameters(nil, nil, 0, args)
 }
 
-func redCallSetProcedureOutput(_ callProceduresAndAddresses: Number, _ calls: Number, _ outputDeclaration: Number, _ output: Number, _ inlineOutput: Number, _ outputWidth: Number, _ outputHeight: Number, _ outputDepthStencilEnable: Bool, _ outputColorsCount: Number, _ depthClearValue: Number, _ stencilClearValue: Number, _ colorsClearValuesFloat: Number, _ colorsClearValuesSint: Number, _ colorsClearValuesUint: Number) {
+func redCallSetProcedureOutput(callProceduresAndAddresses: Number, calls: Number, outputDeclaration: Number, output: Number, inlineOutput: Number, outputWidth: Number, outputHeight: Number, outputDepthStencilEnable: Bool, outputColorsCount: Number, depthClearValue: Number, stencilClearValue: Number, colorsClearValuesFloat: Number, colorsClearValuesSint: Number, colorsClearValuesUint: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6507,7 +6507,7 @@ func redCallSetProcedureOutput(_ callProceduresAndAddresses: Number, _ calls: Nu
   _ = _gsCProcedureRedCallSetProcedureOutput(nil, nil, 0, args)
 }
 
-func redCallEndProcedureOutput(_ callProceduresAndAddresses: Number, _ calls: Number) {
+func redCallEndProcedureOutput(callProceduresAndAddresses: Number, calls: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6515,7 +6515,7 @@ func redCallEndProcedureOutput(_ callProceduresAndAddresses: Number, _ calls: Nu
   _ = _gsCProcedureRedCallEndProcedureOutput(nil, nil, 0, args)
 }
 
-func redCallUsageAliasOrderBarrier(_ callProceduresAndAddresses: Number, _ calls: Number, _ context: Number, _ arrayUsagesCount: Number, _ arrayUsages: Number, _ imageUsagesCount: Number, _ imageUsages: Number, _ aliasesCount: Number, _ aliases: Number, _ ordersCount: Number, _ orders: Number, _ dependencyByRegion: Bool) {
+func redCallUsageAliasOrderBarrier(callProceduresAndAddresses: Number, calls: Number, context: Number, arrayUsagesCount: Number, arrayUsages: Number, imageUsagesCount: Number, imageUsages: Number, aliasesCount: Number, aliases: Number, ordersCount: Number, orders: Number, dependencyByRegion: Bool) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6533,7 +6533,7 @@ func redCallUsageAliasOrderBarrier(_ callProceduresAndAddresses: Number, _ calls
   _ = _gsCProcedureRedCallUsageAliasOrderBarrier(nil, nil, 0, args)
 }
 
-func redCallMark(_ callProceduresAndAddresses: Number, _ calls: Number, _ mark: String) {
+func redCallMark(callProceduresAndAddresses: Number, calls: Number, mark: String) {
   let _mark = UnsafeRawPointer(_strdup(mark)); defer { free(UnsafeMutableRawPointer(mutating: _mark)) }
 
   let args = [
@@ -6544,7 +6544,7 @@ func redCallMark(_ callProceduresAndAddresses: Number, _ calls: Number, _ mark: 
   _ = _gsCProcedureRedCallMark(nil, nil, 0, args)
 }
 
-func redCallMarkSet(_ callProceduresAndAddresses: Number, _ calls: Number, _ mark: String) {
+func redCallMarkSet(callProceduresAndAddresses: Number, calls: Number, mark: String) {
   let _mark = UnsafeRawPointer(_strdup(mark)); defer { free(UnsafeMutableRawPointer(mutating: _mark)) }
 
   let args = [
@@ -6555,7 +6555,7 @@ func redCallMarkSet(_ callProceduresAndAddresses: Number, _ calls: Number, _ mar
   _ = _gsCProcedureRedCallMarkSet(nil, nil, 0, args)
 }
 
-func redCallMarkEnd(_ callProceduresAndAddresses: Number, _ calls: Number) {
+func redCallMarkEnd(callProceduresAndAddresses: Number, calls: Number) {
   let args = [
     _gsVoidPointerFromNumber(callProceduresAndAddresses),
     _gsVoidPointerFromNumber(calls),
@@ -6563,7 +6563,7 @@ func redCallMarkEnd(_ callProceduresAndAddresses: Number, _ calls: Number) {
   _ = _gsCProcedureRedCallMarkEnd(nil, nil, 0, args)
 }
 
-func redQueueSubmit(_ context: Number, _ gpuHandle: Number, _ queue: Number, _ timelinesCount: Number, _ timelines: Number, _ signalCpuSignal: Number, _ outStatuses: Number) {
+func redQueueSubmit(context: Number, gpuHandle: Number, queue: Number, timelinesCount: Number, timelines: Number, signalCpuSignal: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6576,7 +6576,7 @@ func redQueueSubmit(_ context: Number, _ gpuHandle: Number, _ queue: Number, _ t
   _ = _gsCProcedureRedQueueSubmit(nil, nil, 0, args)
 }
 
-func redMark(_ mark: String) {
+func redMark(mark: String) {
   let _mark = UnsafeRawPointer(_strdup(mark)); defer { free(UnsafeMutableRawPointer(mutating: _mark)) }
 
   let args = [
@@ -6585,7 +6585,7 @@ func redMark(_ mark: String) {
   _ = _gsCProcedureRedMark(nil, nil, 0, args)
 }
 
-func redMarkSet(_ mark: String) {
+func redMarkSet(mark: String) {
   let _mark = UnsafeRawPointer(_strdup(mark)); defer { free(UnsafeMutableRawPointer(mutating: _mark)) }
 
   let args = [
@@ -6598,7 +6598,7 @@ func redMarkEnd() {
   _ = _gsCProcedureRedMarkEnd(nil, nil, 0, nil)
 }
 
-func redCreateProcedureComputingLanguage(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ procedureCache: Number, _ procedureParameters: Number, _ gpuCodeMainProcedureName: String, _ gpuCode: Number, _ stateExtension: Number, _ outStatuses: Number) -> Number /* procedureHandle */ {
+func redCreateProcedureComputingLanguage(context: Number, gpuHandle: Number, handleName: String, procedureCache: Number, procedureParameters: Number, gpuCodeMainProcedureName: String, gpuCode: Number, stateExtension: Number, outStatuses: Number) -> Number /* procedureHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
   let _gpuCodeMainProcedureName = UnsafeRawPointer(_strdup(gpuCodeMainProcedureName)); defer { free(UnsafeMutableRawPointer(mutating: _gpuCodeMainProcedureName)) }
 
@@ -6616,7 +6616,7 @@ func redCreateProcedureComputingLanguage(_ context: Number, _ gpuHandle: Number,
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateProcedureComputingLanguage(nil, nil, 0, args))
 }
 
-func redCreateArrayTimestamp(_ context: Number, _ gpuHandle: Number, _ handleName: String, _ count: Number, _ outStatuses: Number) -> Number /* arrayTimestampHandle */ {
+func redCreateArrayTimestamp(context: Number, gpuHandle: Number, handleName: String, count: Number, outStatuses: Number) -> Number /* arrayTimestampHandle */ {
   let _handleName = UnsafeRawPointer(_strdup(handleName)); defer { free(UnsafeMutableRawPointer(mutating: _handleName)) }
 
   let args = [
@@ -6629,7 +6629,7 @@ func redCreateArrayTimestamp(_ context: Number, _ gpuHandle: Number, _ handleNam
   return _gsNumberFromVoidPointer(_gsCProcedureRedCreateArrayTimestamp(nil, nil, 0, args))
 }
 
-func redDestroyArrayTimestamp(_ context: Number, _ gpuHandle: Number, _ arrayTimestamp: Number) {
+func redDestroyArrayTimestamp(context: Number, gpuHandle: Number, arrayTimestamp: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6638,7 +6638,7 @@ func redDestroyArrayTimestamp(_ context: Number, _ gpuHandle: Number, _ arrayTim
   _ = _gsCProcedureRedDestroyArrayTimestamp(nil, nil, 0, args)
 }
 
-func redCallArrayTimestampWrite(_ calls: Number, _ context: Number, _ arrayTimestamp: Number, _ index: Number) {
+func redCallArrayTimestampWrite(calls: Number, context: Number, arrayTimestamp: Number, index: Number) {
   let args = [
     _gsVoidPointerFromNumber(calls),
     _gsVoidPointerFromNumber(context),
@@ -6648,7 +6648,7 @@ func redCallArrayTimestampWrite(_ calls: Number, _ context: Number, _ arrayTimes
   _ = _gsCProcedureRedCallArrayTimestampWrite(nil, nil, 0, args)
 }
 
-func redArrayTimestampRead(_ context: Number, _ gpuHandle: Number, _ arrayTimestamp: Number, _ rangeFirst: Number, _ rangeCount: Number, _ out64BitTicksCounts: Number, _ outStatuses: Number) {
+func redArrayTimestampRead(context: Number, gpuHandle: Number, arrayTimestamp: Number, rangeFirst: Number, rangeCount: Number, out64BitTicksCounts: Number, outStatuses: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6665,7 +6665,7 @@ func getRrtStructsCount() -> Number /* count */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetRrtStructsCount(nil, nil, 0, nil))
 }
 
-func getRrtStructName(_ index: Number) -> String /* name */ {
+func getRrtStructName(index: Number) -> String /* name */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -6679,7 +6679,7 @@ func getRrtStructMembersCount() -> Number /* count */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetRrtStructMembersCount(nil, nil, 0, nil))
 }
 
-func getRrtStructMemberName(_ index: Number) -> String /* name */ {
+func getRrtStructMemberName(index: Number) -> String /* name */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -6689,7 +6689,7 @@ func getRrtStructMemberName(_ index: Number) -> String /* name */ {
   return out
 }
 
-func rrtStructSizeof(_ structName: String) -> Number /* bytesCount */ {
+func rrtStructSizeof(structName: String) -> Number /* bytesCount */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
 
   let args = [
@@ -6698,7 +6698,7 @@ func rrtStructSizeof(_ structName: String) -> Number /* bytesCount */ {
   return _gsNumberFromVoidPointer(_gsCProcedureRrtStructSizeof(nil, nil, 0, args))
 }
 
-func rrtStructMemberSizeof(_ structName: String, _ structMemberName: String) -> Number /* bytesCount */ {
+func rrtStructMemberSizeof(structName: String, structMemberName: String) -> Number /* bytesCount */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
   let _structMemberName = UnsafeRawPointer(_strdup(structMemberName)); defer { free(UnsafeMutableRawPointer(mutating: _structMemberName)) }
 
@@ -6709,7 +6709,7 @@ func rrtStructMemberSizeof(_ structName: String, _ structMemberName: String) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureRrtStructMemberSizeof(nil, nil, 0, args))
 }
 
-func rrtStructMemberOffsetof(_ structName: String, _ structMemberName: String) -> Number /* bytesFirst */ {
+func rrtStructMemberOffsetof(structName: String, structMemberName: String) -> Number /* bytesFirst */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
   let _structMemberName = UnsafeRawPointer(_strdup(structMemberName)); defer { free(UnsafeMutableRawPointer(mutating: _structMemberName)) }
 
@@ -6720,7 +6720,7 @@ func rrtStructMemberOffsetof(_ structName: String, _ structMemberName: String) -
   return _gsNumberFromVoidPointer(_gsCProcedureRrtStructMemberOffsetof(nil, nil, 0, args))
 }
 
-func rrtStructMemberTypeof(_ structName: String, _ structMemberName: String) -> Number /* structMemberType */ {
+func rrtStructMemberTypeof(structName: String, structMemberName: String) -> Number /* structMemberType */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
   let _structMemberName = UnsafeRawPointer(_strdup(structMemberName)); defer { free(UnsafeMutableRawPointer(mutating: _structMemberName)) }
 
@@ -6731,7 +6731,7 @@ func rrtStructMemberTypeof(_ structName: String, _ structMemberName: String) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureRrtStructMemberTypeof(nil, nil, 0, args))
 }
 
-func rrtCreateContext(_ apiVersion: Number, _ api: Number, _ outContext: Number) -> Number /* rrerror */ {
+func rrtCreateContext(apiVersion: Number, api: Number, outContext: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(apiVersion),
     _gsVoidPointerFromNumber(api),
@@ -6740,21 +6740,21 @@ func rrtCreateContext(_ apiVersion: Number, _ api: Number, _ outContext: Number)
   return _gsNumberFromVoidPointer(_gsCProcedureRrtCreateContext(nil, nil, 0, args))
 }
 
-func rrtDestroyContext(_ context: Number) -> Number /* rrerror */ {
+func rrtDestroyContext(context: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureRrtDestroyContext(nil, nil, 0, args))
 }
 
-func rrtSetLogLevel(_ logLevel: Number) -> Number /* rrerror */ {
+func rrtSetLogLevel(logLevel: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(logLevel),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureRrtSetLogLevel(nil, nil, 0, args))
 }
 
-func rrtSetLogFile(_ filename: String) -> Number /* rrerror */ {
+func rrtSetLogFile(filename: String) -> Number /* rrerror */ {
   let _filename = UnsafeRawPointer(_strdup(filename)); defer { free(UnsafeMutableRawPointer(mutating: _filename)) }
 
   let args = [
@@ -6763,7 +6763,7 @@ func rrtSetLogFile(_ filename: String) -> Number /* rrerror */ {
   return _gsNumberFromVoidPointer(_gsCProcedureRrtSetLogFile(nil, nil, 0, args))
 }
 
-func rrtCmdBuildGeometry(_ context: Number, _ buildOperation: Number, _ buildInput: Number, _ buildOptions: Number, _ temporaryBuffer: Number, _ geometryBuffer: Number, _ commandStream: Number) -> Number /* rrerror */ {
+func rrtCmdBuildGeometry(context: Number, buildOperation: Number, buildInput: Number, buildOptions: Number, temporaryBuffer: Number, geometryBuffer: Number, commandStream: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(buildOperation),
@@ -6776,7 +6776,7 @@ func rrtCmdBuildGeometry(_ context: Number, _ buildOperation: Number, _ buildInp
   return _gsNumberFromVoidPointer(_gsCProcedureRrtCmdBuildGeometry(nil, nil, 0, args))
 }
 
-func rrtGetGeometryBuildMemoryRequirements(_ context: Number, _ buildInput: Number, _ buildOptions: Number, _ outMemoryRequirements: Number) -> Number /* rrerror */ {
+func rrtGetGeometryBuildMemoryRequirements(context: Number, buildInput: Number, buildOptions: Number, outMemoryRequirements: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(buildInput),
@@ -6786,7 +6786,7 @@ func rrtGetGeometryBuildMemoryRequirements(_ context: Number, _ buildInput: Numb
   return _gsNumberFromVoidPointer(_gsCProcedureRrtGetGeometryBuildMemoryRequirements(nil, nil, 0, args))
 }
 
-func rrtCmdBuildScene(_ context: Number, _ buildInput: Number, _ buildOptions: Number, _ temporaryBuffer: Number, _ sceneBuffer: Number, _ commandStream: Number) -> Number /* rrerror */ {
+func rrtCmdBuildScene(context: Number, buildInput: Number, buildOptions: Number, temporaryBuffer: Number, sceneBuffer: Number, commandStream: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(buildInput),
@@ -6798,7 +6798,7 @@ func rrtCmdBuildScene(_ context: Number, _ buildInput: Number, _ buildOptions: N
   return _gsNumberFromVoidPointer(_gsCProcedureRrtCmdBuildScene(nil, nil, 0, args))
 }
 
-func rrtGetSceneBuildMemoryRequirements(_ context: Number, _ buildInput: Number, _ buildOptions: Number, _ outMemoryRequirements: Number) -> Number /* rrerror */ {
+func rrtGetSceneBuildMemoryRequirements(context: Number, buildInput: Number, buildOptions: Number, outMemoryRequirements: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(buildInput),
@@ -6808,7 +6808,7 @@ func rrtGetSceneBuildMemoryRequirements(_ context: Number, _ buildInput: Number,
   return _gsNumberFromVoidPointer(_gsCProcedureRrtGetSceneBuildMemoryRequirements(nil, nil, 0, args))
 }
 
-func rrtCmdIntersect(_ context: Number, _ sceneBuffer: Number, _ query: Number, _ rays: Number, _ rayCount: Number, _ indirectRayCount: Number, _ queryOutput: Number, _ hits: Number, _ scratch: Number, _ commandStream: Number) -> Number /* rrerror */ {
+func rrtCmdIntersect(context: Number, sceneBuffer: Number, query: Number, rays: Number, rayCount: Number, indirectRayCount: Number, queryOutput: Number, hits: Number, scratch: Number, commandStream: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(sceneBuffer),
@@ -6824,7 +6824,7 @@ func rrtCmdIntersect(_ context: Number, _ sceneBuffer: Number, _ query: Number, 
   return _gsNumberFromVoidPointer(_gsCProcedureRrtCmdIntersect(nil, nil, 0, args))
 }
 
-func rrtGetTraceMemoryRequirements(_ context: Number, _ rayCount: Number, _ outScratchSize: Number) -> Number /* rrerror */ {
+func rrtGetTraceMemoryRequirements(context: Number, rayCount: Number, outScratchSize: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(rayCount),
@@ -6833,7 +6833,7 @@ func rrtGetTraceMemoryRequirements(_ context: Number, _ rayCount: Number, _ outS
   return _gsNumberFromVoidPointer(_gsCProcedureRrtGetTraceMemoryRequirements(nil, nil, 0, args))
 }
 
-func rrtAllocateCommandStream(_ context: Number, _ outCommandStream: Number) -> Number /* rrerror */ {
+func rrtAllocateCommandStream(context: Number, outCommandStream: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(outCommandStream),
@@ -6841,7 +6841,7 @@ func rrtAllocateCommandStream(_ context: Number, _ outCommandStream: Number) -> 
   return _gsNumberFromVoidPointer(_gsCProcedureRrtAllocateCommandStream(nil, nil, 0, args))
 }
 
-func rrtReleaseCommandStream(_ context: Number, _ commandStream: Number) -> Number /* rrerror */ {
+func rrtReleaseCommandStream(context: Number, commandStream: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(commandStream),
@@ -6849,7 +6849,7 @@ func rrtReleaseCommandStream(_ context: Number, _ commandStream: Number) -> Numb
   return _gsNumberFromVoidPointer(_gsCProcedureRrtReleaseCommandStream(nil, nil, 0, args))
 }
 
-func rrtSumbitCommandStream(_ context: Number, _ commandStream: Number, _ waitEvent: Number, _ outEvent: Number) -> Number /* rrerror */ {
+func rrtSumbitCommandStream(context: Number, commandStream: Number, waitEvent: Number, outEvent: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(commandStream),
@@ -6859,7 +6859,7 @@ func rrtSumbitCommandStream(_ context: Number, _ commandStream: Number, _ waitEv
   return _gsNumberFromVoidPointer(_gsCProcedureRrtSumbitCommandStream(nil, nil, 0, args))
 }
 
-func rrtReleaseEvent(_ context: Number, _ event: Number) -> Number /* rrerror */ {
+func rrtReleaseEvent(context: Number, event: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(event),
@@ -6867,7 +6867,7 @@ func rrtReleaseEvent(_ context: Number, _ event: Number) -> Number /* rrerror */
   return _gsNumberFromVoidPointer(_gsCProcedureRrtReleaseEvent(nil, nil, 0, args))
 }
 
-func rrtWaitEvent(_ context: Number, _ event: Number) -> Number /* rrerror */ {
+func rrtWaitEvent(context: Number, event: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(event),
@@ -6875,7 +6875,7 @@ func rrtWaitEvent(_ context: Number, _ event: Number) -> Number /* rrerror */ {
   return _gsNumberFromVoidPointer(_gsCProcedureRrtWaitEvent(nil, nil, 0, args))
 }
 
-func rrtReleaseDevicePtr(_ context: Number, _ devicePointer: Number) -> Number /* rrerror */ {
+func rrtReleaseDevicePtr(context: Number, devicePointer: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(devicePointer),
@@ -6883,7 +6883,7 @@ func rrtReleaseDevicePtr(_ context: Number, _ devicePointer: Number) -> Number /
   return _gsNumberFromVoidPointer(_gsCProcedureRrtReleaseDevicePtr(nil, nil, 0, args))
 }
 
-func rrtReleaseExternalCommandStream(_ context: Number, _ commandStream: Number) -> Number /* rrerror */ {
+func rrtReleaseExternalCommandStream(context: Number, commandStream: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(commandStream),
@@ -6891,7 +6891,7 @@ func rrtReleaseExternalCommandStream(_ context: Number, _ commandStream: Number)
   return _gsNumberFromVoidPointer(_gsCProcedureRrtReleaseExternalCommandStream(nil, nil, 0, args))
 }
 
-func rrtGetDevicePtrFromVkBuffer(_ context: Number, _ resource: Number, _ offset: Number, _ outDevicePointer: Number) -> Number /* rrerror */ {
+func rrtGetDevicePtrFromVkBuffer(context: Number, resource: Number, offset: Number, outDevicePointer: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(resource),
@@ -6901,7 +6901,7 @@ func rrtGetDevicePtrFromVkBuffer(_ context: Number, _ resource: Number, _ offset
   return _gsNumberFromVoidPointer(_gsCProcedureRrtGetDevicePtrFromVkBuffer(nil, nil, 0, args))
 }
 
-func rrtCreateContextVk(_ apiVersion: Number, _ device: Number, _ physicalDevice: Number, _ commandQueue: Number, _ queueFamilyIndex: Number, _ outContext: Number) -> Number /* rrerror */ {
+func rrtCreateContextVk(apiVersion: Number, device: Number, physicalDevice: Number, commandQueue: Number, queueFamilyIndex: Number, outContext: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(apiVersion),
     _gsVoidPointerFromNumber(device),
@@ -6913,7 +6913,7 @@ func rrtCreateContextVk(_ apiVersion: Number, _ device: Number, _ physicalDevice
   return _gsNumberFromVoidPointer(_gsCProcedureRrtCreateContextVk(nil, nil, 0, args))
 }
 
-func rrtGetCommandStreamFromVkCommandBuffer(_ context: Number, _ commandBuffer: Number, _ outCommandStream: Number) -> Number /* rrerror */ {
+func rrtGetCommandStreamFromVkCommandBuffer(context: Number, commandBuffer: Number, outCommandStream: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(commandBuffer),
@@ -6922,7 +6922,7 @@ func rrtGetCommandStreamFromVkCommandBuffer(_ context: Number, _ commandBuffer: 
   return _gsNumberFromVoidPointer(_gsCProcedureRrtGetCommandStreamFromVkCommandBuffer(nil, nil, 0, args))
 }
 
-func rrtAllocateDeviceBuffer(_ context: Number, _ size: Number, _ outDevicePointer: Number) -> Number /* rrerror */ {
+func rrtAllocateDeviceBuffer(context: Number, size: Number, outDevicePointer: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(size),
@@ -6931,7 +6931,7 @@ func rrtAllocateDeviceBuffer(_ context: Number, _ size: Number, _ outDevicePoint
   return _gsNumberFromVoidPointer(_gsCProcedureRrtAllocateDeviceBuffer(nil, nil, 0, args))
 }
 
-func rrtMapDevicePtr(_ context: Number, _ devicePointer: Number, _ outMappingPointer: Number) -> Number /* rrerror */ {
+func rrtMapDevicePtr(context: Number, devicePointer: Number, outMappingPointer: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(devicePointer),
@@ -6940,7 +6940,7 @@ func rrtMapDevicePtr(_ context: Number, _ devicePointer: Number, _ outMappingPoi
   return _gsNumberFromVoidPointer(_gsCProcedureRrtMapDevicePtr(nil, nil, 0, args))
 }
 
-func rrtUnmapDevicePtr(_ context: Number, _ devicePointer: Number, _ outMappingPointer: Number) -> Number /* rrerror */ {
+func rrtUnmapDevicePtr(context: Number, devicePointer: Number, outMappingPointer: Number) -> Number /* rrerror */ {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(devicePointer),
@@ -6949,7 +6949,7 @@ func rrtUnmapDevicePtr(_ context: Number, _ devicePointer: Number, _ outMappingP
   return _gsNumberFromVoidPointer(_gsCProcedureRrtUnmapDevicePtr(nil, nil, 0, args))
 }
 
-func onRerunCallRedCpuSignalWait(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedCpuSignalWait(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6958,7 +6958,7 @@ func onRerunCallRedCpuSignalWait(_ context: Number, _ gpuHandle: Number, _ handl
   _ = _gsCProcedureOnRerunCallRedCpuSignalWait(nil, nil, 0, args)
 }
 
-func onRerunCallRedMemoryFree(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedMemoryFree(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6967,7 +6967,7 @@ func onRerunCallRedMemoryFree(_ context: Number, _ gpuHandle: Number, _ handle: 
   _ = _gsCProcedureOnRerunCallRedMemoryFree(nil, nil, 0, args)
 }
 
-func onRerunCallRedStructsMemoryFree(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedStructsMemoryFree(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6976,14 +6976,14 @@ func onRerunCallRedStructsMemoryFree(_ context: Number, _ gpuHandle: Number, _ h
   _ = _gsCProcedureOnRerunCallRedStructsMemoryFree(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyContext(_ context: Number) {
+func onRerunCallRedDestroyContext(context: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
   ]
   _ = _gsCProcedureOnRerunCallRedDestroyContext(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyArray(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyArray(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -6992,7 +6992,7 @@ func onRerunCallRedDestroyArray(_ context: Number, _ gpuHandle: Number, _ handle
   _ = _gsCProcedureOnRerunCallRedDestroyArray(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyImage(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyImage(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7001,7 +7001,7 @@ func onRerunCallRedDestroyImage(_ context: Number, _ gpuHandle: Number, _ handle
   _ = _gsCProcedureOnRerunCallRedDestroyImage(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroySampler(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroySampler(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7010,7 +7010,7 @@ func onRerunCallRedDestroySampler(_ context: Number, _ gpuHandle: Number, _ hand
   _ = _gsCProcedureOnRerunCallRedDestroySampler(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyTexture(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyTexture(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7019,7 +7019,7 @@ func onRerunCallRedDestroyTexture(_ context: Number, _ gpuHandle: Number, _ hand
   _ = _gsCProcedureOnRerunCallRedDestroyTexture(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyGpuCode(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyGpuCode(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7028,7 +7028,7 @@ func onRerunCallRedDestroyGpuCode(_ context: Number, _ gpuHandle: Number, _ hand
   _ = _gsCProcedureOnRerunCallRedDestroyGpuCode(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyOutputDeclaration(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyOutputDeclaration(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7037,7 +7037,7 @@ func onRerunCallRedDestroyOutputDeclaration(_ context: Number, _ gpuHandle: Numb
   _ = _gsCProcedureOnRerunCallRedDestroyOutputDeclaration(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyStructDeclaration(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyStructDeclaration(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7046,7 +7046,7 @@ func onRerunCallRedDestroyStructDeclaration(_ context: Number, _ gpuHandle: Numb
   _ = _gsCProcedureOnRerunCallRedDestroyStructDeclaration(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyProcedureParameters(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyProcedureParameters(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7055,7 +7055,7 @@ func onRerunCallRedDestroyProcedureParameters(_ context: Number, _ gpuHandle: Nu
   _ = _gsCProcedureOnRerunCallRedDestroyProcedureParameters(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyProcedureCache(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyProcedureCache(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7064,7 +7064,7 @@ func onRerunCallRedDestroyProcedureCache(_ context: Number, _ gpuHandle: Number,
   _ = _gsCProcedureOnRerunCallRedDestroyProcedureCache(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyProcedure(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyProcedure(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7073,7 +7073,7 @@ func onRerunCallRedDestroyProcedure(_ context: Number, _ gpuHandle: Number, _ ha
   _ = _gsCProcedureOnRerunCallRedDestroyProcedure(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyOutput(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyOutput(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7082,7 +7082,7 @@ func onRerunCallRedDestroyOutput(_ context: Number, _ gpuHandle: Number, _ handl
   _ = _gsCProcedureOnRerunCallRedDestroyOutput(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyCpuSignal(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyCpuSignal(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7091,7 +7091,7 @@ func onRerunCallRedDestroyCpuSignal(_ context: Number, _ gpuHandle: Number, _ ha
   _ = _gsCProcedureOnRerunCallRedDestroyCpuSignal(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyGpuSignal(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyGpuSignal(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7100,7 +7100,7 @@ func onRerunCallRedDestroyGpuSignal(_ context: Number, _ gpuHandle: Number, _ ha
   _ = _gsCProcedureOnRerunCallRedDestroyGpuSignal(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyGpuToCpuSignal(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyGpuToCpuSignal(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7109,7 +7109,7 @@ func onRerunCallRedDestroyGpuToCpuSignal(_ context: Number, _ gpuHandle: Number,
   _ = _gsCProcedureOnRerunCallRedDestroyGpuToCpuSignal(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyCalls(_ context: Number, _ gpuHandle: Number, _ callsHandle: Number, _ callsMemoryHandle: Number) {
+func onRerunCallRedDestroyCalls(context: Number, gpuHandle: Number, callsHandle: Number, callsMemoryHandle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7119,7 +7119,7 @@ func onRerunCallRedDestroyCalls(_ context: Number, _ gpuHandle: Number, _ callsH
   _ = _gsCProcedureOnRerunCallRedDestroyCalls(nil, nil, 0, args)
 }
 
-func onRerunCallRedDestroyArrayTimestamp(_ context: Number, _ gpuHandle: Number, _ handle: Number) {
+func onRerunCallRedDestroyArrayTimestamp(context: Number, gpuHandle: Number, handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(context),
     _gsVoidPointerFromNumber(gpuHandle),
@@ -7128,14 +7128,14 @@ func onRerunCallRedDestroyArrayTimestamp(_ context: Number, _ gpuHandle: Number,
   _ = _gsCProcedureOnRerunCallRedDestroyArrayTimestamp(nil, nil, 0, args)
 }
 
-func onRerunCallRrtDestroyContext(_ rrcontext: Number) {
+func onRerunCallRrtDestroyContext(rrcontext: Number) {
   let args = [
     _gsVoidPointerFromNumber(rrcontext),
   ]
   _ = _gsCProcedureOnRerunCallRrtDestroyContext(nil, nil, 0, args)
 }
 
-func onRerunCallRrtReleaseCommandStream(_ rrcontext: Number, _ rrcommandStream: Number) {
+func onRerunCallRrtReleaseCommandStream(rrcontext: Number, rrcommandStream: Number) {
   let args = [
     _gsVoidPointerFromNumber(rrcontext),
     _gsVoidPointerFromNumber(rrcommandStream),
@@ -7143,7 +7143,7 @@ func onRerunCallRrtReleaseCommandStream(_ rrcontext: Number, _ rrcommandStream: 
   _ = _gsCProcedureOnRerunCallRrtReleaseCommandStream(nil, nil, 0, args)
 }
 
-func onRerunCallRrtReleaseEvent(_ rrcontext: Number, _ rrevent: Number) {
+func onRerunCallRrtReleaseEvent(rrcontext: Number, rrevent: Number) {
   let args = [
     _gsVoidPointerFromNumber(rrcontext),
     _gsVoidPointerFromNumber(rrevent),
@@ -7151,7 +7151,7 @@ func onRerunCallRrtReleaseEvent(_ rrcontext: Number, _ rrevent: Number) {
   _ = _gsCProcedureOnRerunCallRrtReleaseEvent(nil, nil, 0, args)
 }
 
-func onRerunCallRrtWaitEvent(_ rrcontext: Number, _ rrevent: Number) {
+func onRerunCallRrtWaitEvent(rrcontext: Number, rrevent: Number) {
   let args = [
     _gsVoidPointerFromNumber(rrcontext),
     _gsVoidPointerFromNumber(rrevent),
@@ -7159,7 +7159,7 @@ func onRerunCallRrtWaitEvent(_ rrcontext: Number, _ rrevent: Number) {
   _ = _gsCProcedureOnRerunCallRrtWaitEvent(nil, nil, 0, args)
 }
 
-func onRerunCallRrtReleaseDevicePtr(_ rrcontext: Number, _ rrdevicePointer: Number) {
+func onRerunCallRrtReleaseDevicePtr(rrcontext: Number, rrdevicePointer: Number) {
   let args = [
     _gsVoidPointerFromNumber(rrcontext),
     _gsVoidPointerFromNumber(rrdevicePointer),
@@ -7167,7 +7167,7 @@ func onRerunCallRrtReleaseDevicePtr(_ rrcontext: Number, _ rrdevicePointer: Numb
   _ = _gsCProcedureOnRerunCallRrtReleaseDevicePtr(nil, nil, 0, args)
 }
 
-func onRerunCallRrtReleaseExternalCommandStream(_ rrcontext: Number, _ rrcommandStream: Number) {
+func onRerunCallRrtReleaseExternalCommandStream(rrcontext: Number, rrcommandStream: Number) {
   let args = [
     _gsVoidPointerFromNumber(rrcontext),
     _gsVoidPointerFromNumber(rrcommandStream),
@@ -7175,7 +7175,7 @@ func onRerunCallRrtReleaseExternalCommandStream(_ rrcontext: Number, _ rrcommand
   _ = _gsCProcedureOnRerunCallRrtReleaseExternalCommandStream(nil, nil, 0, args)
 }
 
-func onRerunCallRrtUnmapDevicePtr(_ rrcontext: Number, _ rrdevicePointer: Number, _ outMappingPointer: Number) {
+func onRerunCallRrtUnmapDevicePtr(rrcontext: Number, rrdevicePointer: Number, outMappingPointer: Number) {
   let args = [
     _gsVoidPointerFromNumber(rrcontext),
     _gsVoidPointerFromNumber(rrdevicePointer),
@@ -7188,7 +7188,7 @@ func getXatlasStructsCount() -> Number /* count */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetXatlasStructsCount(nil, nil, 0, nil))
 }
 
-func getXatlasStructName(_ index: Number) -> String /* name */ {
+func getXatlasStructName(index: Number) -> String /* name */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -7202,7 +7202,7 @@ func getXatlasStructMembersCount() -> Number /* count */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetXatlasStructMembersCount(nil, nil, 0, nil))
 }
 
-func getXatlasStructMemberName(_ index: Number) -> String /* name */ {
+func getXatlasStructMemberName(index: Number) -> String /* name */ {
   let args = [
     _gsVoidPointerFromNumber(index),
   ]
@@ -7212,7 +7212,7 @@ func getXatlasStructMemberName(_ index: Number) -> String /* name */ {
   return out
 }
 
-func xatlasStructSizeof(_ structName: String) -> Number /* bytesCount */ {
+func xatlasStructSizeof(structName: String) -> Number /* bytesCount */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
 
   let args = [
@@ -7221,7 +7221,7 @@ func xatlasStructSizeof(_ structName: String) -> Number /* bytesCount */ {
   return _gsNumberFromVoidPointer(_gsCProcedureXatlasStructSizeof(nil, nil, 0, args))
 }
 
-func xatlasStructMemberSizeof(_ structName: String, _ structMemberName: String) -> Number /* bytesCount */ {
+func xatlasStructMemberSizeof(structName: String, structMemberName: String) -> Number /* bytesCount */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
   let _structMemberName = UnsafeRawPointer(_strdup(structMemberName)); defer { free(UnsafeMutableRawPointer(mutating: _structMemberName)) }
 
@@ -7232,7 +7232,7 @@ func xatlasStructMemberSizeof(_ structName: String, _ structMemberName: String) 
   return _gsNumberFromVoidPointer(_gsCProcedureXatlasStructMemberSizeof(nil, nil, 0, args))
 }
 
-func xatlasStructMemberOffsetof(_ structName: String, _ structMemberName: String) -> Number /* bytesFirst */ {
+func xatlasStructMemberOffsetof(structName: String, structMemberName: String) -> Number /* bytesFirst */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
   let _structMemberName = UnsafeRawPointer(_strdup(structMemberName)); defer { free(UnsafeMutableRawPointer(mutating: _structMemberName)) }
 
@@ -7243,7 +7243,7 @@ func xatlasStructMemberOffsetof(_ structName: String, _ structMemberName: String
   return _gsNumberFromVoidPointer(_gsCProcedureXatlasStructMemberOffsetof(nil, nil, 0, args))
 }
 
-func xatlasStructMemberTypeof(_ structName: String, _ structMemberName: String) -> Number /* structMemberType */ {
+func xatlasStructMemberTypeof(structName: String, structMemberName: String) -> Number /* structMemberType */ {
   let _structName = UnsafeRawPointer(_strdup(structName)); defer { free(UnsafeMutableRawPointer(mutating: _structName)) }
   let _structMemberName = UnsafeRawPointer(_strdup(structMemberName)); defer { free(UnsafeMutableRawPointer(mutating: _structMemberName)) }
 
@@ -7254,28 +7254,28 @@ func xatlasStructMemberTypeof(_ structName: String, _ structMemberName: String) 
   return _gsNumberFromVoidPointer(_gsCProcedureXatlasStructMemberTypeof(nil, nil, 0, args))
 }
 
-func xatlasMeshDeclInit(_ pointerToXatlasMeshDecl: Number) {
+func xatlasMeshDeclInit(pointerToXatlasMeshDecl: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointerToXatlasMeshDecl),
   ]
   _ = _gsCProcedureXatlasMeshDeclInit(nil, nil, 0, args)
 }
 
-func xatlasUvMeshDeclInit(_ pointerToXatlasUvMeshDecl: Number) {
+func xatlasUvMeshDeclInit(pointerToXatlasUvMeshDecl: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointerToXatlasUvMeshDecl),
   ]
   _ = _gsCProcedureXatlasUvMeshDeclInit(nil, nil, 0, args)
 }
 
-func xatlasChartOptionsInit(_ pointerToXatlasChartOptions: Number) {
+func xatlasChartOptionsInit(pointerToXatlasChartOptions: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointerToXatlasChartOptions),
   ]
   _ = _gsCProcedureXatlasChartOptionsInit(nil, nil, 0, args)
 }
 
-func xatlasPackOptionsInit(_ pointerToXatlasPackOptions: Number) {
+func xatlasPackOptionsInit(pointerToXatlasPackOptions: Number) {
   let args = [
     _gsVoidPointerFromNumber(pointerToXatlasPackOptions),
   ]
@@ -7286,14 +7286,14 @@ func xatlasCreate() -> Number /* xatlas */ {
   return _gsNumberFromVoidPointer(_gsCProcedureXatlasCreate(nil, nil, 0, nil))
 }
 
-func xatlasDestroy(_ xatlas: Number) {
+func xatlasDestroy(xatlas: Number) {
   let args = [
     _gsVoidPointerFromNumber(xatlas),
   ]
   _ = _gsCProcedureXatlasDestroy(nil, nil, 0, args)
 }
 
-func xatlasAddMesh(_ xatlas: Number, _ pointerToXatlasMeshDecl: Number, _ meshCountHint: Number) -> Number /* status */ {
+func xatlasAddMesh(xatlas: Number, pointerToXatlasMeshDecl: Number, meshCountHint: Number) -> Number /* status */ {
   let args = [
     _gsVoidPointerFromNumber(xatlas),
     _gsVoidPointerFromNumber(pointerToXatlasMeshDecl),
@@ -7302,14 +7302,14 @@ func xatlasAddMesh(_ xatlas: Number, _ pointerToXatlasMeshDecl: Number, _ meshCo
   return _gsNumberFromVoidPointer(_gsCProcedureXatlasAddMesh(nil, nil, 0, args))
 }
 
-func xatlasAddMeshJoin(_ xatlas: Number) {
+func xatlasAddMeshJoin(xatlas: Number) {
   let args = [
     _gsVoidPointerFromNumber(xatlas),
   ]
   _ = _gsCProcedureXatlasAddMeshJoin(nil, nil, 0, args)
 }
 
-func xatlasAddUvMesh(_ xatlas: Number, _ pointerToXatlasUvMeshDecl: Number) -> Number /* status */ {
+func xatlasAddUvMesh(xatlas: Number, pointerToXatlasUvMeshDecl: Number) -> Number /* status */ {
   let args = [
     _gsVoidPointerFromNumber(xatlas),
     _gsVoidPointerFromNumber(pointerToXatlasUvMeshDecl),
@@ -7317,7 +7317,7 @@ func xatlasAddUvMesh(_ xatlas: Number, _ pointerToXatlasUvMeshDecl: Number) -> N
   return _gsNumberFromVoidPointer(_gsCProcedureXatlasAddUvMesh(nil, nil, 0, args))
 }
 
-func xatlasComputeCharts(_ xatlas: Number, _ pointerToXatlasChartOptions: Number) {
+func xatlasComputeCharts(xatlas: Number, pointerToXatlasChartOptions: Number) {
   let args = [
     _gsVoidPointerFromNumber(xatlas),
     _gsVoidPointerFromNumber(pointerToXatlasChartOptions),
@@ -7325,7 +7325,7 @@ func xatlasComputeCharts(_ xatlas: Number, _ pointerToXatlasChartOptions: Number
   _ = _gsCProcedureXatlasComputeCharts(nil, nil, 0, args)
 }
 
-func xatlasPackCharts(_ xatlas: Number, _ pointerToXatlasPackOptions: Number) {
+func xatlasPackCharts(xatlas: Number, pointerToXatlasPackOptions: Number) {
   let args = [
     _gsVoidPointerFromNumber(xatlas),
     _gsVoidPointerFromNumber(pointerToXatlasPackOptions),
@@ -7333,7 +7333,7 @@ func xatlasPackCharts(_ xatlas: Number, _ pointerToXatlasPackOptions: Number) {
   _ = _gsCProcedureXatlasPackCharts(nil, nil, 0, args)
 }
 
-func xatlasGenerate(_ xatlas: Number, _ pointerToXatlasChartOptions: Number, _ pointerToXatlasPackOptions: Number) {
+func xatlasGenerate(xatlas: Number, pointerToXatlasChartOptions: Number, pointerToXatlasPackOptions: Number) {
   let args = [
     _gsVoidPointerFromNumber(xatlas),
     _gsVoidPointerFromNumber(pointerToXatlasChartOptions),
@@ -7342,14 +7342,14 @@ func xatlasGenerate(_ xatlas: Number, _ pointerToXatlasChartOptions: Number, _ p
   _ = _gsCProcedureXatlasGenerate(nil, nil, 0, args)
 }
 
-func onRerunCallXatlasDestroy(_ xatlas: Number) {
+func onRerunCallXatlasDestroy(xatlas: Number) {
   let args = [
     _gsVoidPointerFromNumber(xatlas),
   ]
   _ = _gsCProcedureOnRerunCallXatlasDestroy(nil, nil, 0, args)
 }
 
-func fbxNew(_ label: String) -> Number /* handle */ {
+func fbxNew(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -7358,7 +7358,7 @@ func fbxNew(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureFbxNew(nil, nil, 0, args))
 }
 
-func fbxNewFromFile(_ label: String, _ filepath: String) -> Number /* handle */ {
+func fbxNewFromFile(label: String, filepath: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
   let _filepath = UnsafeRawPointer(_strdup(filepath)); defer { free(UnsafeMutableRawPointer(mutating: _filepath)) }
 
@@ -7369,7 +7369,7 @@ func fbxNewFromFile(_ label: String, _ filepath: String) -> Number /* handle */ 
   return _gsNumberFromVoidPointer(_gsCProcedureFbxNewFromFile(nil, nil, 0, args))
 }
 
-func fbxDelete(_ label: String) {
+func fbxDelete(label: String) {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -7382,7 +7382,7 @@ func fbxDeleteAll() {
   _ = _gsCProcedureFbxDeleteAll(nil, nil, 0, nil)
 }
 
-func fbxGetHandle(_ label: String) -> Number /* handle */ {
+func fbxGetHandle(label: String) -> Number /* handle */ {
   let _label = UnsafeRawPointer(_strdup(label)); defer { free(UnsafeMutableRawPointer(mutating: _label)) }
 
   let args = [
@@ -7391,7 +7391,7 @@ func fbxGetHandle(_ label: String) -> Number /* handle */ {
   return _gsNumberFromVoidPointer(_gsCProcedureFbxGetHandle(nil, nil, 0, args))
 }
 
-func fbxCopyToFbx(_ handleCopyFrom: Number, _ handleCopyTo: Number) {
+func fbxCopyToFbx(handleCopyFrom: Number, handleCopyTo: Number) {
   let args = [
     _gsVoidPointerFromNumber(handleCopyFrom),
     _gsVoidPointerFromNumber(handleCopyTo),
@@ -7399,35 +7399,35 @@ func fbxCopyToFbx(_ handleCopyFrom: Number, _ handleCopyTo: Number) {
   _ = _gsCProcedureFbxCopyToFbx(nil, nil, 0, args)
 }
 
-func fbxClear(_ handle: Number) {
+func fbxClear(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureFbxClear(nil, nil, 0, args)
 }
 
-func fbxEarlyUpdate(_ handle: Number) {
+func fbxEarlyUpdate(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureFbxEarlyUpdate(nil, nil, 0, args)
 }
 
-func fbxLateUpdate(_ handle: Number) {
+func fbxLateUpdate(handle: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   _ = _gsCProcedureFbxLateUpdate(nil, nil, 0, args)
 }
 
-func fbxGetMeshesCount(_ handle: Number) -> Number /* count */ {
+func fbxGetMeshesCount(handle: Number) -> Number /* count */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureFbxGetMeshesCount(nil, nil, 0, args))
 }
 
-func fbxGetMesh(_ handle: Number, _ meshIndex: Number) -> Number /* meshHandle */ {
+func fbxGetMesh(handle: Number, meshIndex: Number) -> Number /* meshHandle */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(meshIndex),
@@ -7435,7 +7435,7 @@ func fbxGetMesh(_ handle: Number, _ meshIndex: Number) -> Number /* meshHandle *
   return _gsNumberFromVoidPointer(_gsCProcedureFbxGetMesh(nil, nil, 0, args))
 }
 
-func fbxGetMeshName(_ handle: Number, _ meshIndex: Number) -> String /* meshName */ {
+func fbxGetMeshName(handle: Number, meshIndex: Number) -> String /* meshName */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(meshIndex),
@@ -7446,14 +7446,14 @@ func fbxGetMeshName(_ handle: Number, _ meshIndex: Number) -> String /* meshName
   return out
 }
 
-func fbxGetRootBonesCount(_ handle: Number) -> Number /* count */ {
+func fbxGetRootBonesCount(handle: Number) -> Number /* count */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureFbxGetRootBonesCount(nil, nil, 0, args))
 }
 
-func fbxGetRootBone(_ handle: Number, _ rootBoneIndex: Number) -> Number /* boneHandle */ {
+func fbxGetRootBone(handle: Number, rootBoneIndex: Number) -> Number /* boneHandle */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(rootBoneIndex),
@@ -7461,7 +7461,7 @@ func fbxGetRootBone(_ handle: Number, _ rootBoneIndex: Number) -> Number /* bone
   return _gsNumberFromVoidPointer(_gsCProcedureFbxGetRootBone(nil, nil, 0, args))
 }
 
-func fbxBoneGetName(_ handle: Number) -> String /* boneName */ {
+func fbxBoneGetName(handle: Number) -> String /* boneName */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
@@ -7471,14 +7471,14 @@ func fbxBoneGetName(_ handle: Number) -> String /* boneName */ {
   return out
 }
 
-func fbxBoneGetChildBonesCount(_ handle: Number) -> Number /* count */ {
+func fbxBoneGetChildBonesCount(handle: Number) -> Number /* count */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
   return _gsNumberFromVoidPointer(_gsCProcedureFbxBoneGetChildBonesCount(nil, nil, 0, args))
 }
 
-func fbxBoneGetChildBone(_ handle: Number, _ childBoneIndex: Number) -> Number /* boneHandle */ {
+func fbxBoneGetChildBone(handle: Number, childBoneIndex: Number) -> Number /* boneHandle */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(childBoneIndex),
@@ -7486,7 +7486,7 @@ func fbxBoneGetChildBone(_ handle: Number, _ childBoneIndex: Number) -> Number /
   return _gsNumberFromVoidPointer(_gsCProcedureFbxBoneGetChildBone(nil, nil, 0, args))
 }
 
-func fbxBoneGetChildBoneByNameRecursively(_ handle: Number, _ boneName: String) -> Number /* boneHandle */ {
+func fbxBoneGetChildBoneByNameRecursively(handle: Number, boneName: String) -> Number /* boneHandle */ {
   let _boneName = UnsafeRawPointer(_strdup(boneName)); defer { free(UnsafeMutableRawPointer(mutating: _boneName)) }
 
   let args = [
@@ -7496,7 +7496,7 @@ func fbxBoneGetChildBoneByNameRecursively(_ handle: Number, _ boneName: String) 
   return _gsNumberFromVoidPointer(_gsCProcedureFbxBoneGetChildBoneByNameRecursively(nil, nil, 0, args))
 }
 
-func fbxBoneGetVector(_ handle: Number) -> NumberArray /* position [3] {x, y, z} */ {
+func fbxBoneGetVector(handle: Number) -> NumberArray /* position [3] {x, y, z} */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
@@ -7511,7 +7511,7 @@ func fbxBoneGetVector(_ handle: Number) -> NumberArray /* position [3] {x, y, z}
   return out
 }
 
-func fbxBoneGetVersor(_ handle: Number) -> NumberArray /* quaternion [4] {x, y, z, w} */ {
+func fbxBoneGetVersor(handle: Number) -> NumberArray /* quaternion [4] {x, y, z, w} */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
@@ -7527,7 +7527,7 @@ func fbxBoneGetVersor(_ handle: Number) -> NumberArray /* quaternion [4] {x, y, 
   return out
 }
 
-func fbxBoneGetScale(_ handle: Number) -> NumberArray /* scale [3] {x, y, z} */ {
+func fbxBoneGetScale(handle: Number) -> NumberArray /* scale [3] {x, y, z} */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
@@ -7542,7 +7542,7 @@ func fbxBoneGetScale(_ handle: Number) -> NumberArray /* scale [3] {x, y, z} */ 
   return out
 }
 
-func fbxBoneGetSideVector(_ handle: Number) -> NumberArray /* sideVector [3] {x, y, z} */ {
+func fbxBoneGetSideVector(handle: Number) -> NumberArray /* sideVector [3] {x, y, z} */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
@@ -7557,7 +7557,7 @@ func fbxBoneGetSideVector(_ handle: Number) -> NumberArray /* sideVector [3] {x,
   return out
 }
 
-func fbxBoneGetUpVector(_ handle: Number) -> NumberArray /* upVector [3] {x, y, z} */ {
+func fbxBoneGetUpVector(handle: Number) -> NumberArray /* upVector [3] {x, y, z} */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
@@ -7572,7 +7572,7 @@ func fbxBoneGetUpVector(_ handle: Number) -> NumberArray /* upVector [3] {x, y, 
   return out
 }
 
-func fbxBoneGetLookAtVector(_ handle: Number) -> NumberArray /* lookAtVector [3] {x, y, z} */ {
+func fbxBoneGetLookAtVector(handle: Number) -> NumberArray /* lookAtVector [3] {x, y, z} */ {
   let args = [
     _gsVoidPointerFromNumber(handle),
   ]
@@ -7587,7 +7587,7 @@ func fbxBoneGetLookAtVector(_ handle: Number) -> NumberArray /* lookAtVector [3]
   return out
 }
 
-func fbxBoneGetTransformMatrix(_ handle: Number, _ outPointer: Number) {
+func fbxBoneGetTransformMatrix(handle: Number, outPointer: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(outPointer),
@@ -7595,7 +7595,7 @@ func fbxBoneGetTransformMatrix(_ handle: Number, _ outPointer: Number) {
   _ = _gsCProcedureFbxBoneGetTransformMatrix(nil, nil, 0, args)
 }
 
-func fbxBoneSetVector(_ handle: Number, _ x: Number, _ y: Number, _ z: Number) {
+func fbxBoneSetVector(handle: Number, x: Number, y: Number, z: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(x),
@@ -7605,7 +7605,7 @@ func fbxBoneSetVector(_ handle: Number, _ x: Number, _ y: Number, _ z: Number) {
   _ = _gsCProcedureFbxBoneSetVector(nil, nil, 0, args)
 }
 
-func fbxBoneSetVersor(_ handle: Number, _ x: Number, _ y: Number, _ z: Number, _ w: Number) {
+func fbxBoneSetVersor(handle: Number, x: Number, y: Number, z: Number, w: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(x),
@@ -7616,7 +7616,7 @@ func fbxBoneSetVersor(_ handle: Number, _ x: Number, _ y: Number, _ z: Number, _
   _ = _gsCProcedureFbxBoneSetVersor(nil, nil, 0, args)
 }
 
-func fbxBoneSetScale(_ handle: Number, _ x: Number, _ y: Number, _ z: Number) {
+func fbxBoneSetScale(handle: Number, x: Number, y: Number, z: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(x),
@@ -7626,7 +7626,7 @@ func fbxBoneSetScale(_ handle: Number, _ x: Number, _ y: Number, _ z: Number) {
   _ = _gsCProcedureFbxBoneSetScale(nil, nil, 0, args)
 }
 
-func fbxBoneRotate(_ handle: Number, _ rotationX: Number, _ rotationY: Number, _ rotationZ: Number, _ rotationDeg: Number) {
+func fbxBoneRotate(handle: Number, rotationX: Number, rotationY: Number, rotationZ: Number, rotationDeg: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(rotationX),
@@ -7637,7 +7637,7 @@ func fbxBoneRotate(_ handle: Number, _ rotationX: Number, _ rotationY: Number, _
   _ = _gsCProcedureFbxBoneRotate(nil, nil, 0, args)
 }
 
-func fbxBoneLookAt(_ handle: Number, _ x: Number, _ y: Number, _ z: Number, _ upX: Number, _ upY: Number, _ upZ: Number) {
+func fbxBoneLookAt(handle: Number, x: Number, y: Number, z: Number, upX: Number, upY: Number, upZ: Number) {
   let args = [
     _gsVoidPointerFromNumber(handle),
     _gsVoidPointerFromNumber(x),
