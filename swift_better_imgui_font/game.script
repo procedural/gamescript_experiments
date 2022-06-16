@@ -1,0 +1,33 @@
+import cimgui
+import droidsansmono
+
+@_cdecl("frame") public func frame() {
+	if (globalArrayPersistentGetPointer(label: "__cimguiFontDataDroidSansMono") == 0) {
+		let fontSize: Float = 28.0
+
+		let io = igGetIO()
+		io?[0].FontGlobalScale = 1.0
+
+		ImFontAtlas_Clear(io?[0].Fonts)
+
+		let fontData = globalArrayPersistentNew8Bit(label: "__cimguiFontDataDroidSansMono", count: Number(gsDroidSansMonoFontGetBytesCount()))
+		memcpy(pointerTarget: fontData, pointerTargetBytesFirst: 0, pointerSource: _gsNumberFromVoidPointer(gsDroidSansMonoFontGetPointer()), pointerSourceBytesFirst: 0, bytesCount: Number(gsDroidSansMonoFontGetBytesCount()))
+		let _ = ImFontAtlas_AddFontFromMemoryTTF(io?[0].Fonts, _gsVoidPointerFromNumber(fontData), Int32(gsDroidSansMonoFontGetBytesCount()), fontSize, nil, nil)
+
+		var fontPixels: UnsafeMutablePointer<UInt8>? = nil
+		var fontPixelsWidth: Int32  = 0
+		var fontPixelsHeight: Int32 = 0
+		var fontPixelsBpp: Int32    = 0
+		ImFontAtlas_GetTexDataAsRGBA32(io?[0].Fonts, &fontPixels, &fontPixelsWidth, &fontPixelsHeight, &fontPixelsBpp)
+
+		var fontTextureId: UInt32 = 0
+		gsglGenTextures(1, &fontTextureId)
+		gsglBindTexture(0x0DE1, fontTextureId) // GL_TEXTURE_2D
+		gsglTexParameteri(0x0DE1, 0x2801, 0x2601) // GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR
+		gsglTexParameteri(0x0DE1, 0x2800, 0x2601) // GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR
+		gsglPixelStorei(0x0CF2, 0) // GL_UNPACK_ROW_LENGTH
+		gsglTexImage2D(0x0DE1, 0, 0x1908, fontPixelsWidth, fontPixelsHeight, 0, 0x1908, 0x1401, fontPixels) // GL_TEXTURE_2D, GL_RGBA, GL_RGBA, GL_UNSIGNED_BYTE
+
+		ImFontAtlas_SetTexID(io?[0].Fonts, UInt64(fontTextureId))
+	}
+}

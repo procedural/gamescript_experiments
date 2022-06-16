@@ -1,0 +1,7 @@
+module cimgui {
+  header "cimgui.h"
+}
+
+module droidsansmono {
+  header "droidsansmono.h"
+}
