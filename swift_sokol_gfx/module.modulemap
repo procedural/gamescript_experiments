@@ -1,0 +1,3 @@
+module sokol_gfx {
+  header "sokol_gfx/sokol_gfx.h"
+}
