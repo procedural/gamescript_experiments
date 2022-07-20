@@ -1,34 +1,36 @@
-ImGui_ImplRedGpu_InitInfo.Instance: 0
-ImGui_ImplRedGpu_InitInfo.PhysicalDevice: 8
-ImGui_ImplRedGpu_InitInfo.Device: 16
-ImGui_ImplRedGpu_InitInfo.DeviceIndex: 24
-ImGui_ImplRedGpu_InitInfo.QueueFamily: 28
-ImGui_ImplRedGpu_InitInfo.PipelineCache: 32
-ImGui_ImplRedGpu_InitInfo.DescriptorPool: 40
-ImGui_ImplRedGpu_InitInfo.DescriptorPoolSamplers: 48
-ImGui_ImplRedGpu_InitInfo.Subpass: 56
-ImGui_ImplRedGpu_InitInfo.MinImageCount: 60
-ImGui_ImplRedGpu_InitInfo.ImageCount: 64
-ImGui_ImplRedGpu_InitInfo.MSAASamples: 68
-ImGui_ImplRedGpuH_Window.Width: 0
-ImGui_ImplRedGpuH_Window.Height: 4
-ImGui_ImplRedGpuH_Window.Swapchain: 8
-ImGui_ImplRedGpuH_Window.Surface: 16
-ImGui_ImplRedGpuH_Window.SurfaceFormat: 24
-ImGui_ImplRedGpuH_Window.PresentMode: 28
-ImGui_ImplRedGpuH_Window.RenderPass: 32
-ImGui_ImplRedGpuH_Window.Pipeline: 40
-ImGui_ImplRedGpuH_Window.ClearEnable: 48
-ImGui_ImplRedGpuH_Window.ClearValues: 52
-ImGui_ImplRedGpuH_Window.FrameIndex: 68
-ImGui_ImplRedGpuH_Window.ImageCount: 72
-ImGui_ImplRedGpuH_Window.SemaphoreIndex: 76
-ImGui_ImplRedGpuH_Window.Frames: 80
-ImGui_ImplRedGpuH_Window.FrameSemaphores: 88
-ImGui_ImplRedGpuH_Frame.CommandBuffer: 0
-ImGui_ImplRedGpuH_Frame.Fence: 24
-ImGui_ImplRedGpuH_Frame.Backbuffer: 32
-ImGui_ImplRedGpuH_Frame.BackbufferView: 40
-ImGui_ImplRedGpuH_Frame.Framebuffer: 48
-ImGui_ImplRedGpuH_FrameSemaphores.ImageAcquiredSemaphore: 0
-ImGui_ImplRedGpuH_FrameSemaphores.RenderCompleteSemaphore: 8
+offsetof ImGui_ImplRedGpu_InitInfo.Instance: 0
+offsetof ImGui_ImplRedGpu_InitInfo.PhysicalDevice: 8
+offsetof ImGui_ImplRedGpu_InitInfo.Device: 16
+offsetof ImGui_ImplRedGpu_InitInfo.DeviceIndex: 24
+offsetof ImGui_ImplRedGpu_InitInfo.QueueFamily: 28
+offsetof ImGui_ImplRedGpu_InitInfo.PipelineCache: 32
+offsetof ImGui_ImplRedGpu_InitInfo.DescriptorPool: 40
+offsetof ImGui_ImplRedGpu_InitInfo.DescriptorPoolSamplers: 48
+offsetof ImGui_ImplRedGpu_InitInfo.Subpass: 56
+offsetof ImGui_ImplRedGpu_InitInfo.MinImageCount: 60
+offsetof ImGui_ImplRedGpu_InitInfo.ImageCount: 64
+offsetof ImGui_ImplRedGpu_InitInfo.MSAASamples: 68
+offsetof ImGui_ImplRedGpuH_Window.Width: 0
+offsetof ImGui_ImplRedGpuH_Window.Height: 4
+offsetof ImGui_ImplRedGpuH_Window.Swapchain: 8
+offsetof ImGui_ImplRedGpuH_Window.Surface: 16
+offsetof ImGui_ImplRedGpuH_Window.SurfaceFormat: 24
+offsetof ImGui_ImplRedGpuH_Window.PresentMode: 28
+offsetof ImGui_ImplRedGpuH_Window.RenderPass: 32
+offsetof ImGui_ImplRedGpuH_Window.Pipeline: 40
+offsetof ImGui_ImplRedGpuH_Window.ClearEnable: 48
+offsetof ImGui_ImplRedGpuH_Window.ClearValues: 52
+offsetof ImGui_ImplRedGpuH_Window.FrameIndex: 68
+offsetof ImGui_ImplRedGpuH_Window.ImageCount: 72
+offsetof ImGui_ImplRedGpuH_Window.SemaphoreIndex: 76
+offsetof ImGui_ImplRedGpuH_Window.Frames: 80
+offsetof ImGui_ImplRedGpuH_Window.FrameSemaphores: 88
+offsetof ImGui_ImplRedGpuH_Frame.CommandBuffer: 0
+offsetof ImGui_ImplRedGpuH_Frame.Fence: 24
+offsetof ImGui_ImplRedGpuH_Frame.Backbuffer: 32
+offsetof ImGui_ImplRedGpuH_Frame.BackbufferView: 40
+offsetof ImGui_ImplRedGpuH_Frame.Framebuffer: 48
+offsetof ImGui_ImplRedGpuH_FrameSemaphores.ImageAcquiredSemaphore: 0
+offsetof ImGui_ImplRedGpuH_FrameSemaphores.RenderCompleteSemaphore: 8
+sizeof ImGui_ImplRedGpuH_Frame: 72
+sizeof ImGui_ImplRedGpuH_FrameSemaphores: 16
