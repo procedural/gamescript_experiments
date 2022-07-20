@@ -1,3 +1,6 @@
+// https://github.com/procedural/gamescript/blob/f9bff92ea371d9c03894f10f48afacf0a57d287f/source_code_for_redgpu_version/imgui_impl_redgpu.h#L26-L40
+// https://github.com/procedural/gamescript/blob/f9bff92ea371d9c03894f10f48afacf0a57d287f/source_code_for_redgpu_version/imgui_impl_redgpu.h#L102-L126
+
 offsetof ImGui_ImplRedGpu_InitInfo.Instance: 0
 offsetof ImGui_ImplRedGpu_InitInfo.PhysicalDevice: 8
 offsetof ImGui_ImplRedGpu_InitInfo.Device: 16
