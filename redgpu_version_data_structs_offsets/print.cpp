@@ -1,3 +1,6 @@
+// https://github.com/procedural/gamescript/blob/f9bff92ea371d9c03894f10f48afacf0a57d287f/source_code_for_redgpu_version/imgui_impl_redgpu.h#L26-L40
+// https://github.com/procedural/gamescript/blob/f9bff92ea371d9c03894f10f48afacf0a57d287f/source_code_for_redgpu_version/imgui_impl_redgpu.h#L102-L126
+
 printf("offsetof ImGui_ImplRedGpu_InitInfo.Instance: %zu\n", offsetof(ImGui_ImplRedGpu_InitInfo, Instance));
 printf("offsetof ImGui_ImplRedGpu_InitInfo.PhysicalDevice: %zu\n", offsetof(ImGui_ImplRedGpu_InitInfo, PhysicalDevice));
 printf("offsetof ImGui_ImplRedGpu_InitInfo.Device: %zu\n", offsetof(ImGui_ImplRedGpu_InitInfo, Device));
